@@ -18,10 +18,7 @@ public class Member {
 		this.pw = pw;
 		this.gender = gender;
 	}
-	public void print() {
-		System.out.println("이름 : " + name);
-		System.out.println("성별 : " + (gender=='m'?"남자": (gender=='f'? "여자":"무")));
-	}
+	
 	public String infoString() {
 		String result = "이름 : " + name;
 		result += "\n성별 : " + (gender=='m' ? "남자" : (gender=='f' ? "여자" : "무"));
@@ -74,5 +71,4 @@ public class Member {
 	public void setGender(char gender) {
 		this.gender = gender;
 	}
-	
 }
