@@ -13,6 +13,5 @@ public class AccountMain {
 		hong.deposite(5000);
 		hong1.deposite(2200000000L);
 		hong1.withdraw(1900000000L); // 잔액이 부족하면 인출불가
-		
 	}
 }

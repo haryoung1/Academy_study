@@ -9,6 +9,12 @@ public class StudentMain {
 		Student s5 = new Student("유아인", 70,70,70);
 		Student[] students = {s1, s2, s3, s4, s5};
 		String[] title = {"이름", "국어", "영어", "수학", "총점", "평균"};
+//		int korTot =0;
+//		int engTot =0;
+//		int matTot =0;
+//		int totTot =0;
+//		int avgTot =0; new로 변수 배열 선언 하면 그 방에 값은 0이다.
+		int[] total = new int[5]; // 0번 idx:국어누적, 1번 idx:영어누적, 2번 idx:수학누적, . . .
 		line();
 		System.out.println("\t\t\t성적표");
 		line('-');
@@ -19,8 +25,26 @@ public class StudentMain {
 		line('-');
 		for(Student student : students) {
 			System.out.print(student.infoString());
-//			student.infoPrint();
+            // student.infoPrint();
+			// 총점변수 (국,영,수,총,평) 누적
+			total[0] += student.getKor(); // 국어점수 누적
+			total[1] += student.getEng(); // 영어누적
+			total[2] += student.getMat(); // 수학누적
+			total[3] += student.getTot(); // 총점누적
+		    //total[4] = total[4] + student.getAvg() // 평균누적 에러
+			total[4] += student.getAvg();
 		}
+		line('-');
+		System.out.print("\t총점");
+		for(int t : total) {
+			System.out.print("\t" + t);
+		}
+		System.out.print("\n\t평균");
+		for(int t: total) {
+			// System.out.print("\t" + t/5.0); // "\t%.1f", t/5.0
+			System.out.printf("\t%.1f",(double)t/students.length);
+		}
+		System.out.println();
 		line();
 	}
 	

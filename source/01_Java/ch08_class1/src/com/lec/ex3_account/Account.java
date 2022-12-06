@@ -32,8 +32,6 @@ public class Account {
 		}
 	}
 	public void infoPrint() {
-		// " 110-352-7894" È«±æµ¿´Ô ÀÜ¾× : 10¿ø Ãâ·Â
-		// System.out.println("\""+accountNo+"\""+ownerName+"´Ô ÀÜ¾× : " + balance + "¿ø");
 		System.out.printf("\" %s \" %s´Ô ÀÜ¾× : %d¿ø\n", accountNo, ownerName, balance);
 	}
 	public String infoString() {
