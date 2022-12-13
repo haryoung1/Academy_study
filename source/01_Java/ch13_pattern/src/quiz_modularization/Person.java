@@ -3,25 +3,27 @@ package quiz_modularization;
 import quiz_Interfaces.GetImpl;
 import quiz_Interfaces.JobImpl;
 
-public abstract class Person {
-	
+public  class Person {
+
 	private String id;
 	private String name;
 	private String ban;
 	private GetImpl get;
 	private JobImpl job;
-	
+
 	public Person(String id, String name) {
 		this.id = id;
 		this.name = name;
 	}
-	
+
 	public void job() {
-		
+
 	}
+
 	public void get() {
-		
+
 	}
+
 	public void print() {
 		System.out.print("[id]" + id + "\t[¿Ã∏ß]" + name);
 	}

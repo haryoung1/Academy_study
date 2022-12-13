@@ -1,10 +1,10 @@
-package quiz_modularization;
+package quiz_m;
 
-import quiz_Interfaces.GetStudentPay;
-import quiz_Interfaces.JobStudy;
+import quiz_I.GetStudentPay;
+import quiz_I.JobStudy;
 
 public class Student extends Person {
-
+	
 	private String ban;
 
 	public Student(String id, String name, String ban) {
@@ -13,10 +13,10 @@ public class Student extends Person {
 		setJob(new JobStudy());
 		setGet(new GetStudentPay());
 	}
-
 	public void print() {
 		super.print();
-		System.out.println(" [¹Ý] " + ban);
+		System.out.println("[¹Ý]" + ban);
 	}
+	
 
 }
