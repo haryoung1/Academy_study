@@ -25,9 +25,9 @@ public class Friend {
 		// sout = > 홍 717-7777
 		if (birthday != null) {
 			SimpleDateFormat sdf = new SimpleDateFormat("yyyy년 MM월 dd일(E)");
-			return "[name] = " + name + " [tel] = " + tel + " [birthday] = " + sdf.format(birthday);
+			return "[이름] = " + name + " [번호] = " + tel + " [생일] = " + sdf.format(birthday);
 		} else {
-			return "[name] = " + name + " [tel] = " + tel;
+			return "[이름] = " + name + " [번호] = " + tel;
 		}
 
 	}
