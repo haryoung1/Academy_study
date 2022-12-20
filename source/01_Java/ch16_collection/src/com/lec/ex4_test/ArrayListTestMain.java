@@ -29,7 +29,7 @@ public class ArrayListTestMain {
 		} else {
 			System.out.println("<가입한 회원 리스트>");
 			for (Customer c : members) {
-				System.out.println(c);
+				System.out.print(c);
 			}
 		}
 		sc.close();
