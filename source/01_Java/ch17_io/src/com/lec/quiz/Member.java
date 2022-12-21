@@ -22,6 +22,6 @@ public class Member {
 	@Override
 	public String toString() {
 		SimpleDateFormat sdf = new SimpleDateFormat("MM-dd");
-		return name + phone + sdf.format(birthday) + "»ý" + address;
+		return name + "\t"+ phone + "\t" + sdf.format(birthday) + "»ý\t" + address;
 	}
 }

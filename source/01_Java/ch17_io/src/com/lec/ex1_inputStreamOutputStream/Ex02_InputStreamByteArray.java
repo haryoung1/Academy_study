@@ -38,3 +38,4 @@ public class Ex02_InputStreamByteArray {
 		}
 	}
 }
+
