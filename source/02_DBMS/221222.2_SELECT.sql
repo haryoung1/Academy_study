@@ -3,30 +3,34 @@
 -- 현재 계정(실행 : CTRL+ENTER)
 
 SHOW USER;
-SELECT * FROM tab; -- 현 계정이 가지고 있는 테이블 정보
-SELECT * FROM emp; -- EMP테이블의 모든 열 (필드), 모든 행 
-SELECT * FROM dept; -- DEPT 테이블의 모든 열(필드), 모든 행
-SELECT * FROM salgrade; 
+SELECT * 
+    FROM tab; -- 현 계정이 가지고 있는 테이블 정보
+SELECT * 
+    FROM emp; -- EMP테이블의 모든 열 (필드), 모든 행 
+SELECT * 
+    FROM dept; -- DEPT 테이블의 모든 열(필드), 모든 행
+SELECT * 
+    FROM salgrade; 
 
 -- 2. 특정 열만 출력
 DESC EMP; -- EMP 테이블의 구조
 SELECT empno, ename, sal,job
-FROM emp; -- EMPNO,ENAME,SAL,JOB필드 모든 행 검색
+    FROM emp; -- EMPNO,ENAME,SAL,JOB필드 모든 행 검색
 
 SELECT empno, ename, sal, job, mgr, sal, comm
-FROM emp;
+    FROM emp;
 
 SELECT empno AS "사 번", ename AS "이름", sal AS "급여", job AS "직책"
-FROM emp;
+    FROM emp;
 
 SELECT empno "사 번", ename "이름", sal "급여", job "직책"
-FROM emp;
+    FROM emp;
 
 SELECT empno "사 번", ename 이름, sal 급여, job 직책
-FROM emp;
+    FROM emp;
 
 SELECT empno no, ename name, sal salary, job
-FROM emp; -- 필드에 별칭을 두는 경우
+    FROM emp; -- 필드에 별칭을 두는 경우
 
 -- 3. 특정 행 출력 : WHERE 절 (조건절) -- 비교연산자 : 같다 (=), 다르다 (!=, ^=, <>)
 SELECT empno "사번", ename "이름", sal "급여"
