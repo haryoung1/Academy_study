@@ -403,7 +403,7 @@ SELECT EMPNO, ENAME, HIREDATE, JOB, SAL
     FROM EMP
     WHERE TO_CHAR (HIREDATE, 'RR/MM/DD') BETWEEN '81/01/01' AND '81/12/31';
 
---13.입사일이81년이고 업무가 'SALESMAN'이 아닌 직원의 사번, 사원명, 입사일, 
+--13.입사일이 81년이고 업무가 'SALESMAN'이 아닌 직원의 사번, 사원명, 입사일, 
 -- 업무, 급여를 검색하시오.
 SELECT EMPNO, ENAME, HIREDATE, JOB, SAL
     FROM EMP
@@ -434,17 +434,29 @@ WHERE SAL*12>35000;
 
 
 
+--  일사일이 1981년 2월 20과 1981년 5월 1일 사이에 입사한 사원의 이름, 직책, 입사일을 출력(단hiredate 순으로 출력)
+
+SELECT ENAME, JOB, HIREDATE
+    FROM EMP
+    WHERE TO_CHAR (HIREDATE, 'RR/MM/DD') BETWEEN '81/02/20' AND '81/05/01';
+
+--. . sal이 1500이상이고 deptno가 10,30인 사원의 ename과 sal를 출력(단 TITLE을 employee과 Monthly Salary로 출력)
+
+SELECT ENAME "employee", SAL "Monthly Salary"
+    FROM EMP
+    WHERE SAL >= 1500 AND DEPTNO IN (10,30);
+
+--. 입사일이81년이고 업무가 'SALESMAN'이 아닌 직원의 사번, 사원명, 입사일, 업무, 급여를 출력.
+
+SELECT EMPNO, ENAME, HIREDATE, JOB, SAL
+    FROM EMP
+    WHERE TO_CHAR (HIREDATE, 'RR/MM/DD') BETWEEN '81/01/01' AND '81/12/31' AND
+    NOT JOB IN ('SALESMAN');
 
 
-
-
-
-
-
-
-
-
-
+--. SELECT EMPNO, ENAME
+FROM EMP
+WHERE ENAME LIKE '__N%';
 
 
 

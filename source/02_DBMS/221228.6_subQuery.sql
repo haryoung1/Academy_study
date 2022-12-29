@@ -415,7 +415,7 @@ SELECT EMPNO, ENAME, SAL
     FROM EMP
     WHERE SAL >= (SELECT ROUND(AVG(SAL)) FROM EMP)
     ORDER BY SAL DESC;
-
+    
 -- 14. 이름에 “T”가 있는 사원이 근무하는 부서에서 근무하는 모든 직원의 사원 번호,이름,급여(단 사번 순 출력)
 SELECT DEPTNO
     FROM EMP
@@ -436,20 +436,79 @@ SELECT ENAME, JOB, SAL, LOC
     WHERE LOC IN(SELECT LOC FROM DEPT WHERE  LOC = UPPER('Dallas'));
     
 -- 16. EMP 테이블에서 King에게 보고하는 모든 사원의 이름과 급여
-
+SELECT EMPNO
+    FROM EMP
+    WHERE ENAME = UPPER ('King');
+    
+SELECT W. ENAME, W.SAL , W.MGR
+    FROM EMP W, EMP M
+    WHERE W.MGR = M.EMPNO 
+    AND W.MGR IN (SELECT EMPNO FROM EMP WHERE ENAME = UPPER ('King'));
+    
 -- 17. SALES부서 사원의 이름, 업무
+SELECT JOB
+    FROM EMP
+    WHERE JOB = 'SALESMAN';
+
+SELECT ENAME,JOB
+    FROM EMP
+    WHERE JOB IN (SELECT JOB FROM EMP WHERE JOB = 'SALESMAN');
 
 -- 18. 월급이 부서 30의 최저 월급보다 높은 사원의 모든 필드
+SELECT MIN(SAL)
+    FROM EMP
+    WHERE DEPTNO = '30'
+    GROUP BY DEPTNO;
 
--- 19.  FORD와 업무도 월급도 같은 사원의 모든 필드
+SELECT *
+    FROM EMP
+    WHERE SAL > (SELECT MIN(SAL) FROM EMP WHERE DEPTNO = '30' GROUP BY DEPTNO);
+
+
+-- 19. FORD와 업무도 월급도 같은 사원의 모든 필드
+SELECT JOB, SAL
+    FROM EMP
+    WHERE ENAME = 'FORD';
+    
+SELECT *    
+    FROM EMP
+    WHERE (JOB, SAL) IN (SELECT JOB, SAL FROM EMP WHERE ENAME = 'FORD')
+    AND ENAME != 'FORD';
 
 -- 20. 이름이 JONES인 직원의 JOB과 같거나 FORD의 SAL 이상을 받는 사원의 정보를 이름, 업무, 부서번호, 급여
     -- 단, 업무별 알파벳 순, 월급이 많은 순으로 출력
+SELECT JOB, SAL, ENAME
+    FROM EMP
+    WHERE ENAME = 'JONES' OR ENAME = 'FORD';
+
+SELECT ENAME, JOB, DEPTNO, SAL
+    FROM EMP
+    WHERE JOB IN (SELECT JOB FROM EMP WHERE ENAME = 'JONES')
+    OR SAL >= (SELECT SAL FROM EMP WHERE ENAME = 'FORD')
+    ORDER BY SAL DESC, JOB;
+
 
 -- 21. SCOTT 또는 WARD와 월급이 같은 사원의 정보를 이름,업무,급여
+SELECT SAL
+    FROM EMP
+    WHERE ENAME IN ('SCOTT', 'WARD');
+    
+SELECT ENAME, JOB, SAL
+    FROM EMP
+    WHERE SAL IN (SELECT SAL FROM EMP  WHERE ENAME IN ('SCOTT','WARD'))
+    AND ENAME NOT IN ('SCOTT','WARD');
 
 -- 22. CHICAGO에서 근무하는 사원과 같은 업무를 하는 사원들의 이름,업무
-
+SELECT JOB
+    FROM EMP E, DEPT D
+    WHERE E.DEPTNO = D.DEPTNO 
+    AND LOC = 'CHICAGO';
+    
+SELECT ENAME, JOB
+    FROM EMP
+    WHERE JOB IN (SELECT JOB FROM EMP E, DEPT D WHERE E.DEPTNO = D.DEPTNO
+                    AND LOC = 'CHICAGO');
+            
 -- 23. 부서 평균 월급보다 월급이 높은 사원을 사번, 이름, 급여, 부서번호
 SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO
     FROM EMP E
@@ -461,14 +520,27 @@ SELECT E.EMPNO, E.ENAME, E.SAL, E.DEPTNO,
     FROM EMP E
     WHERE SAL > (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);
     
-
 -- 24. 업무별로 평균 월급보다 적은 월급을 받는 사원을 부서번호, 이름, 급여 (23번과유사)
+SELECT D.DNAME, E.DEPTNO, E.ENAME, E.SAL
+    FROM EMP E, DEPT D
+    WHERE D.DEPTNO=E.DEPTNO AND
+    SAL < (SELECT AVG(SAL) FROM EMP WHERE D.DEPTNO=E.DEPTNO);
+    
+SELECT E.DEPTNO, E.ENAME, E.SAL
+    FROM EMP E
+    WHERE SAL < (SELECT AVG(SAL) FROM EMP WHERE DEPTNO=E.DEPTNO);
+
 
 -- 25. 적어도 한 명 이상으로부터 보고를 받을 수 있는 사원을 업무, 이름, 사번, 부서번호를 출력(단, 부서번호 순으로 오름차순 정렬)
+SELECT *
+    FROM EMP;
+    
+SELECT JOB, ENAME, EMPNO, DEPTNO
+    FROM EMP MANAGER
+    WHERE EXISTS (SELECT * FROM EMP WHERE MANAGER.EMPNO=MGR)
+    ORDER BY DEPTNO;
 
 -- 26.  말단 사원의 사번, 이름, 업무, 부서번호
-
-
-
-
-
+SELECT M.JOB, M.ENAME, M.EMPNO, M.DEPTNO
+    FROM EMP W, EMP M
+    WHERE W.MGR(+)=M.EMPNO AND W.ENAME IS NULL;
