@@ -344,18 +344,3 @@ SELECT W.ENAME, M.ENAME MANAGER, Q.ENAME TOPMANAGER
 SELECT W.ENAME, M.ENAME MANAGER, Q.ENAME TOPMANAGER
     FROM EMP W, EMP M, EMP Q
     WHERE W.MGR = M.EMPNO(+) AND M.MGR = Q.EMPNO(+); 
- 
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-   
-    
-    
-    

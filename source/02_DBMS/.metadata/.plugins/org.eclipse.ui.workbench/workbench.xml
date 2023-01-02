@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<workbench progressCount="5" version="2.0">
+<workbench progressCount="13" version="2.0">
 <workbenchAdvisor/>
-<window height="1040" width="1073" x="-1" y="1">
+<window height="1040" width="1031" x="906" y="0">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -31,8 +31,8 @@
 </folder>
 </info>
 </editorArea>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="MEMBER_MEMBER_LEVEL.exerd" partName="MEMBER_MEMBER_LEVEL.exerd" path="D:/webPro1/source/02_DBMS/newProject/MEMBER_MEMBER_LEVEL.exerd" title="MEMBER_MEMBER_LEVEL.exerd" tooltip="newProject/MEMBER_MEMBER_LEVEL.exerd" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/MEMBER_MEMBER_LEVEL.exerd"/>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="shoppingmall.exerd" partName="shoppingmall.exerd" path="D:/webPro1/source/02_DBMS/newProject/shoppingmall.exerd" title="shoppingmall.exerd" tooltip="newProject/shoppingmall.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/shoppingmall.exerd"/>
 </editor>
 </editors>
 <views>
@@ -45,7 +45,7 @@
 <element path="/newProject"/>
 </expanded>
 <selection>
-<element path="/newProject"/>
+<element path="/newProject/BOOK_BOOKCATEGORY.exerd"/>
 </selection>
 </viewState>
 </view>
@@ -154,61 +154,60 @@
 <workingSets/>
 <navigationHistory>
 <editors>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/dept_emp.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/EZEN%20203/Downloads/shoppingmail.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/shoppingmall.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/BOOK_BOOKCATEGORY.exerd"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MAJOR_STUDENT.exerd"/>
-<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/MEMBER_MEMBER_LEVEL.exerd"/>
 </editors>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="MEMBER_MEMBER_LEVEL.exerd" index="3"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="MEMBER_MEMBER_LEVEL.exerd" index="3"/>
-<item historyLabel="MAJOR_STUDENT.exerd" index="2"/>
-<item historyLabel="MEMBER_MEMBER_LEVEL.exerd" index="3"/>
-<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="1"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item historyLabel="MEMBER_MEMBER_LEVEL.exerd" index="3"/>
-<item historyLabel="dept_emp.exerd" index="0"/>
-<item active="true" historyLabel="MEMBER_MEMBER_LEVEL.exerd" index="3"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="shoppingmail.exerd" index="0"/>
+<item historyLabel="shoppingmall.exerd" index="1"/>
+<item historyLabel="BOOK_BOOKCATEGORY.exerd" index="2"/>
+<item active="true" historyLabel="shoppingmall.exerd" index="1"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -226,14 +225,20 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="BOOK_BOOKCATEGORY.exerd" tooltip="newProject/BOOK_BOOKCATEGORY.exerd">
+<persistable path="/newProject/BOOK_BOOKCATEGORY.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="shoppingmail.exerd" tooltip="newProject/shoppingmail.exerd">
+<persistable path="/newProject/shoppingmail.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="shoppingmail.exerd" tooltip="C:\Users\EZEN 203\Downloads\shoppingmail.exerd">
+<persistable uri="file:/C:/Users/EZEN%20203/Downloads/shoppingmail.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="MEMBER_MEMBER_LEVEL.exerd" tooltip="newProject/MEMBER_MEMBER_LEVEL.exerd">
 <persistable path="/newProject/MEMBER_MEMBER_LEVEL.exerd"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="MAJOR_STUDENT.exerd" tooltip="newProject/MAJOR_STUDENT.exerd">
 <persistable path="/newProject/MAJOR_STUDENT.exerd"/>
-</file>
-<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="BOOK_BOOKCATEGORY.exerd" tooltip="newProject/BOOK_BOOKCATEGORY.exerd">
-<persistable path="/newProject/BOOK_BOOKCATEGORY.exerd"/>
 </file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="dept_emp.exerd" tooltip="newProject/dept_emp.exerd">
 <persistable path="/newProject/dept_emp.exerd"/>

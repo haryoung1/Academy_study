@@ -1,4 +1,4 @@
--- [ IV ] 단일행함수
+230110001 -- [ IV ] 단일행함수
 -- 함수 = 단일행함수 + 그룹함수 (집계함수)
 
 SELECT HIREDATE, TO_CHAR (HIREDATE, 'YYYY-MM-DD')
