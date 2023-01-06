@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <workbench progressCount="13" version="2.0">
 <workbenchAdvisor/>
-<window height="1040" width="1173" x="-9" y="1">
+<window height="1040" width="1004" x="925" y="1">
 <fastViewData fastViewLocation="1024"/>
 <perspectiveBar>
 <itemSize x="160"/>
@@ -27,16 +27,12 @@
 <folder appearance="1" expanded="2">
 <presentation id="org.eclipse.ui.presentations.WorkbenchPresentationFactory">
 <part id="0"/>
-<part id="1"/>
 </presentation>
 </folder>
 </info>
 </editorArea>
-<editor id="com.tomato.exerd.editor.DiagramEditor" name="shoppingmall.exerd" partName="shoppingmall.exerd" path="D:/webPro1/source/02_DBMS/newProject/shoppingmall.exerd" title="shoppingmall.exerd" tooltip="newProject/shoppingmall.exerd" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/shoppingmall.exerd"/>
-</editor>
-<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="person.exerd" partName="person.exerd" path="D:/webPro1/source/02_DBMS/newProject/person.exerd" title="person.exerd" tooltip="newProject/person.exerd" workbook="DefaultEditorWorkbook">
-<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/person.exerd"/>
+<editor activePart="true" focus="true" id="com.tomato.exerd.editor.DiagramEditor" name="supermarket.exerd" partName="supermarket.exerd" path="D:/webPro1/source/02_DBMS/newProject/supermarket.exerd" title="supermarket.exerd" tooltip="newProject/supermarket.exerd" workbook="DefaultEditorWorkbook">
+<input factoryID="org.eclipse.ui.part.FileEditorInputFactory" path="/newProject/supermarket.exerd"/>
 </editor>
 </editors>
 <views>
@@ -163,28 +159,11 @@
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/BOOK_BOOKCATEGORY.exerd"/>
 <editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/EZEN%20203/Downloads/평가.exerd"/>
 <editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/person.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/EZEN%20203/Downloads/평가.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/shoppingmall.exerd"/>
+<editor factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" path="/newProject/supermarket.exerd"/>
+<editor factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" uri="file:/C:/Users/EZEN%20203/Downloads/QUIZ.exerd"/>
 </editors>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
-<item historyLabel="shoppingmail.exerd" index="0"/>
-<item historyLabel="shoppingmall.exerd" index="1"/>
 <item historyLabel="shoppingmail.exerd" index="0"/>
 <item historyLabel="shoppingmall.exerd" index="1"/>
 <item historyLabel="shoppingmail.exerd" index="0"/>
@@ -213,7 +192,28 @@
 <item historyLabel="shoppingmall.exerd" index="1"/>
 <item historyLabel="person.exerd" index="4"/>
 <item historyLabel="shoppingmall.exerd" index="1"/>
-<item active="true" historyLabel="person.exerd" index="4"/>
+<item historyLabel="person.exerd" index="4"/>
+<item historyLabel="평가.exerd" index="5"/>
+<item historyLabel="person.exerd" index="4"/>
+<item historyLabel="shoppingmall.exerd" index="6"/>
+<item historyLabel="person.exerd" index="4"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="person.exerd" index="4"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="QUIZ.exerd" index="8"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="QUIZ.exerd" index="8"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="QUIZ.exerd" index="8"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="QUIZ.exerd" index="8"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="person.exerd" index="4"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="QUIZ.exerd" index="8"/>
+<item historyLabel="supermarket.exerd" index="7"/>
+<item historyLabel="person.exerd" index="4"/>
+<item active="true" historyLabel="supermarket.exerd" index="7"/>
 </navigationHistory>
 <input factoryID="org.eclipse.ui.internal.model.ResourceFactory" path="/" type="8"/>
 </page>
@@ -231,6 +231,12 @@
 </trimLayout>
 </window>
 <mruList>
+<file factoryID="org.eclipse.ui.ide.FileStoreEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="QUIZ.exerd" tooltip="C:\Users\EZEN 203\Downloads\QUIZ.exerd">
+<persistable uri="file:/C:/Users/EZEN%20203/Downloads/QUIZ.exerd"/>
+</file>
+<file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="supermarket.exerd" tooltip="newProject/supermarket.exerd">
+<persistable path="/newProject/supermarket.exerd"/>
+</file>
 <file factoryID="org.eclipse.ui.part.FileEditorInputFactory" id="com.tomato.exerd.editor.DiagramEditor" name="person.exerd" tooltip="newProject/person.exerd">
 <persistable path="/newProject/person.exerd"/>
 </file>

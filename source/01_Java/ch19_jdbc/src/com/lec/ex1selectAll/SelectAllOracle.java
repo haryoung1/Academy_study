@@ -20,7 +20,7 @@ public class SelectAllOracle {
 			Class.forName(driver); // 1드라이버 로드
 			conn = DriverManager.getConnection(url, "scott", "tiger"); // 2 DB연결
 			stmt = conn.createStatement(); // 3 SQL전송객체
-			rs   = stmt.executeQuery(sql); // 4+5. SQL전송+전송결과 받기
+			rs   = stmt.executeQuery(sql); // 4+5. SQL전송 + 전송결과 받기
 			if(rs.next()) { // select 결과가 1행 이상
 				System.out.println("사번\t이름\t직책\t상사사번\t입사일\t급여\t상여\t부서번호");
 				do {

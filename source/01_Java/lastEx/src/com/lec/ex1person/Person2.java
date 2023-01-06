@@ -6,23 +6,44 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class Person {
+public class Person2 {
 	public static void main(String[] args) {
 		String driver = "oracle.jdbc.driver.OracleDriver";
 		String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
 		Scanner sc = new Scanner(System.in);
+		ArrayList<String> jobs = new ArrayList<String>();
 		Connection conn = null;
 		PreparedStatement pstmt = null; // 1,2번 기능
 		Statement stmt = null; // 3번 기능
 		ResultSet rs = null;
 		String fn, sql;
 		try {
+			sql = "SELECT JNAME FROM JOB";
 			Class.forName(driver);
-		} catch (ClassNotFoundException e) {
-			System.out.println(e.getMessage());
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			stmt = conn.createStatement();
+			rs = stmt.executeQuery(sql);
+			while (rs.next()) {
+				jobs.add(rs.getString("jname"));
+			}
+		} catch (ClassNotFoundException e1) {
+			System.out.println(e1.getMessage());
+		} catch (SQLException e) {
+		} finally {
+			try {
+				if (rs != null)
+					rs.close();
+				if (stmt != null)
+					stmt.close();
+				if (conn != null)
+					conn.close();
+			} catch (SQLException e) {
+			}
 		}
+
 		do {
 			System.out.println("1:입력 || 2:직업별조회 || 3:전체조회 || 그외:종료");
 			fn = sc.next(); // 1,2,3,a
@@ -30,13 +51,13 @@ public class Person {
 			case "1": // 이름, 직업명, 국, 영, 수 입력받아 insert
 				// 2~7단계
 				sql = "INSERT INTO Person VALUES (PERSON_NO_SQ.NEXTVAL, ?,"
-					+ "(SELECT JNO FROM JOB WHERE JNAME =?), ?,?,?)";
+						+ "(SELECT JNO FROM JOB WHERE JNAME =?), ?,?,?)";
 				try {
-					conn = DriverManager.getConnection(url, "scott", "tiger");
-					pstmt = conn.prepareStatement(sql);
+					conn = DriverManager.getConnection(url, "scott", "tiger"); // 2db연결
+					pstmt = conn.prepareStatement(sql); // 3. sql전송 객체
 					System.out.print("입력할 이름은? : ");
 					pstmt.setString(1, sc.next());
-					System.out.print("직업은 (배우,가수,엠씨)?");
+					System.out.print("직업"+jobs+"은?");
 					pstmt.setString(2, sc.next());
 					System.out.print("국어점수는? : ");
 					pstmt.setInt(3, sc.nextInt());
@@ -60,9 +81,9 @@ public class Person {
 				}
 				break;
 			case "2": // 직업명을 입력 받아 해당 직업별 조회 출력
-				sql = "SELECT ROWNUM RANK, A.*" + 
-						" FROM (SELECT PNAME || '('||PNO||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM" + 
-						" FROM Person P, JOB J WHERE P.JNO=J.JNO AND JNAME = ? ORDER BY SUM DESC) A";
+				sql = "SELECT ROWNUM RANK, A.*"
+						+ " FROM (SELECT PNAME || '('||PNO||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM"
+						+ " FROM Person P, JOB J WHERE P.JNO=J.JNO AND JNAME = ? ORDER BY SUM DESC) A";
 				try {
 					conn = DriverManager.getConnection(url, "scott", "tiger");
 					pstmt = conn.prepareStatement(sql);
@@ -79,8 +100,8 @@ public class Person {
 							int eng = rs.getInt("eng");
 							int mat = rs.getInt("mat");
 							int sum = rs.getInt("sum");
-							System.out.println(rank + "등\t" + pname + jname + "\t" + kor + "\t" + eng + "\t" + mat
-									+ "\t" + sum);
+							System.out.println(
+							rank + "등\t" + pname + jname + "\t" + kor + "\t" + eng + "\t" + mat + "\t" + sum);
 						} while (rs.next());
 					} else {
 						System.out.println("해당 직업의 사람이 입력되지 않았습니다");
@@ -118,8 +139,8 @@ public class Person {
 							int eng = rs.getInt("eng");
 							int mat = rs.getInt("mat");
 							int sum = rs.getInt("sum");
-							System.out.println(rank + "등\t" + pname + jname + "\t" + kor + "\t" + eng + "\t"
-									+ mat + "\t" + sum);
+							System.out.println(
+									rank + "등\t" + pname + jname + "\t" + kor + "\t" + eng + "\t" + mat + "\t" + sum);
 						} while (rs.next());
 					} else {
 						System.out.println("해당 직업의 사람이 입력되지 않았습니다");
@@ -141,6 +162,6 @@ public class Person {
 				}
 			} // switch
 		} while (fn.equals("1") || fn.equals("2") || fn.equals("3"));
-		System.out.println("bye");
+		System.out.println("BYE");
 	} // main
 }
