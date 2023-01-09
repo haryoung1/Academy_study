@@ -1,29 +1,31 @@
 package com.lec.ex3supermarket;
 
 public class CustomerDto {
-	private int cno;
-	private String cname;
-	private String phone;
-	private int point;
-	private int amount;
-	private int levelno;
+	private int cno; // 고객번호
+	private String cname; // 고객 이름
+	private String phone; // 고객 전화
+	private int point; // 고객 포인트
+	private int amount; // 누적 금액
+	private String levelname; // 등급이름
+	private int forLevelUp;
+	private int levelno; // 고객번호
 
 	public CustomerDto() {
 	}
 
-	public CustomerDto(int cno, String cname, String phone, int point, int amount, int levelno) {
-		super();
+	public CustomerDto(int cno, String cname, String phone, int point, int amount, String levelname, int forLevelUp) {
 		this.cno = cno;
 		this.cname = cname;
 		this.phone = phone;
 		this.point = point;
 		this.amount = amount;
-		this.levelno = levelno;
+		this.levelname = levelname;
+		this.forLevelUp = forLevelUp;
 	}
 
 	@Override
 	public String toString() {
-		return cno + "\t" + cname + "\t" + phone + "\t" + point + "\t" + amount + "\t" + levelno + "\t";
+		return cno + "\t" + cname + "\t " + phone + "\t" + point + "\t" + amount + "\t" + levelname + "\t" + forLevelUp;
 	}
 
 	public int getCno() {
@@ -64,6 +66,22 @@ public class CustomerDto {
 
 	public void setAmount(int amount) {
 		this.amount = amount;
+	}
+
+	public String getLevelname() {
+		return levelname;
+	}
+
+	public void setLevelname(String levelname) {
+		this.levelname = levelname;
+	}
+
+	public int getForLevelUp() {
+		return forLevelUp;
+	}
+
+	public void setForLevelUp(int forLevelUp) {
+		this.forLevelUp = forLevelUp;
 	}
 
 	public int getLevelno() {
