@@ -1,0 +1,119 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <link href="화면구현평가1.css" rel="stylesheet" type="text/css" />
+          <script>
+              function chk() { 
+                  if (frm.name.value.length < 2) {
+                      alert("이름은 2글자이상 필수입력 입니다.")
+                      frm.name.focus();
+                      return false;
+                  } else if (frm.id.value.length < 4) {
+                      alert("ID는 4글자이상 필수 입력 입니다.")
+                      frm.id.focus();
+                      return false;
+                  } else if (!frm.pw.value) {
+                      alert("비밀번호가 입력되지 않았습니다.")
+                      frm.pw.focus();
+                      return false;
+                  } else if (frm.pw.value != frm.pwchk.value) {
+                      alert("비밀번호를 확인 하세요.")
+                      trm.pw.value = "";
+                      frm.pwchk.value = "";
+                      frm.pw.focus();
+                      return false;
+                  }
+                  return true;
+              }
+          </script>
+</head>
+<body>
+  <header>
+      <h1>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;회원가입</h1>
+  </header>
+    <section>
+        <form action="" method="get" name="frm" onsubmit="return chk()">
+            <fieldset>
+                <legend>필수입력</legend>
+                <ul>
+                    <li>
+                        <label for="name">이 름<b>*</b></label>
+                        <input type="text" name="name" id="name" required="required"
+                               placeholder="이름은 2글자이상 입력" />
+                    </li>
+                    <li>
+                        <label for="id">아이디<b>*</b></label>
+                        <input type="text" name="id" id="id" required="required"
+                               placeholder="ID는 4글자이상 입력" />
+                    </li>
+                    <li>
+                        <label for="pw">비밀번호<b>*</b></label>
+                        <input type="password" name="pw" id="pw" required="required" />
+                    </li>
+                    <li>
+                        <label for="pw">비번확인<b>*</b></label>
+                        <input type="password" name="pwchk" id="pwchk" required="required" />
+                    </li>
+                    <li>
+                        <label for="tel">전 화<b>*</b></label>
+                        <input type="text" name="tel" id="tel"
+                               placeholder="xx-xxx-xxxx/000-0000-0000""
+                               pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" 
+                               title="전화번호 형식을 지켜서 입력 하세요."
+                               required="required"/>
+                    </li>
+                    <li>
+                        <label for="email">이 메 일<b>*</b></label>
+                        <input type="email" name="email" id="email"
+                               placeholder="id@domain.com또는co.kr
+                               pattern="\w+@\w+(\.\w+){1,2}"
+                               tytle ="이메일 형식을 지켜주세요" />
+                       
+                       </li>
+                </ul>
+                <br />
+            </fieldset>
+            <fieldset>
+                <legend>추가입력 사항</legend>
+                <ul>
+                    <il>
+                        <label for="marry">결혼유&nbsp;무</label>
+                        <input type="radio" name="marry" value="y" />기혼
+                        <input type="radio" name="marry" value="n" />미혼
+                        <br />
+                    </il>
+                    <il>
+                        <label for="child">자식</label>
+                        <input type="checkbox" name="child" value="m" />아들
+                        <input type="checkbox" name="child" value="g" />딸
+                        <br />
+                    </il>
+                    <il>
+                        <label for="area">지역</label>
+                        <select name="area">
+                            <option value="서울">서울</option>
+                            <option>경기</option>
+                            <option>인천</option>
+                        </select>
+                    </il>
+                    <p>
+                        <center>
+                            <input type="submit" value="가입" />
+                            <input type="reset" value="취소" />
+                        </center>
+                    </p>
+                    
+                </ul>
+            </fieldset>
+        </form>
+    </section>
+    <footer>
+        <p>서울시 서대문구 신촌로 141 은하빌딩 203호<br />
+        Copyright ⓒ XX All Rights reserved</p>
+    </footer>
+
+</body>
+</html>
