@@ -1,0 +1,37 @@
+﻿#wrap {
+    width: 700px;
+    margin: 0 auto;
+    border: 1px solid gray;
+}
+#header {
+    text-align: center;
+    padding:10px;
+    text-decoration:underline;
+}
+p:nth-child(1) {
+    color: black;
+    font-weight:bold;
+    padding:5px;
+}
+p:nth-child(2){
+    padding:10px;
+    font-size:0.5px;
+}
+p:nth-child(3){
+    text-align:right;
+    padding:10px;
+}
+#footer {
+    margin:10px;
+    padding: 10px;
+    font-size: 1.2em;
+    border-top: 1px solid gray;
+    color: blue;
+    text-align: center;
+}
+#footer ul li a{
+    text-decoration:none;
+}
+#footer ul li{
+    list-style:none;
+}
