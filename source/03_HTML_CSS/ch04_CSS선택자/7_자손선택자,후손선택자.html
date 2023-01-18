@@ -1,0 +1,60 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width: 600px;
+            margin: 0 auto;
+            border : 1px solid gray;
+        }
+        #wrap #header{ /*후손 선택자*/
+            overflow:hidden;
+        }
+        #wrap .logo{ /*후손 선택자*/
+         float:left;
+         padding:10px 30px 10px 150px; /* 상 우 하 좌 */
+        }
+        wrap .title{
+            float:left;
+            padding:20px 150px 10px 30px;
+        }
+        div p{ /* 후손선택자 (자손선택자 포함) */
+               font-size:25px;
+               color:blue;
+
+        }
+        div >p{ /* 자손선택자 */
+            color:red;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <div class="logo">
+                <h1>LOGO</h1>
+            </div>
+            <div class="title">
+                <h2>00 주식회사</h2>
+            </div>
+        </div> <!--header -->
+        <div id="content">
+            <p>살았으며, 과실이 고행을 능히 찾아다녀도, 뛰노는 많이 열락의 것이다.
+               반짝이는 못하다 이상 구하지 옷을 이성은 이상의 속에서 힘있다. 
+               구하기 이상, 청춘 싸인 쓸쓸하랴? 붙잡아 심장은 눈에 인간이 놀이 피고, 
+               실로 보라. 청춘의 동력은 같이 피가 끓는 것은 가슴에 위하여서.</p>
+            <ul>
+                <li><p>무엇을 그들의 귀는 싸인 그들은 사라지지 따뜻한 힘차게 가치를 칼이다.</p></li>
+                <li><p>무엇을 그들의 귀는 싸인 그들은 사라지지 따뜻한 힘차게 가치를 칼이다.</p></li>
+                <li><p>무엇을 그들의 귀는 싸인 그들은 사라지지 따뜻한 힘차게 가치를 칼이다.</p></li>
+            </ul>
+        </div> <!--content-->
+        <div id="footer">
+            <p>서울시 서대문구 대현동</p>
+        </div> <!--footer-->
+    </div>  <!--wrap-->
+</body>
+</html>

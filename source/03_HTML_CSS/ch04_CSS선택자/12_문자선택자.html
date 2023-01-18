@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <style>
+        #wrap{
+            width:700px;
+            margin:0 auto;
+        }
+        #header{
+            text-align:center;
+            border-bottom: 1px solid gray;
+        }
+        #content{
+            padding:0 10px; /* 상 우 하 좌 */
+            text-align:justify;
+        }
+        #content p:nth-child(2)::first-line,
+        #content p:nth-child(3)::first-line{ /* 문자 선택자 */
+            color:blue;
+            font-weight:bold; /* 글씨 진하게 */
+            font-size:20px; /* 기본 폰트 크기는 16px (p) */
+        }
+        #content p:nth-child(2)::first-line{ /* 문자 선택자 */
+            font-size:2em; /* 원래 크기의(20px) 2배 */
+        }
+        #content p:nth-child(3) span{
+            font-size:2em; /* 문자선택자를 모를 경우 */
+        }
+        #content p:nth-child(2)::selection{
+            background-color:violet;
+            color:yellow;
+        }
+        #footer ul {
+            border-top: 1px solid gray;
+            overflow: hidden;
+        }
+        #footer ul li{
+            float:left;
+            list-style:none;
+            padding : 10px 5px;
+        }
+        #footer ul li:first-child{
+            padding-top:35px;
+        }
+    </style>
+</head>
+<body>
+    <div id="wrap">
+        <div id="header">
+            <h1>제목이나 회사명</h1>
+        </div>
+        <div id="content">
+            <p>이상 얼음과 품에 앞이 못할 긴지라 온갖 꾸며 천하를 그리하였는가? 고행을 인간이 길을 뿐이다. 이상, 장식하는 고행을 우리 얼마나 목숨이 이것이다.</p>
+            <p>긴지라 가슴에 뼈 시들어 새가 들어 생명을 원질이 끓는 칼이다. 작고 영원히 그러므로 부패를 사라지지 이것이다. 인도하겠다는 구하기 심장의 품으며, 않는 있는 물방아 보라. 길지 하였으며, 이 사막이다. 그들에게 기관과 풀이 소금이라 그와 위하여서.</p>
+            <p><span>기쁘며, 미인을 반짝이는 눈이 위하여, 두기 인생의 대고, 칼이다. 얼마나 얼음 이상 이상의 눈이 품에 풀밭에 쓸쓸하랴? 꾸며 열락의 이상을 꽃 말이다. 천하를 같지 대중을 칼이다. 몸이 원질이 바이며, 그들은 할지니, 그들은 수 구할 아니다. 인간은 얼음 있을 그리하였는가?</span></p>
+        </div>
+        <div id="footer">
+        <ul>
+            <li><img src="0112/logo.png" alt="회사로고" /></li>
+            <li><img src="0112/copy.png" art="회사정보" /></li>
+            </div>
+        </ul>                    
+    </div>
+</body>
+</html>

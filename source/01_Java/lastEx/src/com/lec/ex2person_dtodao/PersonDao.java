@@ -117,7 +117,7 @@ public class PersonDao {
 		Statement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT ROWNUM RANK, A.*"
-				+ " FROM (SELECT PNAME || '('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM\r\n"
+				+ " FROM (SELECT PNAME || '('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM"
 				+ " FROM Person P, JOB J WHERE P.JNO=J.JNO ORDER BY SUM DESC)A";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
