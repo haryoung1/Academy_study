@@ -1,0 +1,32 @@
+﻿* {
+    margin: 0;
+    padding: 0;
+}
+b{
+    color:#ff0000;
+}
+footer p {
+    color: gray;
+    font-size: 10pt;
+    text-align: left;
+    margin: 30px;
+}
+li {
+    list-style: none;
+    margin: 10px 0 0 0;
+}
+fieldset {
+    width: 500px;
+    margin: 10px;
+}
+header {
+    margin: 30px;
+    text-align: left;
+}
+label {
+    text-align: center;
+    margin: 20px;
+ }
+input {
+   
+}
