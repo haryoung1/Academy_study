@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+    /* * * * * 페이지 초기화 * * * * */
+    *  { margin: 0; padding: 0; }
+    li { list-style: none; }
+    a  { text-decoration: none; color: white; font-weight: bold;}
+    /* * * * * #top_bar * * * * */
+    #top_bar {
+        height: 100px; line-height: 100px; text-align: center;
+        background-color: #FFD800;
+        position: fixed;
+        top:0; left:0; right:0;
+    }
+    #top_bar ul {overflow: hidden;}
+    #top_bar ul li {
+        float: left; width: 16.66%;
+        border-right: 1px dotted gray;
+        box-sizing: border-box;
+    }
+    #top_bar ul li:last-child {
+        border: 0;
+    }
+    /* * * * * #left_bar * * * * */
+    #left_bar {
+        width: 150px; text-align: center;
+        background-color: saddlebrown;
+        position: fixed;
+        top: 100px; left:0; bottom: 100px;
+    }
+    #left_bar ul li a {
+        padding: 10px; display: block;
+    }
+    #left_bar ul li:last-child a {
+        border: 0;
+
+    /* * * * * #right_bar * * * * */
+    }
+    #right_bar {
+        width: 150px; text-align: center;
+        background-color: lightyellow;
+        position: fixed;
+        top: 100px; bottom: 100px; right: 0;
+    }
+    #right_bar ul li {
+        padding: 5px;
+    }
+    #right_bar ul li img {
+        width: 140px; height: 50px;
+    }
+
+     /* * * * * #bottom_bar * * * * */
+    #bottom_bar {
+        height: 100px; line-height: 100px; text-align: center;
+        background-color: lightyellow;
+        position: fixed;
+        left: 0; bottom: 0; right: 0;
+    }
+    /* * * * * #bottom_bar * * * * */
+    #content {
+        margin:110px 160px 110px 160px;
+        text-align: justify;
+    }
+    #content img {
+        float: left;
+        margin-right: 10px;
+    }
+    </style>
+</head>
+<body>
+    <div id="top_bar">
+        <ul>
+            <li><a href="#g1">GNB_1</a></li>
+            <li><a href="#g2">GNB_2</a></li>
+            <li><a href="#g3">GNB_3</a></li>
+            <li><a href="#g4">GNB_4</a></li>
+            <li><a href="#g5">GNB_5</a></li>
+            <li><a href="#g6">GNB_6</a></li>
+        </ul>
+    </div>
+    <div id="left_bar">
+        <ul>
+            <li><a href="#l1">LNB_01</a></li> <li><a href="#l2">LNB_02</a></li>
+            <li><a href="#l3">LNB_03</a></li> <li><a href="#l4">LNB_04</a></li>
+            <li><a href="#l5">LNB_05</a></li> <li><a href="#l6">LNB_06</a></li>
+            <li><a href="#l7">LNB_07</a></li> <li><a href="#l8">LNB_08</a></li>
+            <li><a href="#l9">LNB_09</a></li> <li><a href="#l10">LNB_10</a></li>
+        </ul>
+    </div>
+    <div id="right_bar">
+        <ul>
+            <li>
+                <a href="http://www.daum.net">
+                    <img src="https://t1.daumcdn.net/daumtop_chanel/op/20200723055344399.png">
+                </a>
+            </li>
+            <li>
+                <a href="http://www.google.com">
+                    <img src="data:image/png;base64,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"
+                </a>
+            </li>
+            <li>
+                <a href="http://www.yahoo.com">
+                    <img src="https://s.yimg.com/rz/p/yahoo_homepage_en-US_s_f_p_bestfit_homepage.png">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <div id="bottom_bar">
+        <p>
+            Copyright ⓒ Joeun System co., All rights reserved.
+        </p>
+    </div>
+    <div id="content">
+        <img src="https://via.placeholder.com/100x50">
+        <p>
+            What is Lorem Ipsum?
+            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+            Why do we use it?
+            It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like).
+            Where does it come from?
+            Contrary to popular belief, Lorem Ipsum is not simply random text. It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old. Richard McClintock, a Latin professor at Hampden-Sydney College in Virginia, looked up one of the more obscure Latin words, consectetur, from a Lorem Ipsum passage, and going through the cites of the word in classical literature, discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of "de Finibus Bonorum et Malorum" (The Extremes of Good and Evil) by Cicero, written in 45 BC. This book is a treatise on the theory of ethics, very popular during the Renaissance. The first line of Lorem Ipsum, "Lorem ipsum dolor sit amet..", comes from a line in section 1.10.32.
+            The standard chunk of Lorem Ipsum used since the 1500s is reproduced below for those interested. Sections 1.10.32 and 1.10.33 from "de Finibus Bonorum et Malorum" by Cicero are also reproduced in their exact original form, accompanied by English versions from the 1914 translation by H. Rackham.   
+        </p>
+    </div>
+</body>
+</html>

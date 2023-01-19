@@ -1,0 +1,102 @@
+/* 페이지 초기화 */
+* {
+    margin : 0;
+    padding: 0;
+}
+li {
+    list-style: none;
+}
+a {
+    text-decoration: none;
+    color: black;
+}
+
+#wrap {
+    width: 1000px;
+    height: 100px;
+    border: 1px solid gray;
+}
+#wrap .logo {
+    float: left;
+    margin: 15px 10px;
+}
+#wrap .logo p {
+    background-color: #FDEADA;
+    width: 70px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    border: 1px solid black;
+}
+#wrap .nav_left ul li{
+    float: left;
+    padding: 20px;
+}
+#wrap .nav_right ul li{
+    float: right;
+    padding: 20px;
+}
+#wrap .mypage {
+    clear: both;
+    padding: 5px;
+}
+#wrap .mypage p {
+    float: left;
+}
+#content {
+    width: 1200px;
+    height: 400px;
+    overflow: hidden;
+}
+#wrap .lnb {
+    float: left;
+}
+#wrap .lnb ul {
+    width: 180px;
+    height: 100px;
+    margin: 20px 20px;
+}
+#wrap .lnb ul li {
+    border: 1px solid gray;
+    width: 180px;
+    height: 10px;
+    line-height: 10px;
+    padding: 15px;
+    text-align: left;
+}
+#wrap .lnb ul li:nth-child(4) {
+    background-color: #FDEADA;
+    font-weight: bold;
+}
+#content .sub_title {
+    float: left;
+    width: 750px;
+    height: 350px;
+    margin-top: 20px;
+    margin-left: 30px;
+    border :1px solid gray;
+}
+#content .sub_title p {
+    border-bottom :1px solid gray;
+    padding: 7px;
+}
+#content .sub_title ul {
+    text-align: center;
+    margin: 30px;
+    padding: 20px;
+}
+#content .sub_title label {
+    float: left;
+}
+#content .sub_title input[type] {
+    width: 300px;
+}
+
+#footer {
+    width: 1000px;
+    height: 40px;
+    line-height: 40px;
+    border: 1px solid gray;
+    background-color: #FDEADA;
+    text-align: center;
+}
