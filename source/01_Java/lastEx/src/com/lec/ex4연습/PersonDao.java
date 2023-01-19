@@ -1,18 +1,17 @@
-package com.lec.ex2person_dtodao;
-// 메소드1, 메소드2, 메소드3, 메소드4
+package com.lec.ex4연습;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 
+// 메소드1, 메소드2, 메소드3, 메소드4
 public class PersonDao {
 	// 변수 - 생성자 - 메소드
 	private String driver = "oracle.jdbc.driver.OracleDriver";
-	private String url = "jdbc:oracle:thin:@127.0.0.1:1521:xe";
+	private String url = "jdbc:oracle:thin:@192.168.219.104:1521:xe";
 	public final static int SUCCESS = 1;
 	public final static int FAIL = 0;
 	private static PersonDao INSTANCE;
@@ -24,37 +23,35 @@ public class PersonDao {
 		return INSTANCE;
 	}
 
-	private PersonDao() {
+	public PersonDao() {
 		try {
 			Class.forName(driver); // 1단계는 생성자에서 한번
 		} catch (ClassNotFoundException e) {
 			System.out.println(e.getMessage());
 		}
-
 	}
-
-	// 1번 기능 dto(이름, 직업명, 국,영,수) 를 받아 DB에 insert 하고 return SUCCESS/FAIL 을 return
+	// 1번 기능 dto (이름,직업명,국,영,수)를 받아
+	// DB에 insert 하고 return SUCCESS/FAIL을 return
 	// DB insert 하고 결과를 result에 할당
+
 	public int insertPerson(PersonDto dto) {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		String sql = "INSERT INTO Person VALUES (PERSON_NO_SQ.NEXTVAL, ?,"
-				+ " (SELECT JNO FROM JOB WHERE JNAME =?), ?,?,?)";
+				+ "  (SELECT JNO FROM JOB WHERE JNAME =?), ?,?,?)";
 		try {
-			conn = DriverManager.getConnection(url, "scott", "tiger"); // 2
-			pstmt = conn.prepareStatement(sql); // 3
+			conn = DriverManager.getConnection(url, "scott", "tiger");
+			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, dto.getPname());
 			pstmt.setString(2, dto.getJname());
 			pstmt.setInt(3, dto.getKor());
 			pstmt.setInt(4, dto.getEng());
 			pstmt.setInt(5, dto.getMat());
 			result = pstmt.executeUpdate();
-			System.out.println(result == SUCCESS ? "입력성공" : "입력실패");
-
+			System.out.println(result == SUCCESS ? "성공" : "실패");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage() + ":" + dto);
-
 		} finally {
 			try {
 				if (pstmt != null)
@@ -71,7 +68,7 @@ public class PersonDao {
 	// 2번 기능 직업명을 받아 DB에 select 한 결과를 ArrayList <PersonDto> return
 	public ArrayList<PersonDto> selectJname(String jname) {
 		ArrayList<PersonDto> dtos = new ArrayList<PersonDto>();
-		// DB 결과를 dtos에 add 한다
+		// DB 결과를 dtos에 add 한다.
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
@@ -92,7 +89,6 @@ public class PersonDao {
 				int sum = rs.getInt("sum");
 				dtos.add(new PersonDto(rank, pname, jname, kor, eng, mat, sum));
 			}
-
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {
@@ -114,10 +110,10 @@ public class PersonDao {
 	public ArrayList<PersonDto> selectAll() {
 		ArrayList<PersonDto> dtos = new ArrayList<>();
 		Connection conn = null;
-		Statement stmt = null;
+		java.sql.Statement stmt = null;
 		ResultSet rs = null;
 		String sql = "SELECT ROWNUM RANK, A.*"
-				+ " FROM (SELECT PNAME || '('||PNO||')' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM"
+				+ " FROM (SELECT PNAME || '('||PNO||'번)' PNAME, JNAME, KOR, ENG, MAT, KOR+ENG+MAT SUM"
 				+ " FROM Person P, JOB J WHERE P.JNO=J.JNO ORDER BY SUM DESC)A";
 		try {
 			conn = DriverManager.getConnection(url, "scott", "tiger");
@@ -149,9 +145,9 @@ public class PersonDao {
 			}
 		}
 		return dtos;
-		// jname 들을 ArrayList <String> return
 	}
 
+	// jname 들을 ArrayList <String> return
 	public ArrayList<String> jnamelist() {
 		ArrayList<String> jnames = new ArrayList<String>();
 		Connection conn = null;
@@ -165,6 +161,7 @@ public class PersonDao {
 			while (rs.next()) {
 				jnames.add(rs.getString("jname"));
 			}
+
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		} finally {

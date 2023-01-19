@@ -28,3 +28,5 @@ SELECT ROWNUM RANK, A.*
 -- 1번과 2번 기능에서 현재 가능한 직업명 list
 SELECT JNAME FROM JOB;
 SELECT * FROM JOB;
+
+select * from person;
