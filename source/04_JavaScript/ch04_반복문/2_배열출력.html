@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var arr = [273,32,'강길동'];
+        // 1. 일반 for문
+        document.write('<h3>1.일반 for문 이용</h3>');
+        for (var idx=0; idx<arr.length ; idx ++) {
+            document.write(idx + '번째 : ' + arr[idx] + '<br>');
+        }
+        // 2. for-in문
+        document.write('<h3>2. for-in문</h3>');
+        for (var idx in arr) {
+            document.write(idx + '번째 : ' + arr[idx] + '<br>');
+        } 
+        // 3. forEach 함수1
+        document.write('<h3>3. forEach 함수1 </h3>');
+        arr.forEach();
+        var i = function(){alert(1);};
+        alert(chk(i));
+
+        function chk (fun) {
+            fun()
+        }
+        // 4. forEach 함수2
+    </script>
+</head>
+<body>
+
+</body>
+</html>
