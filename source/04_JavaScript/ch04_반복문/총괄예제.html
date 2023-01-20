@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var cnt = 0;
+        var sum = 0;
+        var yes = 0;
+        var no = 0;
+
+        while(confirm('누적할래 ?')) {  // confim : 확인(true) / 취소(false)
+        var ask = prompt('누적 할 점수 ?'); // prompt로 점수 물어보기
+
+        if (ask !=null && ask != '') { // 그냥 확인 누르면 ''(빈스트링), 취소를 누르면 null 값
+        ask = Number(ask) //  Number로 형변환
+
+        if (!isNaN(ask) && ask >= 0 && 100 >= ask) {
+            cnt++; // 누적횟수
+            sum += ask; // 누적점수
+            yes++; // 점수를 제대로 입력한 횟수
+        }else {
+            cnt++; // 누적횟수
+            no++;  // 점수를 잘못 입력한 횟수
+        }
+        } 
+    }
+    document.write(cnt + '번 입력' + '<br>');
+    document.write('누적점수 : ' + sum + '<br>');
+    document.write('점수를 제대로 입력한 횟수 : ' + yes + '<br>');
+    document.write('점수를 잘못 입력한 횟수 : ' + no + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
