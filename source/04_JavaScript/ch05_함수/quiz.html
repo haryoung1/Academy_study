@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        body {
+            text-decoration: underline;
+            font-size: 1.5em;
+
+        }
+    </style>
+    <script>
+        // 힌트 : 배열 이용하면 소스가 효율적
+        var color = ['yellow', 'red', 'white'];
+        var img = ['url(ch05_img/img01.png)', 
+                   'url(ch05_img/img02.png)',
+                   'url(ch05_img/img03.png)'];
+        var cnt = 0;
+        var id = setInterval(function(){
+            document.write(new Date()+ '<br>');
+            document.body.style.color = color [cnt % color.length];
+            document.body.style.backgroundImage = img [cnt % img.length];
+            document.body.style.backgroundSize = '100%';
+            document.body.style.fontWeight = 'blod';
+            document.body.style.fontSize = '1.5em';
+            cnt++;
+        }, 1000);
+        
+        setTimeout(function() {
+            clearInterval(id);
+            document.write('DONE');
+        }, 10000);
+        </script>
+</head>
+<body>
+    1초후 부터 시간 출력
+</body>
+</html>
