@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let name = "강순신";
+        let method = function(i){alert(i);};
+        let person = {       // 객체
+            name : '강길동', // 속성변수
+            age  : 20,      // 속성변수
+            eat  : function(food){ // 메소드에서는 this 꼭 쓰자.
+                var msg = this.age + '살 ' + this.name + '님은' + food + '를 먹습니다';
+                alert(msg);
+            },
+        };
+        document.write(person.name + '님 ' + person['age'] + '살<br>');
+        person.eat(' 햄버거');
+        document.write(person + '<br>');
+        document.write(person.toString() + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>
