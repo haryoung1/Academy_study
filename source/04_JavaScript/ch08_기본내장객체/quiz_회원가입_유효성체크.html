@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 350px;
+            margin: 20px auto;
+            padding: 20px 10px;
+            border: 2px solid #0e60b3;
+        }
+        input[type='text'], input[type='password'] {
+            border: 1px solid #0e60b3;
+        }
+        input[type='submit'], input[type='reset'], input[type='button'], button {
+            background-color: #0e60b3;
+            border: 0; outline: 0;
+            color: white;
+            border-radius: 10px;
+            padding: 10px 20px;
+            margin: 5px;
+        }
+        td, th {
+            padding: 5px 10px;
+            text-align: center;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        function joinchk() {
+            var patternNum = /[0-9]/;
+            var patternEng = /[a-zA-Z]/;
+            var patternMail = /^\w+@\w+(\.\w+){1,2}$/;
+            var patternName = /^[a-zA-Z가-힣]{1,2}$/; 
+            var patternSpc = /[~`!@#$%^&*()\-_+=|\\\[\]{}'";:?,.\/<>]/; 
+            var pw = frm.pw.value;
+
+            if (frm.name.value.length <2) {
+                alert('이름을 2글자 이상 입력 해주세요.');
+                frm.name.focus();
+                return false;
+            }else if (patternSpc.test(frm.name.value) || patternNum.test(frm.name.value)) {
+                alert('이름을 확인하세요. 특수문자 또는 숫자는 사용이 불가 합니다');
+                frm.name.focus();
+                return false;
+            }else if (!frm.mail.value) {
+                alert('이메일을 입력 하세요.');
+                frm.mail.focus();
+                return false;
+            }else if (!patternMail.test(frm.mail.value)) {
+                alert('이메일 형식이 맞지 않습니다');
+                frm.mail.focus();
+                return false;
+            }else if (!pw) {
+                alert('비밀번호가 입력되지 않았습니다.')
+                frm.pw.focus();
+                return false;
+            }else if (pw != frm.pwchk.value) {
+                alert('비밀번호가 일치하지 않습니다.')
+                frm.pw.value = '';
+                frm.pwchk.value = '';
+                frm.pw.focus();
+                return false;
+            }else if (!patternNum.test(pw) || !patternEng.test(pw) || !patternSpc.test(pw) || pw.length <4) {
+                alert('비밀번호는 4자이상 영어, 숫자, 특수문자를 포함 해주세요')
+                frm.pw.focus();
+                return false;
+            }
+        return true;
+    }
+    </script>
+</head>
+<body>
+    <form action="#" name="frm" onsubmit="return joinchk()">
+        <table>
+            <tr>
+                <td>이 름</td>
+                <td>
+                    <input type="text" name="name" placeholder= "특수문자와 숫자 못 와"/>
+                </td>
+            </tr>
+            <tr>
+                <td>메 일</td>
+                <td>
+                    <input type="text" name="mail" placeholder= "메일형식에 맞추세요"/>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name ="pw"/>
+                </td>
+            </tr>
+            <tr>
+                <td>비밀번호</td>
+                <td>
+                    <input type="password" name ="pwchk"/>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <input type="submit" value = "회원가입"/>
+                    <input type="reset"  value = "취소"/>
+                    <input type="button" value = "로그인"/>
+                </th>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>
