@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 400px;
+            height: 200px;
+            margin: 0 auto;
+        }
+        p {
+            text-align: center;
+            font-size: 1.5em;
+            font-weight: bold;
+        }
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet'];
+        var message;
+        window.onload = function() {
+            var td = document.querySelectorAll('td');
+            for (var idx in td) {
+                td[idx].style = 'background-color:' + color[idx];
+            }
+        };
+        function showmessage (n) {
+            message = document.querySelector('.message');
+            message.innerHTML = '야호 거의 끝났다';
+            message.style.color = color[n];
+            document.body.style.backgroundColor = 'black';
+        };
+        function removemessage() {
+            document.body.style.backgroundColor = 'white';
+            message.innerHTML = '';
+        }
+    </script>
+</head>
+<body>
+    <center><h2>중간예제3</h2></center>
+    <table>
+        <tr onmouseout="removemessage()">
+            <td onmouseover="showmessage(0)"></td>
+            <td onmouseover="showmessage(1)"></td>
+            <td onmouseover="showmessage(2)"></td>
+            <td onmouseover="showmessage(3)"></td>
+            <td onmouseover="showmessage(4)"></td>
+            <td onmouseover="showmessage(5)"></td>
+            <td onmouseover="showmessage(6)"></td>
+        </tr>
+    </table>
+    <p class="message"></p>
+</body>
+</html>

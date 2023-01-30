@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 300px;
+            height: 100px;
+            margin: 0 auto;
+            padding: 15px;
+            border: 1px solid blue;
+            text-align: center;
+        }
+    </style>
+    <script>
+        function move (y) {
+            var site =['http://www.naver.com',
+                    'http://www.daum.net',
+                    'http://www.google.com',
+                    'https://www.youtube.com/'];
+                    location.href = site[y];           
+        }
+    </script>
+</head>
+<body>
+    <table>
+        <tr>
+            <td>
+                <h2>중간예제2. 메뉴</h2>
+                <input type="button" value="네이버" onclick="move(0)"/>
+                <input type="button" value="다음"   onclick="move(1)"/>
+                <input type="button" value="구글"   onclick="move(2)"/>
+                <input type="button" value="유튜브" onclick="move(3)"/>
+            </td>
+        </tr>
+    </table>
+</body>
+</html>

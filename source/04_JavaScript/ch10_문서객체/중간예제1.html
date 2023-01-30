@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 400px;
+            height: 200px;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet', 'white'];
+        window.onload = function() {
+            var tds = document.querySelectorAll('td');
+            for (var idx in tds) {
+                tds[idx].style.backgroundColor = color[idx];
+            }
+        };
+        function Change(c) {
+            document.body.style.backgroundColor = color[c];
+        };
+    </script>
+</head>
+<body>
+    <center><h2>중간예제1</h2></center>
+    <table>
+        <tr onmouseout="Change(7)">
+            <td onmouseover="Change(0)"></td>
+            <td onmouseover="Change(1)"></td>
+            <td onmouseover="Change(2)"></td>
+            <td onmouseover="Change(3)"></td>
+            <td onmouseover="Change(4)"></td>
+            <td onmouseover="Change(5)"></td>
+            <td onmouseover="Change(6)"></td>
+        </tr>
+    </table>
+</body>
+</html>
