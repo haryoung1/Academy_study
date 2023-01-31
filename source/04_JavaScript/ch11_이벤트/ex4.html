@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        var outimg = ["img/0out.jpg", "img/1out.jpg", "img/2out.jpg", "img/3out.jpg"];
+        var overimg =["img/0over.jpg", "img/1over.jpg", "img/2over.jpg", "img/3over.jpg"];
+        var img = document.querySelectorAll('img');
+        window.onload = function () {
+            imgs = document.getElementsByTagName('img');
+            for (let i = 0; i<imgs.length; i++) {
+                imgs[i].onmouseover = function () {
+                    this.src = overimg[i];
+                };
+                imgs[i].onmouseout = function () {
+                    this.src = outimg[i];
+                };
+            }
+        };
+    </script>
+</head>
+<body>
+    <img src="img/0out.jpg" onmouseover="change(0)" onmouseout="back(0)"/>
+    <img src="img/1out.jpg" onmouseover="change(1)" onmouseout="back(1)"/>
+    <img src="img/2out.jpg" onmouseover="change(2)" onmouseout="back(2)"/>
+    <img src="img/3out.jpg" onmouseover="change(3)" onmouseout="back(3)"/>
+</body>
+</html>

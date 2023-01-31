@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        img {
+            display: none;
+            position: absolute;
+            z-index: -9;
+        }
+    </style>
+    <script>
+        window.onclick = function() {
+            var p = document.getElementsByTagName('p')[0];
+            p.innerHTML =  'screen 좌표값 : ' + event.screenX + ', ' + event.screenY + '<br>';
+            p.innerHTML += 'offset 좌표값 : ' + event.offsetX + ', ' + event.offsetY + '<br>';
+            var img = document.getElementsByTagName('img')[0];
+            img.style.display = 'inline-block';
+            img.style.left = event.offsetX + 'px';
+            img.style.top = event.offsetY + 'px';
+        };
+    </script>
+</head>
+<body>
+    <p>클릭하면 클릭한 곳에 말이 옮겨지고 좌표가 출력 됩니다</p>
+    <img src="img/car.gif" alt="말찡">
+</body>

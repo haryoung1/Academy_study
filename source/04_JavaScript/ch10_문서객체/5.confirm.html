@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        p {text-align: center;}
+    </style>
+    <script>
+        window.onload = function() {
+            var id = opener.document.getElementById('id').value;
+            var modifyName = document.getElementById('modifyName');
+            modifyName.value = id;
+        };
+    </script>
+</head>
+<body>
+    <form>
+        <p>아이디 <input type="text" id="modifyName">
+        <input type="submit"value="체크">
+        </p>
+        <p><input type="submit" value="아이디 사용"></p>
+    </form>
+</body>
+</html>
