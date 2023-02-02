@@ -1,0 +1,17 @@
+call , bind 란 ?
+
+call,bind는 첫번째 매개변수로 this 값을 명시적으로 지정 가능
+bind는 함수를 반환 한다.
+
+함수.bind(this가 될 변수);
+
+var obj = {name:'james'}; // obj 변수정의해주고
+
+function bindTest(){ // bindTest 라는 함수정의
+	console.log(this.name);
+}
+bindTest(); // this가 뭔지 몰라 undefined가 된다. 
+
+var bindTest2 = bindTest.bind(obj); // bind()를 사용해서 bindTest()에서 this는 obj가 된다. 
+
+bindTest2(); // 다시한번호출해야 동작한다. this.name === obj.name 이므로 james 출력 
