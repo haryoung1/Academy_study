@@ -1,6 +1,19 @@
 import { Component } from "react";
 
 class UpdateContent extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            id : this.props.data.id,
+            title : this.props.data.title,
+            desc : this.props.data.desc,
+        };
+    }
+inputFormHander(event) {
+    this.setState({
+        [event.target.name] : event.target.value,
+    });
+}
     render() {
         return (
             <article>
@@ -10,15 +23,23 @@ class UpdateContent extends Component {
                     // console.log(event.target.desc.value);
                     // debugger;
                     this.props.onChangePage(
-                        event.target.title.value,
-                        event.target.desc.value
+                        this.state.id,
+                        this.state.title, // event.target.title.value
+                        this.state.desc,  // event.target.desc.value
                         );
-                        event.target.title.value = '';
-                        event.target.desc.value = '';
                 }.bind(this)}>
-                    <p><input type="text" name="title" placeholder="title" value={this.props.data.title}>
-                        </input></p>
-                    <p><textarea name="desc" placeholder="desc" value={this.props.data.desc}></textarea></p>
+                    <p>
+                        <input type="text" name="title" placeholder="title" 
+                                value={this.state.title}
+                                onChange={this.inputFormHander.bind(this)}
+                    />
+                    </p>
+                    <p>
+                        <textarea name="desc" placeholder="desc" 
+                                value={this.state.desc}
+                                onChange={this.inputFormHander.bind(this)}
+                    />
+                    </p>
                     <p><input type="submit" value="수정"></input></p>
                 </form>
             </article>
