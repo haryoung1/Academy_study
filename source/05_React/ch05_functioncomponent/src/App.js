@@ -120,4 +120,4 @@ export default App;
 // 각 펑션을 만들고 js 파일로 분리한다 그 다음 import
 // 각 파일안에 기능 수정 및 추가 props
 // App부터 Strick mode 선언 해놓았기 때문에 변수선언 필수
-// subject 하고, TOC 는 배열
+// subject 먼저, TOC 는 배열
