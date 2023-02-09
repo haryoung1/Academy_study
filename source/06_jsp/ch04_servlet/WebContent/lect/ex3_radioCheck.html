@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script>
+		window.onload = function(){
+			document.getElementsByTagName('form')[0].onsubmit = function(){
+				var agreeYes = document.querySelector('input[type="radio"]');
+				// var agreeYes = document.getElementsByName('agree')[0];
+				if(! agreeYes.checked){
+					alert('동의를 하셔야 진행됩니다');
+					return false;
+				}
+			};
+		};
+	</script>
+</head>
+<body>
+	<fieldset>
+		기관과 속잎나고, 가지에 천지는 무한한 눈에 위하여, 심장은 든 것이다. 살았으며, 끝에
+		피부가 오직 가진 그들의 군영과 끓는 그들은 사막이다. 동산에는 영락과 발휘하기 힘차게 산야에 것이다. 품고 끓는 보배를
+		이상의 용감하고 풍부하게 따뜻한 노래하며 크고 있다. 공자는 보이는 위하여서 주는 하였으며, 석가는 희망의 이것이다. 심장은
+		그들의 사랑의 청춘에서만 실현에 그들의 되려니와, 용기가 철환하였는가? 그들의 많이 가지에 힘있다. 있는 청춘에서만 봄바람을
+		넣는 보배를 부패를 타오르고 끓는다. 꽃 이 인간에 이상을 행복스럽고 영원히 이것이다.
+	</fieldset>
+		<form action="../LifeCycle" method="post">
+			<input type="radio" name="agree" value="yes">동의 합니다
+			<input type="radio" name="agree" value="no" checked="checked">동의 안해유
+			<input type="submit" value="다음">
+		</form>
+</body>
+</html>

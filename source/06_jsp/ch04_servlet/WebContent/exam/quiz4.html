@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script>
+	window.onload = function() {
+		document.getElementsByTagName('form').onsubmit = function() {
+			var choice = document.querySelector('input[type="radio"]');
+			var cnt = 0;
+			for (var i = 0; i < choice.length; i++) {
+				cnt += choice[i].checked;
+			}
+			if (!cnt) {
+				alert('색상을 선택하셔야 합니다');
+				return false;
+			}
+		};
+		
+	};
+</script>
+</head>
+<body>
+	<fieldset>
+		<legend>배경색 선택 (GET방식)</legend>
+		<form action="../quiz4" method="get">
+			<input type="radio" name="color" value="red">빨강
+			<input type="radio" name="color" value="orange">주황
+			<input type="radio" name="color" value="yellow">노랑
+			<input type="radio" name="color" value="green">초록
+			<input type="radio" name="color" value="blue">파랑
+			<input type="radio" name="color" value="navy">남색
+			<input type="radio" name="color" value="violet">보라
+			<input type="submit" value="선택확인">
+		</form>
+	</fieldset>
+		<fieldset>
+		<legend>배경색 선택 (post방식)</legend>
+		<form action="../quiz4" method="post">
+			<input type="radio" name="color1" value="0">빨강
+			<input type="radio" name="color1" value="1">주황
+			<input type="radio" name="color1" value="2">노랑
+			<input type="radio" name="color1" value="3">초록
+			<input type="radio" name="color1" value="4">파랑
+			<input type="radio" name="color1" value="5">남색
+			<input type="radio" name="color1" value="6">보라
+			<input type="submit" value="선택확인">
+		</form>
+	</fieldset>
+</body>
+</html>
