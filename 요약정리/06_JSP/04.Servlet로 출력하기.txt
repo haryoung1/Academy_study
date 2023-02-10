@@ -34,8 +34,8 @@ PrintWriter 는 문자 출력 스트림이다.
 JSP 페이지의 결과를 웹 브라우저에 전송해주는 출력 스트림이다.
 
 4. 생성한 스트림객체를 이용해 출력을 한다.
-ex) 
-out.println("<h1>Hello World</h1>");
+
+ex)out.println("<h1>Hello World</h1>");
 out.println("<h2>Nice to meet you</h2>");
 출력할것들을 모두 한뒤에는 
 out.close(); 로 꼭 닫아준다.
