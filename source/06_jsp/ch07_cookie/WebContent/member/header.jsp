@@ -52,9 +52,9 @@ header ul li a {
 				</ul>
 			<%	}else { // 로그인 성공 후 화면 %>
 				<ul>
-					<li><a href="<%=conPath%>/member/cookieList.jsp">쿠키리스트</a></li>
+					<li><a href="<%=conPath %>/member/cookieList.jsp">쿠키리스트</a></li>
 					<li><a href="<%=conPath %>/member/logout.jsp">로그아웃</a></li>
-					<li><a href="#"><%=id %>님</a></li>
+					<li><a href="<%=conPath %>/"><%=id %>님</a></li>
 				</ul>
 			<%} %>
 		</div>
