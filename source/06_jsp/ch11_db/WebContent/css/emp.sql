@@ -1,0 +1,13 @@
+-- ex2_oracle
+SELECT * FROM EMP;
+
+-- ex3_dept
+SELECT * FROM DEPT;
+SELECT * FROM EMP WHERE DEPTNO LIKE '%'||'10';
+
+UPDATE DEPT
+SET
+LOC = 'seoul'
+WHERE LOC = 'seuol';
+
+COMMIT;
