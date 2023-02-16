@@ -32,7 +32,7 @@
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, E.DEPTNO, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME LIKE '%'||UPPER(?)||'%'";
+		String sql = "SELECT EMPNO, ENAME, JOB, MGR, HIREDATE, SAL, E.DEPTNO, DNAME FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO AND ENAME LIKE '%'||UPPER(?)||'%'";
 
 	try {
 			Class.forName(driver);
@@ -51,7 +51,7 @@
 				Date hiredate = rs.getDate("hiredate");
 				int sal = rs.getInt("sal");
 				int deptno = rs.getInt("deptno");
-				String loc = rs.getString("loc");
+				String dname = rs.getString("dname");
 				out.println("<tr><td>" + empno + "</td>");
 				out.println("<td>" + ename + "</td>");
 				out.println("<td>" + job + "</td>");
@@ -59,7 +59,7 @@
 				out.println("<td>" + hiredate + "</td>");
 				out.println("<td>" + sal + "</td>");
 				out.println("<td>" + deptno + "</td>");
-				out.println("<td>" + loc + "</td></tr>");
+				out.println("<td>" + dname + "</td></tr>");
 			} while (rs.next());
 		} else {
 			out.println("<tr><td colspan='8'>해당 사원이 없습니다</td></tr>");
