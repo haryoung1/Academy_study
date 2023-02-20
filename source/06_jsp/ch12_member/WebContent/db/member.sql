@@ -35,13 +35,13 @@ SELECT * FROM MEMBER WHERE ID = 'zzz';
 UPDATE MEMBER SET 
         PW = '111', NAME = '강길순', PHONE1 = '031', PHONE2 = '777', PHONE3 = '1234', 
         GENDER = 'f', EMAIL = 'kang@kang.com', BIRTH = '1995-12-12', ADDRESS = '서울시 강서'
-    WHERE ID = 'aaa';
+    WHERE ID = 'zzz';
 
 SELECT * FROM MEMBER;
 COMMIT;
 
 delete from member 
-where id = 'fff';
+where id = 'bbb';
 
 
 

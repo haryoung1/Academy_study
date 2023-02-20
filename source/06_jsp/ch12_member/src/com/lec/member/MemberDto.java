@@ -124,8 +124,8 @@ public class MemberDto {
 
 	@Override
 	public String toString() {
-		return "id = " + id + ", pw = " + pw + ", name = \n" + name + " \n phone1 = " + phone1 + ", phone2 = " + phone2
-				+ ", phone3 = " + phone3 + ", gender = " + gender + ", email = " + email + ", birth = " + birth + ", address = "
-				+ address + ", rdate = " + rdate + "";
+		return "id = " + id + ", pw = " + pw + ", name = " + name + "  phone1 = " + phone1 + ", phone2 = " + phone2
+				+ ", phone3 = " + phone3 + ", gender = " + gender + ", email = " + email + ", birth = " + birth + ", "
+				+ "address = " + address + ", rdate = " + rdate + "";
 	}
 }
