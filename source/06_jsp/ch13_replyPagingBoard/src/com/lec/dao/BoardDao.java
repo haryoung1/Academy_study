@@ -66,7 +66,7 @@ public class BoardDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT * FROM BOARD ORDER BY REF DESC";
+		String sql = "SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -106,9 +106,9 @@ public class BoardDao {
 		Connection        conn  = null;
 		PreparedStatement pstmt = null;
 		ResultSet         rs    = null;
-		String sql = "SELECT *  " + 
-			"  FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC) A)" + 
-			"  WHERE RN BETWEEN ? AND ?";
+		String sql = " SELECT * " + 
+					 " FROM (SELECT ROWNUM RN, A.* FROM (SELECT * FROM BOARD ORDER BY REF DESC, RE_STEP) A)" + 
+					 " WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -149,10 +149,10 @@ public class BoardDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, " + 
-				"	                    PW, REF, RE_STEP, RE_INDENT, IP)" + 
-				"	  VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), ?, ?, ?, ?," + 
-				"	                    ?, (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, ?)";
+		String sql = " INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, " + 
+					 " PW, REF, RE_STEP, RE_INDENT, IP)" + 
+				     " VALUES ((SELECT NVL(MAX(NUM),0)+1 FROM BOARD), ?, ?, ?, ?," + 
+				     " ?, (SELECT NVL(MAX(NUM),0)+1 FROM BOARD), 0, 0, ?)";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -354,6 +354,70 @@ public class BoardDao {
 			System.out.println(result==SUCCESS? "글 삭제 완료":"글 삭제 실패(비번확인)");
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+		return result;
+	}
+	// 8. 답변글 저장 전 단계 (엑셀에서 A단계)
+	private void preReplyStep(int ref, int re_step) {
+		Connection         conn = null;
+		PreparedStatement pstmt = null;
+		String sql = " UPDATE BOARD SET RE_STEP = RE_STEP + 1 " + 
+					 " WHERE REF = ? AND RE_STEP > ?";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, ref);
+			pstmt.setInt(2, re_step);
+			int result = pstmt.executeUpdate();
+			System.out.println("답변글 " + result + "개 조정됨");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		} finally {
+			try {
+				if(pstmt!=null) pstmt.close();
+				if(conn !=null) conn.close();
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			}
+		}
+	}
+	// 9. 답변글 쓰기
+	public int reply(BoardDto dto) {
+		// num, writer, subject, content, email, readcount, pw, ref, re_step, re_indent, ip, rdate
+		// 원글에 대한 정보 : ref, re_step, re_lndent
+		// 사용자로부터 입력받는 내용 : writer, subject, content, email, pw
+		// request.getRemoteAddr() 함수로 부터 : ip
+		preReplyStep(dto.getRef(), dto.getRe_indent()); // 답글쓰기 전 설정
+		int result = FAIL;
+		Connection         conn = null;
+		PreparedStatement pstmt = null;
+		String sql = " INSERT INTO BOARD (NUM, WRITER, SUBJECT, CONTENT, EMAIL, PW, REF, RE_STEP, RE_INDENT, IP)" + 
+					 " VALUES ((SELECT NVL(MAX(NUM), 0) + 1 FROM BOARD)," + 
+				     " ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+		try {
+			conn = getConnection();
+			pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, dto.getWriter());
+			pstmt.setString(2, dto.getSubject());
+			pstmt.setString(3, dto.getContent());
+			pstmt.setString(4, dto.getEmail());
+			pstmt.setString(5, dto.getPw());
+			pstmt.setInt(6, dto.getRef());
+			pstmt.setInt(7, dto.getRe_step() +1);
+			pstmt.setInt(8, dto.getRe_indent());
+			pstmt.setString(9, dto.getIp());
+			result = pstmt.executeUpdate();
+			System.out.println(result==SUCCESS? "답변글 쓰기 성공":"답변글 실패");
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+			System.out.println("답변글쓰다 예외 발생 : " + dto);
 		} finally {
 			try {
 				if(pstmt!=null) pstmt.close();

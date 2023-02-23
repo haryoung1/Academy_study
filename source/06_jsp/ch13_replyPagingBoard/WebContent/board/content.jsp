@@ -42,7 +42,7 @@
 						<button onclick="location.href='<%=conPath %>/board/deleteForm.jsp?num=<%=num %>&pageNum=<%=pageNum%>'">
 							삭제
 						</button>
-						<button>답변</button>
+						<button onclick="location.href='<%=conPath%>/board/writeForm.jsp?num=<%=num%>&pageNum=<%=pageNum%>'">답변</button>
 						<button onclick="location.href='<%=conPath%>/board/list.jsp?pageNum=<%=pageNum%>'">
 							목록
 						</button>
@@ -52,17 +52,3 @@
 	<%}%>
 </body>
 </html>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
