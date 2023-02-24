@@ -36,7 +36,7 @@
 				filenames[idx] = multiRequest.getFilesystemName(param); // 해당 파라미터 이름으로 저장된 파일
 				oriFilenames[idx] = multiRequest.getOriginalFileName(param); // 파라미터 이름으로 첨부한 오리지널 이름
 				System.out.println(idx + " 번째 파라미터 : " + param + ", 서버 파일이름 : " + filenames[idx] +
-								  ", 첨부한 오리지널 파일 이름 : " + oriFilenames[idx]);
+								         ", 첨부한 오리지널 파일 이름 : " + oriFilenames[idx]);
 				idx++;
 			}
 			name = multiRequest.getParameter("name");
