@@ -1,0 +1,90 @@
+<파일 업로드>
+
+파일 업로드를 하기전에 라이브러리가 필요하다.
+http://www.servlets.com 접속 후, 
+좌측의 COS File Upload Library(com.oreilly.servlet) 
+클릭 cos-22.05.zip 다운로드 후 압축 해제
+다운로드 받은 라이브러리(cos.jar)를 WEB-INF >lib폴더안에 복사
+이클립스안에 라이브러리를 넣지 않으면 파일업로드 기능을 구현 안됨.
+
+============================
+1. 파일업로드 기본 fileForm
+
+★ form 태그를 만들때는 무조건 post 방식
+	(get 방식은 파일첨부 안됨)
+
+★ form 태그에 enctype multipart/form-data 설정을 해주자
+    form 태그로 보내는건 문자, text만 보내기 때문에
+    MultipartRequest가 필요함
+
+<form action="#" method="post" enctype="multipart/form-data>
+
+============================
+
+2. 파일업로드 실행 filePro
+
+String path = request.getRealPath("fileUpFolder") // 톰캣 서버의 절대경로
+int maxSize = 1024*1024*10;                          // 파일의 업로드 최대 용량 (10MB)
+
+String filename = "";      // 서버에 저장될 파일 이름.
+String ogFilename = "";  // 업로드한 오리지널 파일이름
+
+만약 A라는 사람이 a.jpg라는 파일을 업로드 한 후에 
+b라는 사람이 똑같이 a.jpg라는 파일을 업로드 할 경우에
+b 컴퓨터에는 a2.jpg로 저장이 되게끔, 하지만 뜨는건 a.jpg로 뜰 수 있게
+oglFileNmae(업로드한 오리지널 파일이름) 과 filename (서버에 저장될 이름)을 
+따로 설정해두어야 함
+
+============================
+
+MultipartRequest mRequest = new MultipartRequest (
+	 		  request,                     // 파일 가져오는 요청객체
+			  path,	                    // 파일 저장 할 경로 
+			  maxSize,                   // 파일의 최대용량
+			  "utf-8", 	                   // 파일 이름 안 깨지게
+			  new DefaultFileRenamePolicy() ); // 리네임 용도(중복x)
+
+============================
+
+filename = mRequest.getFilesystemName(param);
+서버에 저장된 파일 이름
+
+ogFilename = mRequest.getOriginalFileName(param);
+사용자가 첨부한 오리지날 파일이름
+
+============================
+
+fileCopy
+
+소스를 수정하고 동기화 하면 톰캣에 있는 파일이 삭제 되기 때문에
+카피를 해줘야 함.
+인풋스트림, 아웃풋스트림을 사용
+
+복사될 파일(원본)은 inputstream에 담고, 복사가 된 파일은 outputstream에 담아주기.
+
+byte[] bs = new byte[(int)serverfile.length()];
+// 파일을 읽어올때 필요한 과정
+// 서버파일의 크기만큼 바이트로 읽어내겠다 라는 뜻.
+
+============================
+
+<파일 여러개 첨부시>
+
+Enumeration<String> paraNames = mRequest.getFileNames(); // 똑같이 파라미터이름들을 받아온 뒤
+int idx=0;
+while(paramNames.hasMoreElements()){                                   //  paramNames에서 다음요소가 있어? 있으면 true, 없으면 false
+    String param = paramNames.nextElement();                         //   paramNames에서 파라미터 이름 하나 받아오기
+    filename[idx] = mRequest.getFilesystemName(param);            //   그 파라미터 이름으로 저장된 파일을 가지고 온다.
+    originalFilename[idx] = mRequest.getOriginalFileName(param); //   해당 파라미터 이름으로 첨부된 오리지널 파일 이름 가지고온다.
+    idx++;  
+    
+// 처음 while문이 돌았을때 처음 요소를 받아옴. 
+// filename, originalFilename 0 번방에 파일이름들을 가져온뒤 idx++
+// 두번째 while문이 true가 되니까 또 실행하고 1번방에 파일이름들을 가져오고 idx++
+// 이렇게 다음 요소가 없을때까지 while문이 실행되면서 파일이름들을 가져온다.
+}
+첨부된 파일이 여러개면, 들어오는 파일들의 순서가 반대가 된다.
+file0, file1, file2 의 순서라면
+0번방 : file2
+1번방 : file1
+2번방 : file0 이렇게 들어오게 된다.
