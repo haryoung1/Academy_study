@@ -5,6 +5,7 @@
     <title></title>
     <style>
         table {
+<<<<<<< HEAD
             width: 300px;
             height: 150px;
             margin: 0 auto;
@@ -18,10 +19,28 @@
         var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet', white];
         window.onload. function () {
             var
+=======
+            width: 400px;
+            height: 200px;
+            margin: 10px auto;
+        }
+    </style>
+    <script>
+        var color = ['red', 'orange', 'yellow', 'green', 'blue', 'navy', 'violet', 'white'];
+        window.onload = function() {
+            var tds = document.querySelectorAll('td');
+            for (var idx in tds) {
+                tds[idx].style.backgroundColor = color[idx];
+            }
+        };
+        function Change(c) {
+            document.body.style.backgroundColor = color[c];
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
         };
     </script>
 </head>
 <body>
+<<<<<<< HEAD
     <table>
         <tr>
             <td></td>
@@ -31,6 +50,18 @@
             <td></td>
             <td></td>
             <td></td>
+=======
+    <center><h2>중간예제1</h2></center>
+    <table>
+        <tr onmouseout="Change(7)">
+            <td onmouseover="Change(0)"></td>
+            <td onmouseover="Change(1)"></td>
+            <td onmouseover="Change(2)"></td>
+            <td onmouseover="Change(3)"></td>
+            <td onmouseover="Change(4)"></td>
+            <td onmouseover="Change(5)"></td>
+            <td onmouseover="Change(6)"></td>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
         </tr>
     </table>
 </body>

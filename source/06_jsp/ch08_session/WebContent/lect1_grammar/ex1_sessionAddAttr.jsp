@@ -7,7 +7,11 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+<<<<<<< HEAD
 	<link href="<%=conPath %>/css/ex.css" rel="stylesheet" type="text/css">
+=======
+	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 </head>
 <body>
 	<%
@@ -15,7 +19,11 @@
 		session.setAttribute("sessionName", "sessionValue");
 		session.setAttribute("sessionNum", 123);
 		// session.setAttribute("sessionNum", new Integer(123));
+<<<<<<< HEAD
 		Member member = new Member ("aaa", "111", "강길동");
+=======
+		Member member = new Member ("aaa", "111", "홍길동");
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		session.setAttribute("member", member);
 		// jsp 파일에서는 session이 내장객체라서 바로 사용가능. 자바(서블릿)에서는 session을 사용 하려면 다음과 같이
 		HttpSession session2 = request.getSession();

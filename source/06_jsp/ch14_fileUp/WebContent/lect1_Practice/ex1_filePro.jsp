@@ -19,8 +19,13 @@
 </head>
 <body>
 	<%
+<<<<<<< HEAD
 		String path = request.getRealPath("fileUpFolder2"); //첨부 할 파일이 저장될 서버(was)폴더
 		// out.print(path); 절대경로
+=======
+		String path = request.getRealPath("fileUpFolder2");//첨부 할 파일이 저장될 서버(was)폴더
+		// out.print(path);
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		int maxSize = 1024*1024*10; // 업로드 최대용량 (10MB)
 		String filename = "";
 		String ogFilename = "";
@@ -52,9 +57,13 @@
 				while(true) {
 					int nReadCnt = is.read(bs);
 					if (nReadCnt == -1) break;
+<<<<<<< HEAD
 					os.write(bs, 0, nReadCnt);
 				}
 				System.out.println("서버에 업로드 한  파일을 소스폴더로 복사 완료");
+=======
+				}
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 			}
 		}catch(Exception e) {
 			System.out.println(e.getMessage());
@@ -66,6 +75,7 @@
 				System.out.println(e.getMessage());
 			}
 		}
+<<<<<<< HEAD
 		if(filename != null) {
 			
 	%>		
@@ -78,3 +88,20 @@
 	%>	
 </body>
 </html>
+=======
+	%>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

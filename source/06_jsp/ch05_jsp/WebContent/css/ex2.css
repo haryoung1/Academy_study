@@ -1,0 +1,19 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightyellow;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+tr {
+	border-top: 2px solid blue;
+	border-bottom: 2px solid blue;
+}
+
+td {
+	text-align: center;
+	padding: 5px;
+}

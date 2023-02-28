@@ -33,7 +33,11 @@
 				<tr>
 					<td><label for="id">아이디</label></td>
 					<td><input type="text" name="cid" required="required"
+<<<<<<< HEAD
 						autofocus="autofocus" value="<% 
+=======
+						autofocus="autofocus" value="<%
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 						String cid = (String) session.getAttribute("cid");
 						if(cid != null) {
 							out.print(cid);

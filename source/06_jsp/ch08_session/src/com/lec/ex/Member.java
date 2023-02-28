@@ -42,4 +42,8 @@ public class Member {
 	public String toString() {
 		return "Member id= " + id + ", pw= " + pw + ", name= " + name + "";
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

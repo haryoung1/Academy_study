@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script> // 이미 존재하는 HTML 태그를 자바스크립트로 가져오는 방법 중 id로 가져오기
+        var header1, header2;
+        var id;
+        var header1toggle=0, header2toggle=0;
+        window.onload = function() {
+            header1 = document.getElementById('header-1'); // 태그의 id속성이 id와 일치하는 문서 객체를 가져옴.
+            header1.innerHTML = '날짜와 시간'; // headr1의 변경할 내용을 적음
+            header2 = document.getElementById('header-2');
+            header2.innerHTML = new Date().toLocaleString(); // 현재시간을 표기
+            id = setInterval(function () {
+                header2.innerHTML = new Date().toLocaleString();
+            }, 1000);
+        };
+        function change(n) {
+            if(n === 1) {
+                // header1을 토글
+            if(header1toggle === 0) {
+                header1.innerHTML = '현재';
+                header1toggle = 1;
+            }else if (header1toggle ==1) {
+                header1.innerHTML = '날짜와 시간';
+                header1toggle = 0;
+            }
+            }else if (n == 2) {
+                // 타이머(header2) 토글
+                if(header2toggle == 0) {
+                    // 타이머 중지
+                    clearInterval(id);
+                    header2toggle = 1;
+                }else if (header2toggle == 1) {
+                    // 타이머 가동
+                    id = setInterval(()=>{ 
+                        header2.innerHTML = new Date().toLocaleString();
+                    }, 1000);
+                    header2toggle = 0;
+                }
+            }
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header-1">HEADER - 1</h1>                                   <!-- 객체 1-->
+    <h1 id="header-2">HEADER - 2 (시간)</h1>                            <!-- 객체 2-->
+    <button onclick="change(1)">header-1 토글</button>                  <!-- 객체 3-->
+    <button onclick="change(2)">header-2 토글(타이머토글)</button>      <!-- 객체 4-->
+</body>
+</html>

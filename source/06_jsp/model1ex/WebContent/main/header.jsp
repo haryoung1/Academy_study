@@ -19,13 +19,21 @@
 		<div class="gnb">
 			<%if(customer == null) { // 로그인 전 메뉴(고객센터, 회원가입, 로그인) %>
 				<ul>
+<<<<<<< HEAD
 					<li><a href="<%=conPath %>/fileboard/fboardList.jsp">고객센터</a></li>
+=======
+					<li><a href="<%=conPath %>/fileboard/fboardlist.jsp">고객센터</a></li>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 					<li><a href="<%=conPath%>/customer/joinForm.jsp">회원가입</a></li>
 					<li><a href="<%=conPath %>/customer/loginForm.jsp">로그인</a></li>
 				</ul>
 			<%}else { // 로그인 후 메뉴 (고객센터, 로그아웃, 정보수정, 이름 %>
 				<ul>
+<<<<<<< HEAD
 					<li><a href="<%=conPath %>/fileboard/fboardList.jsp">고객센터</a></li>
+=======
+					<li><a href="<%=conPath %>/fileboard/fboardlist.jsp">고객센터</a></li>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 					<li><a href="<%=conPath%>/customer/logout.jsp">로그아웃</a></li>
 					<li><a href="<%=conPath %>/customer/modifyForm.jsp">정보수정</a></li>
 					<li><a href="<%=conPath%>/main/main.jsp"><%=customer.getCname() %>님</a></li>

@@ -5,6 +5,7 @@
     <title></title>
     <script>
         window.onload = function() {
+<<<<<<< HEAD
             // id로 가져오기    : document.getElementById(id명)           : 엘리먼트 하나 return
             // class로 가져오기 : document.getElementByClassName(class명) : 배열 return
             var clock1 = document.getElementsByClassName('clock1');
@@ -14,6 +15,20 @@
             clock2.value = new Date().toLocaleString(); // 태그 추가 안됨
             clock2.style.cssText = 'color:red; font-size:32px;';
         }
+=======
+            // id로 가져오기    : document.getElementById(id명) : 엘리먼트(문서객체) 하나를 return
+            // class로 가져오기 : document.getElementsByClassName() : 배열 return
+            var clock1 = document.getElementsByClassName('clock1');
+            clock1[0].innerHTML = new Date().toLocaleString();
+            clock1[1].innerHTML = new Date().toLocaleTimeString();
+            var clock2 = document.getElementsByClassName('clock2')[0];
+            clock2.value = new Date().toLocaleString(); // 태그 추가 안됨
+            // clock2.style = 'color:red; font-size:32px;';
+            // clock2.style.color = 'red';
+            // clock2.style.fontSize = '32px';
+            clock2.style.cssText = 'color:red; font-size:32px;';
+        };
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
     </script>
 </head>
 <body>

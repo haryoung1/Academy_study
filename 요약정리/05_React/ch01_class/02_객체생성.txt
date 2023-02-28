@@ -1,0 +1,27 @@
+// 단순객체 생성
+let kim = {
+    name : 'kim',
+    first : 10,
+    second : 20,
+    sum : function() {
+        return this.first + this.second;
+    },
+};
+console.log(kim.name,':', kim.first,',', kim.second, ',', kim.sum());
+
+<위 로직을 좀 더 간편하게 생성자 함수로 변경하면>
+
+// 생성자 함수를 이용한 객체생성
+
+function Person(name, first, second) {
+    this.name = name;
+    this.first = first;
+    this.second = second;
+};
+Person.prototype.sum = function() {
+    return this.first + this.second;
+};
+
+var kim = new Person('kim', 10, 20);
+
+console.log(kim.name,':', kim.first,',', kim.second, ',', kim.sum());

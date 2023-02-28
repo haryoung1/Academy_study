@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <title></title>
     <script>
+<<<<<<< HEAD
         window.onload = function() {
              // querySelector(선택자)    -  5방법 : 해당 선택자 하나(여러개일 경우 처음 하나)
              // querySelectorAll(선택자) - 6방법  : 해당 선택자 모두. 배열로
@@ -16,6 +17,22 @@
              }
              var param = document.querySelectorAll('input[type=text]')[0];
              param.value = '지금은 23/01/30 21시54분 성빈아 힘내라'
+=======
+        window.onload = function(){
+            // querySelector (선택자)       -- 5.방법 : 해당 선택자 하나 (여러개일 경우 처음 한개만)
+            // querySelectorAll (선택자)    -- 6.방법 : 해당 선택자 모두 배열로
+            var header1 = document.querySelector('h1');
+            header1.innerHTML = '첫번째만';
+
+            var head = document.querySelectorAll('h1.header'); // 배열로 받음
+            for (var idx in head) {
+                head[idx].style = 'background-Color:yellow; color:red;';
+            }
+
+            var param = document.querySelectorAll('input[type=text]')[0];
+            param.value = '배고파 뭐 먹을까';
+            
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
         };
     </script>
 </head>

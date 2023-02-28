@@ -88,4 +88,13 @@
 	<img src="<%=conPath %>/fileUpFolder/<%=filenames[0] %>" alt="2번째 첨부 안함">
 	<h3>이름 : <%=name %></h3>
 </body>
+<<<<<<< HEAD
 </html>
+=======
+</html>
+
+
+
+
+
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

@@ -20,7 +20,11 @@
         Student.prototype.toString = function() {
             var output = '';
                 for(var key in this) {
+<<<<<<< HEAD
                 if(key != 'getSum' && key != 'getAvg' && key != 'toString') {
+=======
+                  if(key != 'getSum' && key != 'getAvg' && key != 'toString') {
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
                     output += key + ':' + this[key] + ' &nbsp; ';
                 }else if (key == 'getSum' || key =='getAvg') {
                     output += key.substring(3).toUpperCase() + ':' + this[key]() + ' &nbsp; ';

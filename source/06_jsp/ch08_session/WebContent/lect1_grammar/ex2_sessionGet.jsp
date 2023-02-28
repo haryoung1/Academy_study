@@ -7,6 +7,7 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+<<<<<<< HEAD
 	<link href="<%=conPath %>/css/ex.css" rel="stylesheet" type="text/css">
 </head>
 <body>
@@ -16,13 +17,28 @@
 		Integer sessionNum = (Integer)session.getAttribute("sessionNum");
 		Member member  = (Member)session.getAttribute("member");
 		String noSessionName = (String)session.getAttribute("noSessionName");
+=======
+	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<%
+		// 특정한 세션값 가져오기 (세션의 특정한 속성값 가져오기)
+		String sessionName = (String) session.getAttribute("sessionName");
+		Integer sessionNum = (Integer)session.getAttribute("sessionNum");
+		Member member = (Member)session.getAttribute("member");
+		String noSessionName = (String) session.getAttribute("noSessionName");
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		out.println("<h2>sessionName : " + sessionName + "</h2>");
 		out.println("<h2>sessionNum : " + sessionNum + "</h2>");
 		out.println("<h2>member : " + member + "</h2>");
 		if(member!=null) {
 			out.println("<h2>member 안의 id : " + member.getId() + "</h2>");
 			out.println("<h2>member 안의 pw : " + member.getPw() + "</h2>");
+<<<<<<< HEAD
 			out.println("<h2>member 안의 name : " + member.getName() + "</h2>");
+=======
+			out.println("<h2>member 안의 name : " + member.getName() + "</h2>");	
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		}
 		out.println("<h2>세션에 추가하지 않은 데이터 : " + noSessionName + "</h2>");
 	%>
@@ -35,4 +51,8 @@
 	<a href="ex3_sessionList.jsp">모든 세션 리스트</a><br>
 	<a href="ex4_sessionRemove.jsp">세션 삭제(특정 세션이나 모든 세션 데이터)</a>
 </body>
+<<<<<<< HEAD
+=======
+</body>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 </html>

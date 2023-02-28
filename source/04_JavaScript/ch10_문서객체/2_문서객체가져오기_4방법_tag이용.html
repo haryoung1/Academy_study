@@ -5,10 +5,27 @@
     <title></title>
     <script>
         window.onload = function () {
+<<<<<<< HEAD
             var header = document.getElementsByTagName('h1'); // 배열로
             for (var idx in header) {
                 header[idx].innerHTML = '바꿔 #' + idx;
             }
+=======
+            var header = document.getElementsByTagName('h1'); // 배열
+            // for (var idx = 0; idx<header.length; idx ++) {
+            //     header[idx].innerHTML = '바꿔 #' + idx;
+            // }
+            for (var idx in header) {
+                header[idx].innerHTML = '바꿔 #' + idx;
+            }
+            // header.forEach( (element, idx)=> { // forEach() 이용 불가, 직접 만든 배열만 사용가능 (push한거)
+            //     header[idx].innerHTML = '바꿔 #' + idx;
+            // });
+            // for - of문
+            // for (var element of header) {
+            //     element.innerHTML = '바꿔';
+            // }
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
         };
     </script>
 </head>
@@ -18,5 +35,13 @@
     <h1>HEADER</h1>
     <h1>HEADER</h1>
     <h1>HEADER</h1>
+<<<<<<< HEAD
+=======
+    <h1>HEADER</h1>
+    <h1>HEADER</h1>
+    <h1>HEADER</h1>
+    <h1>HEADER</h1>
+    <h1>HEADER</h1>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 </body>
 </html>

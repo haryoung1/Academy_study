@@ -33,6 +33,11 @@ SELECT *
 SELECT COUNT(*) TOTCNT FROM CUSTOMER;
 SELECT * FROM CUSTOMER;
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 -- FileboardDao (top-N 리스트, 글갯수, 글쓰기(원글1, 답변글2), HIT올리기, 글상세보기, 글수정, 글삭제)
 -- 1. 글목록 (top-N 리스트 : startRow, endRow)
     SELECT F.*, CNAME, CEMAIL
@@ -111,4 +116,17 @@ SELECT * FROM BOOK;
 COMMIT;
 SELECT * FROM CUSTOMER;
 SELECT * FROM FILEBOARD;
+<<<<<<< HEAD
 SELECT * FROM BOOK;
+=======
+SELECT * FROM BOOK;
+
+
+
+
+
+
+
+
+
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

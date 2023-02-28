@@ -1,0 +1,26 @@
+-- ES6에서는 class끼리 뿐 아니라 객체끼리도 상속관계를 맺을 수 있다. --
+
+1.  __proto__ 이용하는 방법
+
+var superObj = {superVal : 'super value'};
+var subObj   = {subVal : 'sub value'};
+
+-- 이 방법은 표준으로 인정 받지는 못한 방법 --
+subObj.__proto__ = superObj; /
+console.log(subObj.superVal);
+
+subObj.superVal = 'subObj에서 수정';
+
+(debugger;) : 일시중지하면서 객체 상태를 모니터링 할 수 있음.
+
+console.log('수정 후 subObj.superVal : ', subObj.superVal);
+console.log('수정 후 superObj.superVal : ', superObj.superVal);
+
+
+2. Object.create() 이용하는 방법
+
+var hong = {name:'홍길동'}; 
+
+(hong이라는 객체가 있다, 이 객체를 상속 받으려면)
+
+var son = Object.create(hong); => son이라는 객체에 hong 객체를 상속 받음.

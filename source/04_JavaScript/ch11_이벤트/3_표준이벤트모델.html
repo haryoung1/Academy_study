@@ -3,6 +3,7 @@
     <head>
     <meta charset="UTF-8">
     <title></title>
+<<<<<<< HEAD
     <script>
         window.onload = function() {
             var header = document.querySelector('h1#header')
@@ -11,5 +12,23 @@
 </head>
 <body>
     <h1 id="header">Clinck 해 봐</h1>
+=======
+    <style>
+        h1 {
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        window.onload = function() {
+            var header = document.querySelector('h1#header');
+            header.addEventListener('click', () => { // 첫번째 매개변수 : 이벤트이름, 두번째 : 하고자 하는 콜백함수
+                alert('click 했네');
+            }); 
+        };
+    </script>
+</head>
+<body>
+    <h1 id="header">Click 해봐</h1>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 </body>
 </html>

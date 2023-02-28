@@ -1,13 +1,24 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
     pageEncoding="UTF-8"%>
+=======
+	pageEncoding="UTF-8"%>
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 <% String conPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<link href="<%=conPath %>/css/ex.css" rel="stylesheet" type="text/css">
+=======
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="<%=conPath %>/css/style.css" rel="stylesheet"
+	type="text/css">
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 </head>
 <body>
 	<%

@@ -7,12 +7,21 @@
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
+<<<<<<< HEAD
 	<link href="<%=conPath %>/css/ex.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
 		// 특정한 세션 삭제하기 ( 세션의 특정 속성을 삭제하기)
 		session.removeAttribute("sessionNum"); 
+=======
+	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<%
+		// 특정한 세션을 삭제하기 (세션의 특정 속성을 삭제하기)
+		session.removeAttribute("sessionNum"); // sessionNum 세션 삭제
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		out.println("<h3>sessionNum 삭제 후 모든 세션 list</h3>");
 		int cnt = 0;
 		Enumeration<String> sAttrNames = session.getAttributeNames();
@@ -25,10 +34,17 @@
 		if(cnt==0) {
 			out.println("<h3>세션 속성이 없습니다</h3>");
 		}
+<<<<<<< HEAD
 		// 모든 세션 삭제
 		session.invalidate();
 		out.println("<h3>session.invalidate() 후");
 		if(request.isRequestedSessionIdValid()) {
+=======
+		// 모든 세션 삭제하기
+		session.invalidate(); // setAttribute 했던 모든 세션 속성 다 제거, 세션 ID도 제거. 세션 추가시 새로운 ID 발부 
+		out.println("<h3>session.invalidate() 후");
+		if(request.isRequestedSessionIdValid()) { // 유효한 세션 attribute가 있는지
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 			out.println("<h3>유효한 세션 속성이 있음</h3>");
 		}else {
 			out.println("<h3>유효한 세션 속성이 없음</h3>");
