@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // 선언적 함수의 재정의 : 맨 마지막에 정의된 함수가 유효
+        function funVar() {
+            alert('함수 A');
+        }
+        funVar();
+        // funVar 를 중간에 놓든 마지막에 놓든 어디에 놓든
+        // 함수 B가 뜸 (마지막에 있는거라서)
+        function funVar() {
+            alert('함수 B');
+        }
+    </script>
+</head>
+<body>
+
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let name = '주아';
+        let method = function(i) {alert(i);};
+        let person = { // 객체
+            name : '지후', // 속성변수
+            age  : 20,    // 속성변수
+            eat  : function(food) {
+                var msg = this.age + '살 ' + this.name + '님은' + food + '(을)를 먹어요.';
+                alert(msg);
+            },
+        };
+        document.write(person.name + '님은 현재' + person['age'] + '살 입니다.<br>' );
+        person.eat(' 마라탕');
+        document.write(person + '<br>');
+        document.write(person.toString() + '<br>');
+    </script>
+</head>
+<body>
+
+</body>
+</html>

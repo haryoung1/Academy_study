@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        let scoreStr = prompt ('점수 입력해', '0~100'); // 스트링으로 return
+        // document.write ('입력한 값 : ' + scoreStr + '-타입 : ' + typeof(ScoreStr))
+        if (scoreStr == null) {
+            alert('암것도 입력 안했어요');
+        }else {
+            // document.write('입력한 값 : ' + scoreStr + '-타입: ' + typeof(scoreStr));
+            let score = Number(scoreStr); // string을 number로 형변환 함수. 형변환 불가할 경우 NaN
+            document.write('입력한 수 : ' + score + '점 / 타입 : ' + typeof(score));
+            if(isNaN(score) || scoreStr == '') { // score가 NaN
+                alert('점수를 입력하랑께');
+            }else {
+                result = score >= 70 ? '(잘했어)' : '(ㄲㅂ)';
+            }
+        }
+        document.write(result);
+
+</script>
+</head>
+<body>
+
+</body>
+</html>

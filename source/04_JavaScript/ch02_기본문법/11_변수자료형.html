@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <script>
+        // 자료형 : string, number, boolean, function, object(array), undefined
+        // 'use strict' ; // 이 파일은 strict 모드로 구현 한다고 선언 함
+        // 변수는 할당 할때마다 타입이 바뀜 (아무거나 넣어도 됨) 
+        var variable;
+        document.write("1. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = "이름은 '홍길동' 입니다";
+        document.write("2. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = 999999;
+        document.write("3. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = true;
+        document.write("4. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = false;
+        document.write("5. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = function() {
+            alert('함수속');
+        }
+        document.write("6. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        // variable();
+        variable = {'name' : '강길동', 'age' : 20};
+        document.write("7. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable + '<br>');
+        variable = [ 10, '홍길동', function(){}, true, {name:'홍', age:30}, [1,2,3]]; // 배열
+        document.write("8. variable 타입 : " + typeof(variable) + ' / 값 : ' + variable[2] + '<br>');
+
+    </script>
+</head>
+<body>
+
+</body>
+</html>

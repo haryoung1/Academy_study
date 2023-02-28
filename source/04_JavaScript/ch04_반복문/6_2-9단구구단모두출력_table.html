@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="ko">
+    <head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        table {
+            width: 500px;
+            margin: 0 auto;
+            border: 1px solid gray; 
+        }
+        caption {margin: 2px;}
+        td {
+            text-align: center;
+            padding: 2px 10px;
+        }
+    </style>
+    <script>
+        document.write('<table>');
+        document.write('<caption>2~9단까지 구구단들</caption>');
+        document.write('<tr>');
+        for (var i = 2; i <= 9; i++) {
+            document.write('<td> ' + i + ' 단</td>');
+        }
+        document.write('</tr>');
+        // 2~9 단까지 구구단 출력
+        for (var i = 1; i <= 9; i++) {
+            document.write('<tr>');
+            for (var j = 2; j <= 9; j++) {
+                document.write('<td>'+j+'*'+i+'='+(j * i)+'</td>');
+            }
+            document.write('</tr>');
+        }
+        document.write('</table>');
+        
+    </script>
+</head>
+<body>
+
+</body>
+</html>
