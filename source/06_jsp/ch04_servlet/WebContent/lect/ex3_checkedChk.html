@@ -1,6 +1,24 @@
 <!DOCTYPE html>
 <html>
 <head>
+<<<<<<< HEAD
+	<meta charset="UTF-8">
+	<title>Insert title here</title>
+	<script type="text/javascript">
+		window.onload = function () {
+			document.querySelector('form').onsubmit = function () {
+				var hobby = document.querySelectorAll('input[type=checkbox]');
+				var checkedCnt = 0;
+				for (var i=0; i<hobby.length; i++) {
+					checkedCnt += hobby[i].checked;
+				}
+			}
+		}
+	</script>
+</head>
+<body>
+	<form action="../lifeCycle" method="post">
+=======
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script>
@@ -29,17 +47,25 @@
 </head>
 <body>
 	<form action="">
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		<p>
 			취미 : <input type="checkbox" name="hobby" value="독서">독서 <input
 				type="checkbox" name="hobby" value="등산">등산 <input
 				type="checkbox" name="hobby" value="연주">연주 <input
+<<<<<<< HEAD
+				type="checkbox" name="hobby" value="기타" checked="checked">기타
+=======
 				type="checkbox" name="hobby" value="기타">기타
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		</p>
 		<p>
 			<input type="submit">
 		</p>
 	</form>
 </body>
+<<<<<<< HEAD
+</html>
+=======
 </html>
 
 
@@ -54,3 +80,4 @@
 
 
 
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

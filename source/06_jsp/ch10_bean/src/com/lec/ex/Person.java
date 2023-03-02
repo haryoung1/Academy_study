@@ -1,5 +1,10 @@
 package com.lec.ex;
+<<<<<<< HEAD
+
+//빈태그 사용하려면 : 매개변수 없는 생성자, setter, getter
+=======
 // 빈 태그 사용 하려면 ? : 매개변수 없는 생성자, setter, getter 필수
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 public class Person {
 	private String name;
 	private int age;
@@ -47,4 +52,8 @@ public class Person {
 	public void setAddress(String address) {
 		this.address = address;
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

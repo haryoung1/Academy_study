@@ -43,8 +43,13 @@
 				<th>이메일</th>
 				<td>
 					<input type="email" name="email" value="<%
+<<<<<<< HEAD
+					String email = dto.getEmail();
+					if(email!=null) out.print(email);
+=======
 																							String email = dto.getEmail();
 																							if(email!=null) out.print(email);
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 					%>">
 				</td>
 			</tr>

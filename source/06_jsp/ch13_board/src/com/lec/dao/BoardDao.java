@@ -19,10 +19,20 @@ public class BoardDao {
 	public static final int FAIL    = 0;
 	// 싱글톤
 	private static BoardDao instance = new BoardDao();
+<<<<<<< HEAD
+	
+	public static BoardDao getInstance() {
+		return instance;
+	}
+	private BoardDao() {
+	}
+	
+=======
 	public static BoardDao getInstance() {
 		return instance;
 	}
 	private BoardDao() {}
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 	private Connection getConnection() throws SQLException {
 		Connection conn = null;
 		try {

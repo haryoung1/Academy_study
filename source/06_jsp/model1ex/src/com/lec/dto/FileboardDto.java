@@ -19,9 +19,16 @@ public class FileboardDto {
 	private String  cemail;
 	
 	public FileboardDto() {}
+<<<<<<< HEAD
+	// 글쓰기 용(원글,답변글), 글 수정용
+	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fref,
+			int fre_step, int fre_level, String fip) {
+		this.fnum = fnum;
+=======
 	// 글쓰기 용
 	public FileboardDto(String cid, String fsubject, String fcontent, String ffilename, String fpw, int fref,
 			int fre_step, int fre_level, String fip) {
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		this.cid = cid;
 		this.fsubject = fsubject;
 		this.fcontent = fcontent;
@@ -51,6 +58,11 @@ public class FileboardDto {
 		this.cname = cname;
 		this.cemail = cemail;
 	}
+<<<<<<< HEAD
+
+
+=======
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 	public int getFnum() {
 		return fnum;
 	}

@@ -7,6 +7,22 @@
 <title>Insert title here</title>
 </head>
 <body>
+<<<<<<< HEAD
+	<caption>7단 구구단</caption>
+	<%
+		for (int i = 1; i < 10; i++) {
+	%>
+	<tr>
+		<td><p>
+				7x<%=i%> = <%=6 * i%></p></td>
+	</tr>
+	<%
+		}
+	%>
+	</table>
+</body>
+</html>
+=======
 <table>
 	<caption>6단 구구단</caption>
 	<%for (int i = 1; i < 10; i++) {%>
@@ -25,3 +41,4 @@
 
 
 
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

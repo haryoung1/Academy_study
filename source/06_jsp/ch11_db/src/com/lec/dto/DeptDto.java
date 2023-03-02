@@ -42,4 +42,8 @@ public class DeptDto {
 	public String toString() {
 		return "DeptDto [deptno=" + deptno + ", dname=" + dname + ", loc=" + loc + "]";
 	}
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
