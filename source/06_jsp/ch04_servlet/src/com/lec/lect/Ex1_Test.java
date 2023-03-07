@@ -47,8 +47,5 @@ public class Ex1_Test extends HttpServlet {
 		out.print("</html>");
 		out.close(); // 스트림 닫기 마지막에 꼭 넣어야함.
 	}
-<<<<<<< HEAD
+
 }
-=======
-}
->>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf

@@ -1,39 +1,28 @@
 <%@page import="java.util.Enumeration"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-<<<<<<< HEAD
     pageEncoding="UTF-8"%>
-=======
-	pageEncoding="UTF-8"%>
->>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 <% String conPath = request.getContextPath(); %>
 <!DOCTYPE html>
 <html>
 <head>
-<<<<<<< HEAD
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="<%=conPath %>/css/ex.css" rel="stylesheet" type="text/css">
-=======
-<meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="<%=conPath %>/css/style.css" rel="stylesheet"
-	type="text/css">
->>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
+	<link href="<%=conPath %>/css/style.css" rel="stylesheet" type="text/css">
 </head>
 <body>
 	<%
-		// 세션에 추가 한 모든 데이터 list
+		// 세션에 추가한 모든 데이터 list
 		out.println("<h1>모든 세션 속성들</h1>");
 		Enumeration<String> sAttrNames = session.getAttributeNames();
 		int cnt = 0;
-		while(sAttrNames.hasMoreElements()) {
+		while(sAttrNames.hasMoreElements()){
 			String sname = sAttrNames.nextElement();
 			String svalue = session.getAttribute(sname).toString();
-			out.println("<h2>" + sname + "(세션속성 이름) : " + svalue + "(세션값)</h2>");
+			out.println("<h2>"+sname+"(세션속성 이름) : " + svalue + "(세션값)</h2>");
 			cnt++;
-		} // while
-		if(cnt==0) {
-			out.println("<h2>세션 속성이 없어요 흑흑</h2>");
+		}//while
+		if(cnt==0){
+			out.println("<h2>세션 속성이 없습니다</h2>");
 		}
 	%>
 	<hr>
@@ -42,7 +31,7 @@
 	<hr>
 	<a href="ex1_sessionAddAttr.jsp">세션 데이터 추가</a><br>
 	<a href="ex2_sessionGet.jsp">특정 세션 GET</a><br>
-	<a href="ex3_sessionList.jsp">모든 세션 리스트</a><br>
+	<a href="ex3_sessionList.jsp">세션 모든 데이터 리스트</a><br>
 	<a href="ex4_sessionRemove.jsp">세션 삭제(특정 세션이나 모든 세션 데이터)</a>
 </body>
 </html>
