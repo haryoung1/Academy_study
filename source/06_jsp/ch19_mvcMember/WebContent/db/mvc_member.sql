@@ -1,0 +1,35 @@
+DROP TABLE MVC_MEMBER;
+
+CREATE TABLE MVC_MEMBER (
+    mID VARCHAR2(30) PRIMARY KEY,
+    mPW VARCHAR2(30) NOT NULL,
+    mNAME VARCHAR2(30) NOT NULL,
+    mEMAIL VARCHAR2(30),
+    mPhoto VARCHAR2(30) NOT NULL,
+    mBIRTH DATE,
+    mADDRESS VARCHAR2(300),
+    mRDATE DATE DEFAULT SYSDATE NOT NULL
+);
+
+-- DUMMY DATA
+INSERT INTO MVC_MEMBER (mID, mPW, mNAME, mEMAIL, mPhoto, mBIRTH, mADDRESS)
+    VALUES ('aaa', '123', '강길동', 'kang@naver.com','NOIMG.JPG', '1994/08/25', '서울특별시');
+INSERT INTO MVC_MEMBER (mID, mPW, mNAME, mEMAIL, mPhoto, mBIRTH, mADDRESS)
+    VALUES ('bbb', '123', '강길순', 'soon@naver.com','NOIMG.JPG', '2000/01/01', '서울특별시');
+SELECT * FROM MVC_MEMBER;
+
+-- DAO에 들어갈 query
+-- 1. id 중복체크
+SELECT * FROM MVC_MEMBER WHERE MID='aaa';
+
+-- 2. join (회원가입)
+INSERT INTO MVC_MEMBER (mID, mPW, mNAME, mEMAIL, mPhoto, mBIRTH, mADDRESS)
+    VALUES ('ccc', '123', '홍길동', 'hong@naver.com','NOIMG.JPG', '1954/05/21', '서울특별시');
+
+-- 3. LOGIN CHECK
+SELECT * FROM MVC_MEMBER WHERE MID='aaa' and MPW='123';
+
+-- 4. mID로 MemberDto 가져오기
+SELECT * FROM MVC_MEMBER WHERE MID='aaa';
+SELECT * FROM MVC_MEMBER;
+commit;

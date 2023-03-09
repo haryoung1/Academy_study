@@ -33,7 +33,6 @@ caption {
 
 h2, b {
 	text-align: center;
-	font-weight: bold;
 	color: red;
 }
 
@@ -52,8 +51,4 @@ a {
 
 p {
 	text-align: center;
-}
-
-table input:not(.btn), textarea {
-	width: 90%;
 }

@@ -49,11 +49,34 @@ public class BController extends HttpServlet {
 				writeView = 0;
 			}
 			viewPage = "list.do";
-		} else if (command.equals("/contentView.do")) {
+		} else if (command.equals("/contentView.do")) { // 상세보기
 			service = new BContentService();
 			service.execute(request, response);
 			viewPage = "board/content_view.jsp";
+		} else if (command.equals("/modifyView.do")) { // 글수정을 위한 view
+			service = new BModifyViewServic();
+			service.execute(request, response);
+			viewPage = "board/modify_view.jsp"; // requestScope.modifyBoard param.bid, param.pageNum
+		} else if (command.equals("/modify.do")) { // DB에 글 수정
+			service = new BModifyService();
+			service.execute(request, response);
+			// viewPage = "list.do"; // requestScope.modifyResult, param.pageNum, param.bid,
+			// param.bname, ...
+			viewPage = "contentView.do";
+		} else if (command.equals("/delete.do")) { // DB에 글 삭제
+			service = new BDeleteService();
+			service.execute(request, response);
+			viewPage = "list.do";
+		} else if (command.equals("/replyView.do")) { // 답변글쓰기 view
+			service = new BReplyViewService();
+			service.execute(request, response);
+			viewPage = "/board/reply_view.jsp"; // param.pageNum, param.bid, requestScope.replyBoard(원글정보)
+		} else if (command.equals("/reply.do")) {
+			service = new BReplyService();
+			service.execute(request, response);
+			viewPage = "list.do"; // param.pageNum, .. 
 		}
+
 		RequestDispatcher dispatcher = request.getRequestDispatcher(viewPage);
 		dispatcher.forward(request, response);
 	}

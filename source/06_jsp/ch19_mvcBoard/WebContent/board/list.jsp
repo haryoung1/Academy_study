@@ -23,7 +23,33 @@
 			alert('글쓰기 실패');
 		</script>
 	</c:if>
-
+	<c:if test="${modifyResult eq SUCCESS }">
+		<script>
+			alert('${param.bid}번 글 수정 성공');
+		</script>
+	</c:if>
+	<c:if test="${modifyResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 글 수정 실패');
+			history.back();
+		</script>
+	</c:if>
+	<c:if test="${not empty deleteResult }">
+		<script>
+			alert('${deleteResult }');	
+		</script>
+	</c:if>
+	<c:if test="${replyResult eq SUCCESS }">
+		<script>
+			alert('${param.bid}번 답변 글쓰기 성공');
+		</script>
+	</c:if>
+	<c:if test="${replyResult eq FAIL }">
+		<script>
+			alert('${param.bid}번 답변 글쓰기 실패');
+			history.back();
+		</script>
+	</c:if>
 	<table>
 		<caption>게시판</caption>
 		<tr>
@@ -57,9 +83,9 @@
 							<c:if test="${i eq dto.bindent }">
 								└─
 							</c:if>
-						</c:forEach> <!-- 답글 들여쓰기 처리 --> <a
-						href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}">
-							${dto.btitle } </a> <c:if test="${dto.bhit > 10 }">
+						</c:forEach> <!-- 답글 들여쓰기 처리 --> 
+						<a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}"> ${dto.btitle } </a> 
+						<c:if test="${dto.bhit > 10 }">
 							<b> * </b>
 						</c:if></td>
 					<td>${dto.bip }</td>

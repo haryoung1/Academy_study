@@ -1,34 +1,25 @@
 package com.lec.dto;
-
 import java.sql.Date;
-
 public class FileboardDto {
-	private int 	fnum;
-	private String  cid;
-	private String  fsubject;
-	private String  fcontent;
-	private String  ffilename;
-	private String  fpw;
-	private int 	fhit;
-	private int 	fref;
-	private int 	fre_step;
-	private int 	fre_level;
-	private String 	fip;
-	private Date	frdate;
-	private String  cname;
-	private String  cemail;
-	
+	private int fnum;
+	private String cid;
+	private String fsubject;
+	private String fcontent;
+	private String ffilename;
+	private String fpw;
+	private int    fhit;
+	private int    fref;
+	private int    fre_step;
+	private int    fre_level;
+	private String fip;
+	private Date   frdate;
+	private String cname;
+	private String cemail;
 	public FileboardDto() {}
-<<<<<<< HEAD
-	// 글쓰기 용(원글,답변글), 글 수정용
+	// 글쓰기 용(원글, 답변글), 글수정용
 	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fref,
 			int fre_step, int fre_level, String fip) {
 		this.fnum = fnum;
-=======
-	// 글쓰기 용
-	public FileboardDto(String cid, String fsubject, String fcontent, String ffilename, String fpw, int fref,
-			int fre_step, int fre_level, String fip) {
->>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 		this.cid = cid;
 		this.fsubject = fsubject;
 		this.fcontent = fcontent;
@@ -40,9 +31,9 @@ public class FileboardDto {
 		this.fip = fip;
 	}
 	// 글목록이나 글상세보기용
-	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, String ffilename, String fpw, int fhit,
-			int fref, int fre_step, int fre_level, String fip, Date frdate, String cname, String cemail) {
-		super();
+	public FileboardDto(int fnum, String cid, String fsubject, String fcontent, 
+			String ffilename, String fpw, int fhit,	int fref, int fre_step, 
+			int fre_level, String fip, Date frdate, String cname, String cemail) {
 		this.fnum = fnum;
 		this.cid = cid;
 		this.fsubject = fsubject;
@@ -58,11 +49,8 @@ public class FileboardDto {
 		this.cname = cname;
 		this.cemail = cemail;
 	}
-<<<<<<< HEAD
+	
 
-
-=======
->>>>>>> 634167439382932c285b4c7ab32bb31f61de1cbf
 	public int getFnum() {
 		return fnum;
 	}
