@@ -11,5 +11,4 @@ public class MLogoutService implements Service {
 		HttpSession session = request.getSession();
 		session.invalidate();
 	}
-
 }
