@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<style>
+
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+	$(document).ready(function() {
+		$('img').mouseover(function() {
+			var idx = $(this).attr('src').substring(4, 5); // 4번째 글자부터 5번째 앞까지 : 0 || 1 || 2 || 3
+			$(this).attr('src', 'img/' + idx + 'over.jpg');
+		});
+		$('img').mouseout(function() {
+			var idx = $(this).attr('src').substring(4,5); // 4번째 글자부터 5번째 앞까지 : 0 || 1 || 2 || 3 
+			$(this).attr('src', 'img/' + idx + 'out.jpg');
+		});
+	});
+</script>
+</head>
+<body>
+	<img src="img/0out.jpg"> <!-- img/0over.jpg -->
+	<img src="img/1out.jpg"> <!-- img/1over.jpg -->
+	<img src="img/2out.jpg"> <!-- img/2over.jpg -->
+	<img src="img/3out.jpg"> <!-- img/3over.jpg -->
+</body>
+</html>

@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link href="css/style.css" rel="stylesheet" type="text/css">
+<style>
+h1, td, div {
+	text-align: center;
+}
+
+table td {
+	width: 100px;
+	height: 100px;
+	background-color: #AAFFAA;
+}
+
+.tdRed {
+	background-color: red;
+}
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+	$(document).ready(function() {
+		var ddukIdx = parseInt(Math.random() * 9);
+		$('td').each(function(idx, item) {
+			$(this).click(function() {
+				$('td').removeClass('tdRed');
+				if (idx == ddukIdx) {
+					$('#result').html('축하축하 맞췄어요');
+					$(this).css('background-image', 'url("img/dduk.jpg")');
+					$('td').off();
+				} else {
+					$('#result').text('거기가 아니에요 비밀인디 ' + ddukIdx);
+					$(this).addClass('tdRed');
+				}
+			});
+		});
+	});
+</script>
+</head>
+<body>
+	<table>
+		<tr>
+			<td>0</td>
+			<td>1</td>
+			<td>2</td>
+		</tr>
+		<tr>
+			<td>3</td>
+			<td>4</td>
+			<td>5</td>
+		</tr>
+		<tr>
+			<td>6</td>
+			<td>7</td>
+			<td>8</td>
+		</tr>
+	</table>
+	<div id="result">선택한곳이 맞는지 답 뿌리는곳</div>
+</body>
+</html>

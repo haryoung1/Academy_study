@@ -9,6 +9,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="${conPath }/css/style.css" rel="stylesheet" type="text/css">
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+	$(document).ready(function() {
+		$('tr').click(function() {
+			var bid = $(this).children().eq(0).text();
+			if (!isNaN(bid)) {
+				location.href = '${conPath }/contentView.do?bid='+bid+'&pageNum=${pageNum}'; 
+				
+			}
+		});
+	});
+</script>
 </head>
 <body>
 	<c:set var="SUCCESS" value="1" />
@@ -36,7 +48,7 @@
 	</c:if>
 	<c:if test="${not empty deleteResult }">
 		<script>
-			alert('${deleteResult }');	
+			alert('${deleteResult }');
 		</script>
 	</c:if>
 	<c:if test="${replyResult eq SUCCESS }">
@@ -84,7 +96,8 @@
 								└─
 							</c:if>
 						</c:forEach> <!-- 답글 들여쓰기 처리 --> 
-						<a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}"> ${dto.btitle } </a> 
+						<!--<a href="${conPath }/contentView.do?bid=${dto.bid}&pageNum=${pageNum}"> -->
+							${dto.btitle }
 						<c:if test="${dto.bhit > 10 }">
 							<b> * </b>
 						</c:if></td>
