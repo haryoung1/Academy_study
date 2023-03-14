@@ -29,6 +29,7 @@ table td {
 				if (idx == ddukIdx) {
 					$('#result').html('축하축하 맞췄어요');
 					$(this).css('background-image', 'url("img/dduk.jpg")');
+					$(this).css('background-size', '100%');
 					$('td').off();
 				} else {
 					$('#result').text('거기가 아니에요 비밀인디 ' + ddukIdx);

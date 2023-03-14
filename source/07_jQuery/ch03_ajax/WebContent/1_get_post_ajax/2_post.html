@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<style>
+</style>
+<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
+<script>
+	$(document).ready(function() {
+		$('button').click(function() {
+			var mid = $('#mid').val();
+			// $.get( '요청url', callback )
+			// $.post('요청url', 요청파라미터, callback);
+			$.post('midConfirm.jsp', {
+				mid : mid
+			}, function(data, status) { // post 방식은 파라미터에 url이 숨겨지니까 경로 다 안써도됨
+				if (status == 'success') {
+					$('span#midConfirmResult').html(data);
+				} else {
+					alert(status);
+				}
+			});
+		}); // 버튼의 click event
+		$('#mid').keyup(function() {
+			var mid = $(this).val();
+			if (mid.length < 2) {
+				$('span#midConfirmResult').text('id는 2글자 이상 입니다.');
+			} else {
+				$.post('midConfirm.jsp', {
+					mid : mid
+				}, function(data, status) {
+					if (status == 'success') {
+						$('span#midConfirmResult').html(data);
+					}else {
+						alert(status);
+					}
+				});
+			}
+		});
+	});
+</script>
+</head>
+<body>
+	아이디
+	<input type="text" name="mid" id="mid">
+	<button>중복체크</button>
+	<br>
+	<span id="midConfirmResult"></span>
+</body>
+</html>
