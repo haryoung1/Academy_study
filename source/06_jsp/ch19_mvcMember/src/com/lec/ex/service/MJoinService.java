@@ -94,7 +94,7 @@ public class MJoinService implements Service {
 					if (is != null)
 						is.close();
 				} catch (IOException e) {
-					
+
 				}
 			}
 		}

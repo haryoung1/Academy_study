@@ -22,18 +22,20 @@ p {
 	<c:if test="${not empty loginErrorMsg }">
 		<script>
 			alert('${loginErrorMsg}');
-			history.back();
-			//location.href = '${conPath }/loginView.do';
+			//history.back();
+			location.href = '${conPath }/loginView.do';
 		</script>
 	</c:if>
+
 	<c:if test="${not empty modifyResult }">
 		<script>
-			alert('${modifyResult}')
+			alert('${modifyResult}');
 		</script>
 	</c:if>
 	<c:if test="${not empty modifyErrorMsg }">
 		<script>
-			alert('${modifyErrorMsg}')
+			alert('${modifyErrorMsg}');
+			history.back();
 		</script>
 	</c:if>
 	<c:if test="${not empty withdrawalResult }">

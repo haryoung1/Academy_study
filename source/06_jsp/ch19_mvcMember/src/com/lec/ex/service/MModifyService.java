@@ -79,7 +79,7 @@ public class MModifyService implements Service {
 		// 서버에 저장된 파일을 소스폴더로 복사 ( NOIMG.JPG, result가 FAIL이 아닐 경우 )
 		File serverFile = new File(path + "/" + mphoto);
 		if (!mphoto.equals("NOIMG.JPG") && result == MemberDao.SUCCESS) {
-			InputStream  is = null;
+			InputStream is = null;
 			OutputStream os = null;
 			try {
 				is = new FileInputStream(serverFile);
