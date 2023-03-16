@@ -45,9 +45,13 @@ public class BoardDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * " + "FROM (SELECT ROWNUM RN, A.*" + "FROM (SELECT MNAME, F.*"
-				+ "FROM FILEBOARD F, MVC_MEMBER M" + "WHERE F.MID = M.MID" + "ORDER BY fGROUP DESC, fSTEP) A)"
-				+ "WHERE RN BETWEEN ? AND ?";
+		String sql = "SELECT * " + 
+				"    FROM (SELECT ROWNUM RN, A.*" + 
+				"        FROM (SELECT MNAME, F.*" + 
+				"               FROM FILEBOARD F, MVC_MEMBER M" + 
+				"        WHERE F.MID = M.MID" + 
+				"        ORDER BY fGROUP DESC, fSTEP) A)" + 
+				"    WHERE RN BETWEEN ? AND ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
@@ -62,7 +66,7 @@ public class BoardDao {
 				String fcontent = rs.getString("fcontent");
 				String ffilename = rs.getString("ffilename");
 				Timestamp frdate = rs.getTimestamp("frdate");
-				int fhit = rs.getInt("fid");
+				int fhit = rs.getInt("fhit");
 				int fgroup = rs.getInt("fgroup");
 				int fstep = rs.getInt("fstep");
 				int findent = rs.getInt("findent");
@@ -112,7 +116,7 @@ public class BoardDao {
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
-				// TODO: handle exception
+				System.out.println(e.getMessage());
 			}
 		}
 		return totCnt;
@@ -169,7 +173,7 @@ public class BoardDao {
 				if (conn != null)
 					conn.close();
 			} catch (SQLException e) {
-				// TODO: handle exception
+				System.out.println(e.getMessage());
 			}
 		}
 	}
@@ -269,8 +273,13 @@ public class BoardDao {
 		int result = FAIL;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
-		String sql = "UPDATE FILEBOARD SET" + "FTITLE = ?," + "FCONTENT = ?," + "fFILENAME = ?," + "FIP = ?,"
-				+ "FRDATE = SYSDATE" + "WHERE FID = ?";
+		String sql = "UPDATE FILEBOARD SET" + 
+				"                    FTITLE = ?," + 
+				"                    FCONTENT = ?," + 
+				"                    fFILENAME = ?," + 
+				"                    FIP = ?," + 
+				"                    FRDATE = SYSDATE" + 
+				"            WHERE FID = ?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);

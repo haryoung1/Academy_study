@@ -31,6 +31,11 @@
 			history.back();
 		</script>
 	</c:if>
+	<c:if test="${not empty modifyResult }">
+		<script>
+			alert('${modifyResult}');
+		</script>
+	</c:if>
 	<c:if test="${not empty withdrawalResult }">
 		<script>
 			alert('${withdrawalResult}');

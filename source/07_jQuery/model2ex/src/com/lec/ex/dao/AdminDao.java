@@ -79,15 +79,17 @@ public class AdminDao {
 		Connection conn = null;
 		PreparedStatement pstmt = null;
 		ResultSet rs = null;
-		String sql = "SELECT * FROM MVC_MEMBER WHERE mId=?";
+		String sql = "SELECT * FROM ADMIN WHERE aID=?";
 		try {
 			conn = getConnection();
 			pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, aid);
 			rs = pstmt.executeQuery();
 			if (rs.next()) {
-				String apw = rs.getString("apw");
-				String aname = rs.getString("aname");
+				admin = new AdminDto();
+				admin.setAid(rs.getString("aid"));
+				admin.setApw(rs.getString("apw"));
+				admin.setAname(rs.getString("aname"));
 			}
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
