@@ -32,6 +32,7 @@ public class BoardReplyService implements Service {
 			Enumeration<String> params = mRequest.getFileNames();
 			String param = params.nextElement();
 			ffileName = mRequest.getFilesystemName(param);
+			
 			// mId, fTitle, fContent, fileName, fIp
 			HttpSession session = request.getSession();
 			MemberDto member = (MemberDto) session.getAttribute("member");

@@ -20,7 +20,7 @@
 	<jsp:include page="../main/header.jsp" />
 	<div id="content_form">
 		<table>
-			<caption>${board.fid }번 글 상세보기</caption>
+			<caption>${board.fid }번글상세보기</caption>
 			<tr>
 				<th>작성자</th>
 				<td>${board.mname }(${board.mid })님</td>
@@ -52,8 +52,9 @@
 							onclick="location='${conPath}/boardModifyView.do?fid=${board.fid }&pageNum=${param.pageNum }'">수정
 						</button>
 					</c:if> <c:if test="${member.mid eq board.mid or not empty admin}">
-							<button onclick="location='${conPath}/boardDelete.do?fid=${board.fid }&pageNum=${param.pageNum }'">삭제
-							</button>
+						<button
+							onclick="location='${conPath}/boardDelete.do?fid=${board.fid }&pageNum=${param.pageNum }'">삭제
+						</button>
 					</c:if> <c:if test="${not empty member }">
 						<button
 							onclick="location='${conPath}/boardReplyView.do?fid=${board.fid }&pageNum=${param.pageNum }'">답변</button>
