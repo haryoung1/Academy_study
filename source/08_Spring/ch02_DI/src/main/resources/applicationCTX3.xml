@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+	
+	<bean id="student1" class="com.lec.ch02.ex3_student.Student"> <!-- 기초 데이터 타입 -->
+		<constructor-arg>
+			<value>홍길동</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>25</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>2학년</value>
+		</constructor-arg>
+		<constructor-arg>
+			<value>computer반</value>
+		</constructor-arg>
+	</bean>
+	
+	<bean id="student2" class="com.lec.ch02.ex3_student.Student"> <!-- 기초 데이터 타입 -->
+		<!-- 이 방식이 더 간결함 -->
+		<constructor-arg value="홍길순"/>
+		<constructor-arg value="29"/>
+		<constructor-arg value="3학년"/>
+		<constructor-arg value="케이팝 반"/>
+	</bean>
+	
+	<bean id="studentPrint" class="com.lec.ch02.ex3_student.StudentPrint"> <!-- 여기는 객체타입이기 때문에 ref를 사용해야 한다. -->
+		<constructor-arg ref="student1"/>
+	</bean>
+</beans>

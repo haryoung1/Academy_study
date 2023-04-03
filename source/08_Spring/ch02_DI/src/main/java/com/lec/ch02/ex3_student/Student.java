@@ -5,7 +5,8 @@ import lombok.Data;
 
 @AllArgsConstructor
 @Data
-public class Student {
+public class Student { 
+	// xml에 파싱할때 꼭 순서를 지켜서 넣어야 함
 	private String name;
 	private int age;
 	private String gradeNum;

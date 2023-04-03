@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<!-- 다른자바 소스는 건드리지 않고, xml 파일만 수정한다. -->
+
+	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Bicycle" /> -->
+	<!--<bean id="vh" class="com.lec.ch02.ex4_vehicle.Car" /> -->
+
+	<bean id="vh" class="com.lec.ch02.ex4_vehicle.Airplane" />
+
+</beans>
