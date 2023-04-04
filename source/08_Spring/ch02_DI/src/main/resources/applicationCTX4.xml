@@ -5,9 +5,12 @@
 
 	<!-- 다른자바 소스는 건드리지 않고, xml 파일만 수정한다. -->
 
-	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Bicycle" /> -->
-	<!--<bean id="vh" class="com.lec.ch02.ex4_vehicle.Car" /> -->
-
-	<bean id="vh" class="com.lec.ch02.ex4_vehicle.Airplane" />
-
+	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Bicycle" /> (자전거 ) -->
+	<!--<bean id="vh" class="com.lec.ch02.ex4_vehicle.Car" /> (자동차) -->
+	<!-- <bean id="vh" class="com.lec.ch02.ex4_vehicle.Airplane" /> -->
+	
+	<bean id="vh" class="com.lec.ch02.ex4_vehicle.Vehicleimpl">
+		<property name="vehicle" value="제트기" />
+		<property name="speed" value="1000" />
+	</bean>
 </beans>

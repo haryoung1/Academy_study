@@ -8,7 +8,7 @@ public class VehicleTestMain {
 		String location = "classpath:applicationCTX4.xml";
 		AbstractApplicationContext ctx = new GenericXmlApplicationContext(location);
 		Vehicle vh = ctx.getBean("vh", Vehicle.class);
-		vh.ride("홍길동");
+		vh.ride("강길동");
 		ctx.close();
 	}
 }
