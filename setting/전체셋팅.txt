@@ -1,0 +1,39 @@
+강사용   ip : \\192.168.0.31 
+1. java setup후  path 설정
+2. IDE 폴더 밑에  이클립스(2020-06)
+    java와    jee  압축풀기
+3. git_scm  셋업
+4. oracle  셋업
+5. IDE sqlDeveloper   
+6. node  셋업
+7. IDE 폴더에 톰캣 압축풀기
+8. 내  git에서 자료 가져오기
+9.  이클립스   jee  실행하기
+(note 폴더의  이클립스 문제발생시. txt)
+10. 자바   JDBC  참조
+C:\oraclexe\app\oracle\product\11.2.0\server\jdbc\lib\ojdbc6.jar를
+C:\Program Files\Java\jre1.8.0_351\lib\ext\ojdbc6.jar로 복사후
+
+이클립스에서 Windows 메뉴 – preferences 
+– Java – Installed JREs – edit – Add External JARs을 통해  
+ojdbc6.jar를 등록 후 finish 
+
+11 Severs의 Tomcat v9.0밑의 context.xml에 
+	    <Resource 
+		auth="Container"
+		driverClassName = "oracle.jdbc.driver.OracleDriver"
+		url = "jdbc:oracle:thin:@localhost:1521:xe"
+		username = "scott"
+		password = "tiger"
+		name = "jdbc/Oracle11g" 
+		type = "javax.sql.DataSource"
+		maxActive = "10"
+		maxWait = "1000"
+	/>추가하고 Publish to the Server.
+12. 오라클에 scott계정 생성하고 demo.sql 실행
+
+
+
+
+
+
