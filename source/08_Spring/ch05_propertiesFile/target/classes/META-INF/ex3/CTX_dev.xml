@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd"
+	profile="dev"> <!-- profile dev 설정 (테스트 환경이랑 안 겹치게) -->
+
+	<!-- 개발환경 -->
+
+	<bean id="serverInfo" class="com.lec.ch05.ex3.ServerInfo">
+		<property name="ipNum" value="127.0.0.1" />
+		<property name="portNum" value="8090" />
+	</bean>
+</beans>
