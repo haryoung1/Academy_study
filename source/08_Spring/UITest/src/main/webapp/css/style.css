@@ -1,0 +1,10 @@
+@charset "UTF-8";
+
+body {
+	background-color: lightyellow;
+}
+
+span {
+	color: red;
+	text-align: right;
+}
