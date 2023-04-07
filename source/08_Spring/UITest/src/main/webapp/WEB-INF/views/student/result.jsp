@@ -7,44 +7,46 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="${conPath}/css/style.css">
 </head>
 <body>
-	<h3 style="text-align: right;">
-		<span style="text-align: right;">"현재 총${cnt }명"</span>
-	</h3>
-	<table>
-		<caption>결과는 다음과 같습니다</caption>
-		<tr>
-			<th>이름 :</th>
-			<td>${member.name }</td>
-		</tr>
-		<tr>
-			<th>국어 :</th>
-			<td>${member.kor }</td>
-		</tr>
-		<tr>
-			<th>영어 :</th>
-			<td>${member.eng }</td>
-		</tr>
-		<tr>
-			<th>수학 :</th>
-			<td>${member.mat }</td>
-		</tr>
-		<tr>
-			<th>총점 :</th>
-			<td>${member.kor + member.eng + member.mat}</td>
-		</tr>
-		<tr>
-			<th>평균 :</th>
-			<td>${member.kor + member.eng + member.mat / 3}</td>
-		</tr>
-		<tr>
-			<th colspan="2">
-				<button onclick="history.back()">뒤로가기</button>
-				<button onclick="location.href='${conPath }/input.do'">다시입력</button>
-			</th>
-		</tr>
-	</table>
+	<div id="wrap">
+		<p id="right">
+			<span>현재 총 ${cnt }명</span>
+		</p>
+		<table>
+			<caption>결과는 다음과 같습니다</caption>
+			<tr>
+				<th>이름 :</th>
+				<td>${student.name }</td>
+			</tr>
+			<tr>
+				<th>국어 :</th>
+				<td>${student.kor }</td>
+			</tr>
+			<tr>
+				<th>영어 :</th>
+				<td>${student.eng }</td>
+			</tr>
+			<tr>
+				<th>수학 :</th>
+				<td>${student.mat }</td>
+			</tr>
+			<tr>
+				<th>총점 :</th>
+				<td>${student.sum()}</td>
+			</tr>
+			<tr>
+				<th>평균 :</th>
+				<td>${student.avg()}</td>
+			</tr>
+			<tr>
+				<th colspan="2">
+					<button id="btn" onclick="history.back()">뒤로가기</button>
+					<button id="btn" onclick="location.href='${conPath }/input.do'">다시입력</button>
+				</th>
+			</tr>
+		</table>
+	</div>
 </body>
 </html>

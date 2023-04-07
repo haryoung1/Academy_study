@@ -5,10 +5,11 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.lec.UITest.vo.Member;
+import com.lec.UITest.vo.Student;
 
 @Controller
 public class MyController {
+
 	@ModelAttribute("cnt")
 	public int cnt() {
 		return 4;
@@ -16,11 +17,11 @@ public class MyController {
 
 	@RequestMapping(value = "input.do", method = RequestMethod.GET)
 	public String input() {
-		return "/student/input";
+		return "student/input";
 	}
 
 	@RequestMapping(value = "input.do", method = RequestMethod.POST)
-	public String result(Member member) {
-		return "/student/result";
+	public String result(Student student) {
+		return "student/result";
 	}
 }

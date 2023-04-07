@@ -1,10 +1,32 @@
 @charset "UTF-8";
 
 body {
+	text-align: center;
 	background-color: lightyellow;
+}
+
+form {
+	text-align: center;
+	margin: 0 auto;
+}
+
+}
+#wrap {
+	margin: 0 auto;
 }
 
 span {
 	color: red;
-	text-align: right;
+}
+
+#right {
+	margin: 0 auto;
+}
+
+input:not([type=submit]) {
+	width: 100px;
+}
+
+#btn {
+	width: 100px;
 }

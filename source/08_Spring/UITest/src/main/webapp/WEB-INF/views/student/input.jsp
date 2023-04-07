@@ -7,40 +7,41 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+<link rel="stylesheet" href="${conPath}/css/style.css">
 </head>
 <body>
-	<h3 style="text-align: right;">
-		<span style="text-align: right;">"현재 총${cnt }명"</span>
-	</h3>
-	<form action="${conPath }/input.do" method="post">
-		<table>
-			<caption>개인 정보입력</caption>
-			<tr>
-				<th>이름</th>
-				<td><input type="text" name="name" minlength="1"
-					placeholder="홍길동"></td>
-			</tr>
-			<tr>
-				<th>국어</th>
-				<td><input type="number" name="kor" max="100" placeholder="100">
-				</td>
-			</tr>
-			<tr>
-				<th>영어</th>
-				<td><input type="number" name="eng" max="100" placeholder="100">
-				</td>
-			</tr>
-			<tr>
-				<th>수학</th>
-				<td><input type="number" name="mat" max="100" placeholder="99">
-				</td>
-			</tr>
-			<tr>
-				<th colspan="2"><input type="submit" value="입력"></th>
-			</tr>
-		</table>
-	</form>
-
+	<div id="wrap">
+		<p id="right">
+			<span>현재 총 ${cnt }명</span>
+		</p>
+		<form action="${conPath }/input.do" method="post">
+			<table>
+				<caption>개인정보 입력</caption>
+				<tr>
+					<th>이름:</th>
+					<td><input type="text" name="name" placeholder="홍길동">
+					</td>
+				</tr>
+				<tr>
+					<th>국어:</th>
+					<td><input type="number" name="kor" min="0" max="100"
+						placeholder="100"></td>
+				</tr>
+				<tr>
+					<th>영어:</th>
+					<td><input type="number" name="eng" min="0" max="100"
+						placeholder="100"></td>
+				</tr>
+				<tr>
+					<th>수학:</th>
+					<td><input type="number" name="mat" min="0" max="100"
+						placeholder="99"></td>
+				</tr>
+				<tr>
+					<th colspan="2"><input type="submit" value="입력" id="input"></th>
+				</tr>
+			</table>
+		</form>
+	</div>
 </body>
 </html>
