@@ -14,25 +14,25 @@
 	<!-- model.modifyBoard, param.bid, param.pageNum가 있음 -->
 	<form action="${conPath }/mvcBoard/modify.do" method="post">
 		<input type="hidden" name="pageNum" value="${param.pageNum }">
-		<input type="hidden" name="bid" value="${modifyBoard.bid }">
+		<input type="hidden" name="bid" value="${board.bid }">
 		<table>
 			<caption>${param.bid }번 글수정</caption>
 			<tr>
 				<th>작성자</th>
 				<td>
-					<input type="text" name="bname" value="${modifyBoard.bname }" required="required">
+					<input type="text" name="bname" value="${board.bname }" required="required">
 				</td>
 			</tr>
 			<tr>
 				<th>제목</th>
 				<td>
-					<input type="text" name="btitle" value="${modifyBoard.btitle }" required="required">
+					<input type="text" name="btitle" value="${board.btitle }" required="required">
 				</td>
 			</tr>
 			<tr>
 				<th>본문</th>
 				<td>
-					<textarea rows="5" name="bcontent">${modifyBoard.bcontent }</textarea>
+					<textarea rows="5" name="bcontent">${board.bcontent }</textarea>
 				</td>
 			</tr>
 			<tr>
