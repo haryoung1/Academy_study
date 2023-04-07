@@ -82,4 +82,12 @@ public class MvcBoardController {
 		bservice.execute(model);
 		return "forward:content.do";
 	}
+
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete(int bid, Model model) {
+		model.addAttribute("bid", bid);
+		bservice = new BDeleteService();
+		bservice.execute(model);
+		return "forward:list.do";
+	}
 }
