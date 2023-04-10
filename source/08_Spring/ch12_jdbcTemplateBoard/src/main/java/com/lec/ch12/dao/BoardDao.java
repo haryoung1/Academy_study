@@ -12,14 +12,21 @@ import javax.naming.InitialContext;
 import javax.naming.NamingException;
 import javax.sql.DataSource;
 
+import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.core.PreparedStatementSetter;
+
 import com.lec.ch12.dto.BoardDto;
+import com.lec.ch12.util.Constant;
 
 public class BoardDao {
 	private final int SUCCESS = 1;
 	private final int FAIL = 0;
+	private JdbcTemplate template; //
 	private DataSource ds;
 
 	public BoardDao() {
+		template = Constant.template; //
 		try {
 			Context ctx = new InitialContext();
 			ds = (DataSource) ctx.lookup("java:comp/env/jdbc/Oracle11g");
@@ -72,7 +79,50 @@ public class BoardDao {
 		}
 		return dtos;
 	}
-
+	
+	// 1. 글목록(startRow ~ endRow까지)
+		public ArrayList<BoardDto> list() {
+			ArrayList<BoardDto> dtos = new ArrayList<BoardDto>();
+			Connection conn = null;
+			PreparedStatement pstmt = null;
+			ResultSet rs = null;
+			String sql = "SELECT * " + "  FROM (SELECT ROWNUM RN, A.* "
+					   + "FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)";
+			try {
+				conn = ds.getConnection();
+				pstmt = conn.prepareStatement(sql);
+				pstmt.setInt(1, startRow);
+				pstmt.setInt(2, endRow);
+				rs = pstmt.executeQuery();
+				while (rs.next()) {
+					int bid = rs.getInt("bid");
+					String bname = rs.getString("bname");
+					String btitle = rs.getString("btitle");
+					String bcontent = rs.getString("bcontent");
+					Timestamp bdate = rs.getTimestamp("bdate");
+					int bhit = rs.getInt("bhit");
+					int bgroup = rs.getInt("bgroup");
+					int bstep = rs.getInt("bstep");
+					int bindent = rs.getInt("bindent");
+					String bip = rs.getString("bip");
+					dtos.add(new BoardDto(bid, bname, btitle, bcontent, bdate, bhit, bgroup, bstep, bindent, bip));
+				}
+			} catch (SQLException e) {
+				System.out.println(e.getMessage());
+			} finally {
+				try {
+					if (rs != null)
+						rs.close();
+					if (pstmt != null)
+						pstmt.close();
+					if (conn != null)
+						conn.close();
+				} catch (SQLException e) {
+					System.out.println(e.getMessage());
+				}
+			}
+			return dtos;
+		}
 	// 2. 전체 글 갯수
 	public int getBoardTotCnt() {
 		int totCnt = 0;
@@ -341,30 +391,33 @@ public class BoardDao {
 	}
 
 	// 8. 글 삭제
-	public int delete(int bid) {
-		int result = FAIL;
-		Connection conn = null;
-		PreparedStatement pstmt = null;
-		String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
-		try {
-			conn = ds.getConnection();
-			pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, bid);
-			result = pstmt.executeUpdate();
-			System.out.println(result == SUCCESS ? "글삭제 성공" : "글번호(bid) 오류");
-		} catch (SQLException e) {
-			System.out.println(e.getMessage() + "글 삭제 실패 ");
-		} finally {
-			try {
-				if (pstmt != null)
-					pstmt.close();
-				if (conn != null)
-					conn.close();
-			} catch (SQLException e) {
-				System.out.println(e.getMessage());
+	public int delete(final int bid) {
+		// 방법 1
+//		String sql = "DELETE FROM MVC_BOARD WHERE bID = " + bid;
+//		return template.update(sql);
+		
+		
+		// 방법 2
+//		String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
+//		return template.update(sql, new PreparedStatementSetter() {
+//			@Override
+//			public void setValues(PreparedStatement pstmt) throws SQLException {
+//				pstmt.setInt(1, bid);
+//			}
+//		});
+//	}	
+		
+		// 방법 3
+		return template.update(new PreparedStatementCreator() {
+			String sql = "DELETE FROM MVC_BOARD WHERE bID = ?";
+
+			@Override
+			public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+				PreparedStatement pstmt = con.prepareStatement(sql);
+				pstmt.setInt(1, bid);
+				return pstmt;
 			}
-		}
-		return result;
+		});
 	}
 
 	// 9. 답변글 저장전 작업(STEP ⓐ)

@@ -2,6 +2,8 @@ package com.lec.ch12.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -9,11 +11,27 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lec.ch12.dto.BoardDto;
-import com.lec.ch12.service.*;
+import com.lec.ch12.service.BContentService;
+import com.lec.ch12.service.BDeleteService;
+import com.lec.ch12.service.BListService;
+import com.lec.ch12.service.BModifyReplyViewService;
+import com.lec.ch12.service.BModifyService;
+import com.lec.ch12.service.BReplyService;
+import com.lec.ch12.service.BWriteService;
+import com.lec.ch12.service.Service;
+import com.lec.ch12.util.Constant;
 
 @Controller
 @RequestMapping("mvcBoard") // 공통 요청경로
 public class MvcBoardController {
+	public JdbcTemplate template;
+
+	@Autowired
+	public void setTemplate(JdbcTemplate template) {
+		this.template = template;
+		Constant.template = template;
+	}
+
 	private Service bservice;
 
 	@RequestMapping(value = "list", method = RequestMethod.GET)
