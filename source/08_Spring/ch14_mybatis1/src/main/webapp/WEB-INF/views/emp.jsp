@@ -7,10 +7,14 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/style.css" rel="stylesheet">
+<link href="${conPath }/css/emp.css" rel="stylesheet">
 </head>
 <body>
-	<%-- <jsp:forward page="home.do" /> --%>
-	<jsp:forward page="emp.do" />
+	<c:forEach var="dept" items="${deptlist }">
+		${dept }
+	</c:forEach>
+	<br>
+	<br>
+	${emplist }
 </body>
 </html>

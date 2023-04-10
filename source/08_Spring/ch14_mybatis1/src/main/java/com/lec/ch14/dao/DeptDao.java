@@ -5,5 +5,5 @@ import java.util.List;
 import com.lec.ch14.dto.Dept;
 
 public interface DeptDao {
-	public List<Dept> depList();
+	public List<Dept> deptlist();
 }

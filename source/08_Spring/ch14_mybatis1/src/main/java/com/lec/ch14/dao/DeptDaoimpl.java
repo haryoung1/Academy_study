@@ -14,7 +14,7 @@ public class DeptDaoimpl implements DeptDao {
 	private SqlSession sessionTemplate;
 
 	@Override
-	public List<Dept> depList() {
+	public List<Dept> deptlist() {
 		return sessionTemplate.selectList("deptlist");
 	}
 }
