@@ -10,6 +10,9 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="home.do" />
+	<%-- <jsp:forward page="home.do" /> --%>
+	<%-- <jsp:forward page="empList.do" /> --%>
+	<%-- <jsp:forward page="dummyinsert.do" /> --%>
+	<jsp:forward page="empDeptList.do" />
 </body>
 </html>
