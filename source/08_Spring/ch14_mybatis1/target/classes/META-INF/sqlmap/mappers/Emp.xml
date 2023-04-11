@@ -18,7 +18,7 @@
 
 		SELECT * FROM EMP where 1=1
 		<if test="ename!=null and ename!=''">
-			AND ENAME LIKE '%'||#{ename}||'%'
+			AND ENAME LIKE '%'||#{ename, jdbcType=VARCHAR}||'%'
 		</if>
 		<if test="job!=null and job!=''">
 			AND JOB LIKE '%'||#{job}||'%'

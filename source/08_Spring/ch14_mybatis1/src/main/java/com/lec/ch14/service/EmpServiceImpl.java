@@ -26,10 +26,10 @@ public class EmpServiceImpl implements EmpService {
 	public List<Emp> emplist(Emp schEmp) {
 		// schEmp.ename = s / schEmp.job = e (소문자로 검색하면 대문자로 바꿔야함)
 		if (schEmp.getEname() != null) {
-			schEmp.setEname(schEmp.getEname());
+			schEmp.setEname(schEmp.getEname().toUpperCase());
 		}
 		if (schEmp.getJob() != null) {
-			schEmp.setJob(schEmp.getJob());
+			schEmp.setJob(schEmp.getJob().toUpperCase());
 		}
 		return eDao.emplist(schEmp);
 	}
