@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+    PUBLIC "-//mybatis.org//DTD config 3.0//EN"
+    "https://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+	<typeAliases>	<!-- 엘리야스를 지정 해놔서 xml파일에서 편하게 사용 -->
+		<typeAlias type="com.lec.ch17.dto.boardDto" alias="board" />
+	</typeAliases>
+	<mappers>
+		<mapper resource="META-INF/sqlmap/mappers/board.xml" />
+	</mappers>
+</configuration>
