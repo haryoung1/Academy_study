@@ -6,8 +6,7 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.1.xsd">
 	<!-- Namespaces 에서 context 추가 -->
 
-	<context:property-placeholder
-		location="classpath:META-INF/property/db.properties" />
+	<context:property-placeholder location="classpath:META-INF/property/db.properties" />
 
 	<!-- dataSource빈 -->  <!-- ↓ class는 컨트롤러에서 DriverManagerDataSource 복붙해서 임포트하면 풀네임 나옴. -->
 	<bean id="dataSource"

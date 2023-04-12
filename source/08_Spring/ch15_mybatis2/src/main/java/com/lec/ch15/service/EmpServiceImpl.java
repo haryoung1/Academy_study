@@ -85,10 +85,11 @@ public class EmpServiceImpl implements EmpService {
 				emp.setEname("민희진");
 			}
 			emp.setJob("MANAGER");
-			emp.setMgr(7969);
+			emp.setMgr("7969");
 			emp.setHiredate(Date.valueOf("2023-04-01")); // 스트링을 데이터형으로 변환
 			emp.setSal(i);
-			emp.setComm(i / 10);
+			// emp.setComm("" + i / 10);
+			emp.setComm(String.valueOf(i / 10));
 			emp.setDeptno(40);
 			int result = empDao.insert(emp);
 			System.out.println(result == 1 ? i + "번째  사원등록" : i + "번째 사원등록 실패");

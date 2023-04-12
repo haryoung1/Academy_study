@@ -9,8 +9,9 @@ WHERE RN BETWEEN 6 AND 10;
 SELECT E.* FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO;
 
 SELECT * FROM
-    (SELECT ROWNUM RN, A.* FROM (SELECT E.* FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO) A)
-WHERE RN BETWEEN 6 AND 10;
+	    (SELECT ROWNUM RN, A.* 
+	      FROM (SELECT E.*, DNAME, LOC FROM EMP E, DEPT D WHERE E.DEPTNO=D.DEPTNO ORDER BY EMPNO) A)
+	  	WHERE RN BETWEEN 6 AND 10;
 
 -- Emp.xml id = totCnt
 SELECT COUNT(*) FROM EMP;
@@ -26,26 +27,19 @@ INSERT INTO EMP VALUES (9000, '홍길동', 'MANAGER', 7902, '23/04/11', 3100, 31
 SELECT * FROM EMP;
 
 -- Emp.xml id = update
-
+UPDATE EMP SET ENAME = '신길동',
+               JOB = 'IT',
+               MGR = 7902,
+               HIREDATE = '23/04/10',
+               SAL = 4000,
+               COMM = 1000,
+               DEPTNO = 50
+            WHERE EMPNO = 9000;
+            
 -- Emp.xml id = delete
+DELETE FROM EMP WHERE EMPNO = 9000;
 
 -- Dept.xml id = deptList
+SELECT * FROM DEPT;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+COMMIT;
