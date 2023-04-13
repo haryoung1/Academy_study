@@ -4,17 +4,23 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import com.lec.ch17.dto.Board;
+import com.lec.ch17.model.Board;
 
 public interface BoardService {
 	public List<Board> boardList(String pageNum);
 
-	public int totCnt();
+	public int boardTotCnt();
 
-	public Board write(Board board, HttpServletRequest request);
-	
-	public Board detail(int bid);
-	
-	public int modify(Board board, HttpServletRequest request);
-	
+	public int boardWrite(Board board, HttpServletRequest request);
+
+	public Board boardContent(int bid);
+
+	public Board boardModifyReplyView(int bid);
+
+	public int boardReply(Board board, HttpServletRequest request);
+
+	public int boardModify(Board board);
+
+	public int boardDelete(int bid);
+
 }

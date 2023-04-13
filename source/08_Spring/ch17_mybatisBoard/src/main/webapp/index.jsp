@@ -8,15 +8,8 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/emp.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-	$(document).ready(function() {
-
-	});
-</script>
 </head>
 <body>
-	
+	<jsp:forward page="mvcBoard/list.do" />
 </body>
 </html>

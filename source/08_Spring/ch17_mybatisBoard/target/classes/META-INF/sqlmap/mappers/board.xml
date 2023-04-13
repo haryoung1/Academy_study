@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lec.ch17.dao.board.dao">
+<mapper namespace="com.lec.ch17.dao.BoardDao">
 	<resultMap type="board" id="BoardResult">
 		<result property="bid" column="bid" />
 		<result property="bname" column="bname" />
@@ -18,42 +18,54 @@
 	<select id="boardList" parameterType="board" resultMap="BoardResult">
 		SELECT *
 		FROM (SELECT ROWNUM RN, A.*
-		FROM (SELECT * FROM
-		MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
-		WHERE RN BETWEEN #{startRow}
-		AND #{endRow}
+		FROM (SELECT * FROM MVC_BOARD ORDER BY BGROUP DESC, BSTEP) A)
+		WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
-	<select id="totCnt" resultType="int">
-		SELECT COUNT(*) FROM MVC_BOARD;
+
+	<select id="boardTotCnt" resultType="int">
+		SELECT COUNT(*) FROM MVC_BOARD
 	</select>
-	<insert id="write" parameterType="board">
-		INSERT INTO EMP
-		VALUES ( #{bid}, #{btitle}, #{bcontent}, #{bgroup}, #{bstep}, #{bindent}, #{bip})
+
+	<insert id="boardWrite" parameterType="board">
+		INSERT INTO MVC_BOARD
+		(BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
+		VALUES
+		(MVC_BOARD_SEQ.NEXTVAL, #{bname}, #{btitle}, #{bcontent},
+		MVC_BOARD_SEQ.CURRVAL, 0, 0, #{bip})
 	</insert>
-	<update id="hitup" parameterType="int">
+
+	<update id="boardHitUp" parameterType="int">
 		UPDATE MVC_BOARD SET bHIT = bHIT + 1 WHERE bID = #{bid}
 	</update>
-	<select id="detail" parameterType="int" resultType="Emp">
+
+	<select id="boardDetail" parameterType="int" resultType="board">
 		SELECT * FROM MVC_BOARD WHERE bID = #{bid}
 	</select>
-	<update id="modify" parameterType="board">
-		UPDATE MVC_BOARD 
-  		SET BNAME = #{bname},
-      	BTITLE = #{btitle},
-      	BCONTENT = #{bcontent},
-      	BIP = #{bip}
-  		WHERE BID = #{bid}
+
+	<update id="boardModify" parameterType="board">
+			UPDATE MVC_BOARD 
+		  	SET BNAME = #{bname},
+		      BTITLE = #{btitle},
+		      BCONTENT = #{bcontent},
+		      BIP = #{bip}
+		  WHERE BID=#{bid}
 	</update>
-	<delete id="delete" parameterType="int"> 
+	
+	<delete id="boardDelete" parameterType="int">
 		DELETE FROM MVC_BOARD WHERE bID = #{bid}
 	</delete>
+
 	<update id="boardReplyPreStep" parameterType="board">
-		UPDATE MVC_BOARD SET BSTEP = BSTEP + 1
-  		WHERE BGROUP = #{bgroup} AND BSTEP > #{bstep}
+		UPDATE MVC_BOARD
+		SET BSTEP = BSTEP + 1
+		WHERE BGROUP = #{bgroup} AND BSTEP > #{bstep}
 	</update>
+
 	<insert id="boardReply" parameterType="board">
-		INSERT INTO MVC_BOARD (BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
-  		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname},#{btitle},#{bcontent},#{bgroup}, #{bstep}+1, #{bindent}+1, #{bip})
+		INSERT INTO MVC_BOARD
+		(BID, BNAME, BTITLE, BCONTENT, BGROUP, BSTEP, BINDENT, BIP)
+		VALUES (MVC_BOARD_SEQ.NEXTVAL, #{bname},#{btitle},#{bcontent},#{bgroup},
+		#{bstep}+1, #{bindent}+1, #{bip})
 	</insert>
 </mapper>
 
