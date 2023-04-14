@@ -1,6 +1,5 @@
 -- ★ ★ ★ ★ ★ book. xml ★ ★ ★ ★ ★
 -- id = mainList (신간도서순 bookList)
-SELECT * FROM BOOK;
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
 
 -- id = bookList (startRow ~ endRow까지 bookList) 출력순서 : bTITLE 기준
@@ -17,13 +16,13 @@ SELECT * FROM BOOK WHERE BNUM = 1;
 
 -- id = registerBook (책등록)
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bIMG2, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, '노래의 정석', '강성빈',SYSDATE, 'noImg.png', 'noImg.png', '나는 가수왕');
+    VALUES (BOOK_SQ.NEXTVAL, '노래의 정석', '강성빈', SYSDATE, 'noImg.png', 'noImg.png', '나는 가수왕');
     
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG1, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, '발성의 정석', '강성민',SYSDATE, 'noImg.png', '나는 발성왕');
+    VALUES (BOOK_SQ.NEXTVAL, '발성의 정석', '강성민', SYSDATE, 'noImg.png', '나는 발성왕');
     
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE, bIMG2, bINFO)
-    VALUES (BOOK_SQ.NEXTVAL, '두성의 정석', '강두왕',SYSDATE, 'noImg.png', '나는 두성왕');
+    VALUES (BOOK_SQ.NEXTVAL, '두성의 정석', '강두왕', SYSDATE, 'noImg.png', '나는 두성왕');
 
 INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE,  bINFO)
     VALUES (BOOK_SQ.NEXTVAL, '흉성의 정석', '흉성킴', SYSDATE, '흉성이 궁금한가 ?');
