@@ -27,9 +27,11 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="com.lec.ch19.controller" />
+	
+	<context:component-scan base-package="com.lec.ch19" />
 	<mybatis-spring:scan base-package="com.lec.ch19.dao"/>
 	
+
 	<!--  context -->
 	<context:property-placeholder location="classpath:META-INF/property/mail.properties"/>
 	

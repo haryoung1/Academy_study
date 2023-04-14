@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.lec.ch19.vo.Book">
+<mapper namespace="com.lec.ch19.dao.BookDao">
 	<resultMap type="Book" id="BookResult">
 		<result property="bnum" column="bnum" />
 		<result property="btitle" column="btitle" />
@@ -28,7 +28,7 @@
 	
 	<!-- 등록된 책 갯수 -->
 	<select id="totCntBook" resultType="int">
-		SELECT COUNT(*) FROM BOOK;
+		SELECT COUNT(*) FROM BOOK
 	</select>
 	
 	<!-- 책번호로 dto 가져오기 -->
