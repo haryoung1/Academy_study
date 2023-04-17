@@ -43,10 +43,10 @@ b {
 			<caption>도서 LIST</caption>
 			<tr>
 				<c:forEach var="book" items="${bookList }">
-					<td>${book.btitle }<br> <a
-						href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=${paging.currentPage}">
-							<img src="${conPath }/bookImgFileUpload/${book.bimg1}">
-					</a><br> ${book.bwriter } 著 <br> 출판일 : ${book.brdate }
+					<td>${book.btitle }<br> 
+						<a href="${conPath }/book.do?method=detail&bnum=${book.bnum}&pageNum=${paging.currentPage}">
+						<img src="${conPath }/bookImgFileUpload/${book.bimg1}"></a><br> 
+						${book.bwriter } 著 <br> 출판일 : ${book.brdate }
 					</td>
 				</c:forEach>
 			</tr>
@@ -54,11 +54,9 @@ b {
 		<br>
 		<div>
 			<c:if test="${paging.startPage>paging.blockSize}">
-				[ <a
-					href="${conPath }/book.do?method=list&pageNum=${paging.startPage-1 }">이전</a> ]
+				[ <a href="${conPath }/book.do?method=list&pageNum=${paging.startPage-1 }">이전</a> ]
 			</c:if>
-			<c:forEach var="i" begin="${paging.startPage}"
-				end="${paging.endPage }">
+			<c:forEach var="i" begin="${paging.startPage}" end="${paging.endPage }">
 				<c:if test="${paging.currentPage==i }">
 					<b>[ ${i } ]</b>
 				</c:if>
@@ -67,8 +65,7 @@ b {
 				</c:if>
 			</c:forEach>
 			<c:if test="${paging.endPage<paging.pageCnt }">
-				[ <a
-					href="${conPath }/book.do?method=list&pageNum=${paging.endPage+1 }">다음</a> ]
+				[ <a href="${conPath }/book.do?method=list&pageNum=${paging.endPage+1 }">다음</a> ]
 			</c:if>
 		</div>
 	</div>

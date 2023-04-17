@@ -3,11 +3,28 @@
 SELECT * FROM BOOK ORDER BY BRDATE DESC;
 
 -- id = bookList (startRow ~ endRow까지 bookList) 출력순서 : bTITLE 기준
+ -- (1) schItem이 null 이거나 '' 일때 (전체검색)
 SELECT *
     FROM (SELECT ROWNUM RN, A.*
         FROM (SELECT * FROM BOOK ORDER BY BTITLE DESC) A)
     WHERE RN BETWEEN 1 AND 2;
 
+
+ -- (2) schItem이 'all' 일때 (책이름 + 저자)
+SELECT *
+    FROM (SELECT ROWNUM RN, A.*
+        FROM (SELECT * FROM BOOK WHERE BTITLE LIKE '%'||'J'||'%' OR BWRITER LIKE '%'||'강'||'%' ORDER BY BTITLE DESC) A)
+    WHERE RN BETWEEN 1 AND 10;
+
+ -- (2) schItem이 'btitle' 일때 (책이름)
+SELECT *
+    FROM (SELECT ROWNUM RN, A.*
+        FROM (SELECT * FROM BOOK WHERE BTITLE LIKE '%'||'석'||'%' ORDER BY BTITLE DESC) A)
+    WHERE RN BETWEEN 1 AND 10;
+ 
+ -- (3) schItem이 'bwriter' 일때 (저자)
+ 
+ 
 -- id = totCntBook (등록된 책 갯수)
 SELECT COUNT(*) FROM BOOK;
 
