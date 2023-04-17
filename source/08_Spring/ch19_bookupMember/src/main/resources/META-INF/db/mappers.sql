@@ -41,7 +41,6 @@ UPDATE BOOK
 
 -- id = idConfirm(mid가 id인 데이터 갯수)
 SELECT COUNT(*) FROM MEMBER WHERE MID='aaa';    
-SELECT * FROM MEMBER;
 
 -- id = joinMember(회원가입)
 INSERT INTO MEMBER VALUES ('bbb','1','아이묭','myon@naver.com','67890','일본');

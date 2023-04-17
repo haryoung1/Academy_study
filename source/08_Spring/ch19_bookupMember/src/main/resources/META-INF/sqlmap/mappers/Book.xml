@@ -57,7 +57,7 @@
 		</if>
 		
 		<!-- bimg가 다 없을때 -->
-		<if test="">
+		<if test="bimg1=='' and bimg2==''">
 			INSERT INTO BOOK (bNUM, bTITLE, bWRITER, bRDATE,  bINFO)
     		VALUES (BOOK_SQ.NEXTVAL, #{btitle}, #{bwriter}, #{brdate}, #{binfo})
 		</if>

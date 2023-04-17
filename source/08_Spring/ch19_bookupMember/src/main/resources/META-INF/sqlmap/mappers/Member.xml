@@ -36,6 +36,6 @@
         MMAIL = #{mmail},
         MPOST = #{mpost},
         MADDR = #{maddr}
-    WHERE MID = #{mid};
+    WHERE MID = #{mid}
 	</update>
 </mapper>

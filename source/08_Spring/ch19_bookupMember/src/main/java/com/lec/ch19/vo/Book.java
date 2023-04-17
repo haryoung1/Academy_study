@@ -16,4 +16,6 @@ public class Book {
 	// 페이징용 변수
 	private int startRow;
 	private int endRow;
+	// 검색을 위한 필드
+	
 }
