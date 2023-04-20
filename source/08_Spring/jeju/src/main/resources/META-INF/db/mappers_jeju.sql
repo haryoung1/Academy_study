@@ -35,40 +35,63 @@ DELETE FROM MEMBER WHERE mID = 'kang';
 SELECT * FROM Review WHERE mID = 'aaa';
 
 -- (9) 작성한 댓글 보기
-SELECT * FROM restaurantComment WHERE mID = 'pham'; -- getrsComment
-SELECT * FROM hotelComment WHERE mID = 'kang'; -- gethotelComment
-SELECT * FROM spotComment WHERE mID = 'kang'; -- getsoptComment
+SELECT * FROM restaurantComment WHERE mID = 'pham'; -- getResComment
+SELECT * FROM hotelComment WHERE mID = 'kim'; -- getHotelComment
+SELECT * FROM spotComment WHERE mID = 'aaa'; -- getSoptComment
 
--- (10) 북마크한 리스트 전체 보기
-SELECT * FROM BOOKMARK WHERE mID = 'kim' ORDER BY BOOKMARK_NO DESC;
-
--- (11) 북마크한 리스트 중 식당만 보기
-SELECT * FROM BOOKMARK WHERE MID = 'kim' AND;
-
-
+-- (10) 북마크한 리스트 중 관광지만 보기 - bookmarkSpot
 SELECT * 
-    FROM MEMBER M, BOOKMARK B
-    WHERE M.MID=B.MID(+);
+    FROM SPOT, BOOKMARK
+    WHERE SPOT.SNAME = BOOKMARK.SNAME
+    AND BOOKMARK.MID = 'kim';
 
+-- (11) 북마크한 리스트 중 식당만 보기 - bookmarkRes
+SELECT *
+    FROM RESTAURANT, BOOKMARK
+    WHERE RESTAURANT.RNAME = BOOKMARK.RNAME
+    AND BOOKMARK.MID = 'kim';
+    
+-- (12) 북마크한 리스트 중 호텔만 보기 - bookmarkHotel
+SELECT *
+    FROM HOTEL, BOOKMARK
+    WHERE HOTEL.HNAME = BOOKMARK.HNAME
+    AND BOOKMARK.MID = 'kim';
 
-
-
+SELECT * FROM HOTEL;
+SELECT * FROM RESTAURANT;
+SELECT * FROM SPOT;
 SELECT * FROM MEMBER;
 COMMIT;
+
 ------------------------------------------------------
 --           BOOKMARK query            
 ------------------------------------------------------
+-- (1) 북마크 (호텔) - MarkHotel
+INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', '호텔더원', null, null);
+    
+-- (2) 북마크 (식당) - MarkRes
+INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', null, '돈사돈', null);
+    
+-- (3) 북마크 (관광지) - MarkSpot
+INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', null, null, '협재해수욕장');
+
+-- (4) 북마크 해제 (호텔) - member/cancelHotel
+DELETE FROM BOOKMARK
+    WHERE MID = 'kim' AND HNAME = '호텔더원';
+
+-- (5) 북마크 해제 (식당) - member/MarkcancelRes
+DELETE FROM BOOKMARK
+    WHERE MID = 'kim' AND RNAME = '돈사돈';
+    
+-- (6) 북마크 해제 (관광지) - member/MarkcancelSpot
+DELETE FROM BOOKMARK
+    WHERE MID = 'kim' AND SNAME = '협재해수욕장';
+    
 SELECT * FROM BOOKMARK;
-
--- (1) 즐겨찾기한 목록 출력
-SELECT *
-    FROM (SELECT ROWNUM RN, A.*
-        FROM (SELECT B.* FROM BOOKMARK B, MEMBER M WHERE B.MID=M.MID ORDER BY BOOKMARK_NO DESC) A)
-WHERE RN BETWEEN 1 AND 10;  
-
-
-
-
+COMMIT;
 ------------------------------------------------------
 --           Festival query            
 ------------------------------------------------------
@@ -194,7 +217,7 @@ SELECT A. *,
         FROM (SELECT ROWNUM RN, B.*
             FROM (SELECT * FROM RESTAURANTCOMMENT ORDER BY RGROUP DESC, RSTEP) B) A
     WHERE RN BETWEEN 1 AND 30;
-
+ 
 -- (2) 댓글갯수 
 SELECT COUNT(*) FROM RESTAURANTCOMMENT;
 
@@ -221,12 +244,7 @@ UPDATE RESTAURANTCOMMENT
     WHERE RGROUP = 3 AND RSTEP > 0;
 
 -- (8) 대댓글 쓰기(업체)
-insert into restaurantComment (rCommentNo, rName, mId, bID, RContent, RGroup, RStep, RIndent)
-    values (rCommentNo_seq.nextval, '올래국수', null, 'guk', '다음에 또 방문 해주세요^^.', 3, 1, 1);
+INSERT INTO restaurantComment (rCommentNo, rName, mId, bID, RContent, RGroup, RStep, RIndent)
+    VALUES (rCommentNo_seq.nextval, '올래국수', null, 'guk', '다음에 또 방문 해주세요^^.', 3, 1, 1);
 
 COMMIT;
-SELECT * FROM RESTAURANTCOMMENT;
-SELECT * FROM RESTAURANT;
-SELECT * FROM FESTIVAL;
-SELECT * FROM MEMBER;
-SELECT * FROM BOOKMARK;

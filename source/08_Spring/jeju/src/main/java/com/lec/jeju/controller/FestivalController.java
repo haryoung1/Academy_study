@@ -48,7 +48,7 @@ public class FestivalController {
 		return "festival/modify";
 	}
 
-	@RequestMapping(value = "modify", method = { RequestMethod.GET, RequestMethod.POST })
+	@RequestMapping(value = "modify", method = RequestMethod.POST)
 	public String modify(FestivalBoard festivalBoard, Model model) {
 		model.addAttribute("modifyResult", festivalService.modifiyFestival(festivalBoard));
 		return "forward:list.do";

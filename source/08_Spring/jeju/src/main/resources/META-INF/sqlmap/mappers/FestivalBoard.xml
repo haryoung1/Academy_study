@@ -13,36 +13,42 @@
 	</resultMap>
 
 	<!-- 전체목록 페이징 출력 -->
-	<select id="FestivalList" parameterType="Festival" resultMap="FestivalResult">
+	<select id="FestivalList" parameterType="Festival"
+		resultMap="FestivalResult">
 		SELECT * FROM
 		(SELECT ROWNUM RN, A.* FROM
-		(SELECT N.* FROM FESTIVAL N, ADMIN A WHERE N.AID = A.AID ORDER BY festivalNo
+		(SELECT N.* FROM
+		FESTIVAL N, ADMIN A WHERE N.AID = A.AID ORDER BY festivalNo
 		DESC) A)
 		WHERE RN BETWEEN #{startRow} AND #{endRow}
 	</select>
 
 	<!-- 등록된 글 갯수 -->
 	<select id="totCntFestival" resultType="int">
-		SELECT COUNT(*) FROM FESTIVAL
+		SELECT COUNT(*) FROM
+		FESTIVAL
 	</select>
 
 	<!-- 글등록 -->
 	<insert id="writeFestival" parameterType="Festival">
-		INSERT INTO FESTIVAL (FESTIVALNO, AID, FTITLE, FCONTENT)
-    	VALUES (festivalNo_seq.NEXTVAL, #{aid}, #{ftitle, jdbcType=VARCHAR}, #{fcontent, jdbcType=VARCHAR})
+		INSERT INTO FESTIVAL
+		(FESTIVALNO, AID, FTITLE, FCONTENT)
+		VALUES (festivalNo_seq.NEXTVAL, #{aid}, #{ftitle}, #{fcontent})
 	</insert>
 
 	<!-- 상세보기, 수정 View -->
-	<select id="contentFestival" parameterType="int" resultType="Festival">
-		SELECT F.*, ANAME FROM FESTIVAL F, ADMIN A WHERE F.AID=A.AID AND FESTIVALNO= #{festivalno}
+	<select id="contentFestival" parameterType="int"
+		resultType="Festival">
+		SELECT F.*, ANAME FROM FESTIVAL F, ADMIN A WHERE
+		F.AID=A.AID AND FESTIVALNO= #{festivalno}
 	</select>
 
 	<!-- 글수정 -->
 	<update id="modifiyFestival" parameterType="Festival">
 		UPDATE FESTIVAL SET
-		FTITLE =#{ftitle},
-		FCONTENT =#{fcontent},
-		FRDATE = #{frdate}
+		FTITLE = #{ftitle},
+		FCONTENT = #{fcontent},
+		FRDATE = SYSDATE
 		WHERE FESTIVALNO = #{festivalno}
 	</update>
 

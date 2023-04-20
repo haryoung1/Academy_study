@@ -10,6 +10,7 @@
 <title>Insert title here</title>
 </head>
 <body>
-	<jsp:forward page="festival/list.do" />
+	<%-- <jsp:forward page="festival/list.do" /> --%>
+	<jsp:forward page="main.do" />
 </body>
 </html>
