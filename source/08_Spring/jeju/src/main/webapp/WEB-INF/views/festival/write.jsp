@@ -11,7 +11,7 @@
 <link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
 #wrap {
-	height: 700px;
+	height: 900px;
 }
 
 #content_form {
@@ -43,10 +43,6 @@
 		rgba(0, 0, 0, 0.06);
 	cursor: pointer;
 	transition: 0.5s;
-}
-
-.ck-editor__editable {
-	height: 400px;
 }
 </style>
 </head>
@@ -90,5 +86,23 @@
 		</div>
 	</div>
 </body>
-
+<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
+<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+<script>
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height : 400,
+			minHeight : null,
+			maxHeight : null,
+			lang : 'ko-KR',
+			onImageUpload : function(files, editor, welEditable) {
+				sendFile(files[0], editor, welEditable);
+			}
+		});
+	});
+</script>
 </html>

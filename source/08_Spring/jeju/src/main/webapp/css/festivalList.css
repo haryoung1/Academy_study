@@ -11,7 +11,7 @@
 }
 
 #wrap table tr {
-	background-color: #ff8040;
+	background-color: #B2B2B2;
 	height: 40px;
 }
 
@@ -57,7 +57,7 @@
 #content_form td, #content_form th {
 	text-align: center;
 	padding: 5px;
-	border: 1px solid #444444;
+	border: 1px solid #ffffff;
 }
 
 #content_form caption {

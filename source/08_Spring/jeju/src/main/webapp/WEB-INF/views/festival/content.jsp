@@ -72,7 +72,7 @@
 				<tr>
 					<th>본문</th>
 					<td>
-						<textarea id="editor">${contentFestival.fcontent}</textarea>
+						<textarea id="summernote">${contentFestival.fcontent}</textarea>
 					</td>
 				</tr>
 				<tr>
@@ -90,11 +90,32 @@
 		</div>
 	</div>
 </body>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
-<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<link
+	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
+	rel="stylesheet">
+<link
+	href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css"
+	rel="stylesheet">
+
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
+<script
+	src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
+<script
+	src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
+
 <script>
-	ClassicEditor.create(document.querySelector('#editor'), {
-		language : "ko"
+	$(document).ready(function() {
+		$('#summernote').summernote({
+			height : 400,
+			minHeight : null,
+			maxHeight : null,
+			lang : 'ko-KR',
+			onImageUpload : function(files, editor, welEditable) {
+				sendFile(files[0], editor, welEditable);
+			}
+		});
 	});
 </script>
 </html>
