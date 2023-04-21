@@ -10,25 +10,9 @@ public interface MemberDao {
 
 	public int joinMember(Member member);
 
-	public int loginCheck(Member member);
-
 	public Member getDetailMember(String mid);
 
 	public int modifyMember(Member member);
 
-	public int DeleteMember(Member member);
-
-	public int getReview(String mid);
-
-	public int getSoptComment(String mid);
-
-	public int getResComment(String mid);
-
-	public int getHotelComment(String mid);
-
-	public int bookmarkSpot(String mid);
-
-	public int bookmarkRes(String mid);
-
-	public int bookmarkHotel(String mid);
+	public int DeleteMember(String mid);
 }

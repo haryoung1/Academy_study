@@ -10,14 +10,35 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
-.ck-editor__editable {
-	height: 400px;
+#wrap {
+	height: 800px;
+}
+.btn {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	background: white;
+	color: black;
+	margin: 0;
+	padding: 0.5rem 1rem;
+	font-weight: 400;
+	font-weight: bold;
+	text-align: center;
+	text-decoration: none;
+	border-radius: 4px;
+	border: 2px solid #444444;
+	display: inline-block;
+	width: auto;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px
+		rgba(0, 0, 0, 0.06);
+	cursor: pointer;
+	transition: 0.5s;
 }
 </style>
 </head>
 <body>
-	<!-- model의modifyBoard, param.bid, param.pageNum가 있음 -->
-	
+<jsp:include page="../main/header.jsp" />
+	<div></div>
 	<div id="wrap">
 		<div id="content_form">
 			<form action="${conPath }/festival/modify.do" method="post">
@@ -47,6 +68,7 @@
 			</form>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 
 <link

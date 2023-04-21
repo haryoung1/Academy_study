@@ -66,6 +66,7 @@
 			alert('글쓰기 성공');
 		</script>
 	</c:if>
+	-
 	<c:if test="${writeResult eq FAIL}">
 		<script>
 			alert('글쓰기 실패');
@@ -145,5 +146,6 @@
 		<%-- </c:if> --%>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

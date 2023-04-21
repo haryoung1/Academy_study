@@ -8,8 +8,8 @@ SELECT COUNT(*) FROM MEMBER WHERE MID = 'kang';
 SELECT COUNT(*) FROM MEMBER WHERE mEMAIL = 'kang@Naver.com';
 
 -- (3) 회원가입 - joinMember
-INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO)
-    VALUES ('kang', '123', '강성빈', 'kang@Naver.com', '서울시 강서구', '12345', '1994-08-25','NOIMG.JPG');
+INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO, MRDATE)
+    VALUES ('kang2', '123', '강성빈', 'kang@Naver.com', '서울시 강서구', '12345', '1994-08-25','NOIMG.JPG', SYSDATE);
 
 -- (4) 로그인 - loginCheck
 SELECT * FROM MEMBER WHERE mID='kang' AND mPW='123';

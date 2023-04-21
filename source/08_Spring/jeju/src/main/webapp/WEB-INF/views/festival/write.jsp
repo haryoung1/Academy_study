@@ -11,16 +11,7 @@
 <link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
 #wrap {
-	height: 900px;
-}
-
-#content_form {
-	height: 420px;
-	margin: 80px auto 0px;
-}
-
-#content_form table tr {
-	height: 60px;
+	height: 800px;
 }
 
 .btn {
@@ -85,6 +76,7 @@
 			</form>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
 <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">

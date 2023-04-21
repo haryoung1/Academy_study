@@ -11,11 +11,7 @@
 <link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
 #wrap {
-	height: 750px;
-}
-
-#content_form table tr {
-	height: 40px;
+	height: 800px;
 }
 
 .btn {
@@ -39,10 +35,6 @@
 	cursor: pointer;
 	transition: 0.5s;
 }
-
-.ck-editor__editable {
-	height: 400px;
-}
 </style>
 <script>
 	function delete1(no) {
@@ -57,6 +49,8 @@
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
+	<div>
+</div>
 	<div id="wrap">
 		<div id="content_form">
 			<br>
@@ -89,6 +83,7 @@
 			</table>
 		</div>
 	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 <link
 	href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css"
