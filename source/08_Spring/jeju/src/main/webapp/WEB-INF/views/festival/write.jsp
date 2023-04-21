@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
 #wrap {
 	height: 700px;
@@ -42,6 +43,10 @@
 		rgba(0, 0, 0, 0.06);
 	cursor: pointer;
 	transition: 0.5s;
+}
+
+.ck-editor__editable {
+	height: 400px;
 }
 </style>
 </head>
@@ -85,24 +90,5 @@
 		</div>
 	</div>
 </body>
-<link href="${conPath }/css/festivalList.css" rel="stylesheet">
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-	<script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			height : 300,
-			minHeight : null,
-			maxHeight : null,
-			lang : 'ko-KR',
-			onImageUpload : function(files, editor, welEditable) {
-				sendFile(files[0], editor, welEditable);
-			}
-		});
-	});
-</script>
+
 </html>

@@ -6,9 +6,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-<script type="text/javascript" src="../resources/ckeditor/ckeditor.js"></script>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <style>
 #wrap {
 	height: 750px;
@@ -39,12 +39,16 @@
 	cursor: pointer;
 	transition: 0.5s;
 }
+
+.ck-editor__editable {
+	height: 400px;
+}
 </style>
 <script>
 	function delete1(no) {
 		answer = confirm("삭제 하시겠습니까 ?");
 		if (answer) { // 확인
-			location.href = '${conPath}/festival/Delete.do?festivalno=${contentFestival.festivalno}&pageNum=${param.pageNum }';
+			location.href = '${conPath}/festival/delete.do?festivalno=${contentFestival.festivalno}&pageNum=${param.pageNum }';
 		} else { // 취소
 			alert('삭제 취소');
 		}
@@ -67,45 +71,30 @@
 				</tr>
 				<tr>
 					<th>본문</th>
-					<td><textarea id="summernote">${contentFestival.fcontent}</textarea>
+					<td>
+						<textarea id="editor">${contentFestival.fcontent}</textarea>
 					</td>
 				</tr>
 				<tr>
 					<td colspan="2">
 						<button class="btn"
 							onclick="location.href='${conPath}/festival/modifyView.do?festivalno=${param.festivalno }&pageNum=${param.pageNum }'">
-							수정</button>
-						<button class="btn" onclick="location.href='${conPath}/festival/delete.do?festivalno=${param.festivalno }&pageNum=${param.pageNum }'">
-							삭제</button>
-						<!--<c:if test="${empty member and not empty admin}"></c:if> -->
-						<button class="btn" onclick="delete1('${contentFestival.festivalno}')">삭제</button>
+							수정</button> <!--<c:if test="${empty member and not empty admin}"></c:if> -->
 						<button class="btn"
-							onclick="location.href='${conPath}/festival/list.do?pageNum=${param.pageNum }'">
-							목록</button>
+							onclick="delete1('${contentFestival.festivalno}')">삭제</button>
+						<button class="btn"
+							onclick="location.href='${conPath}/festival/list.do?pageNum=${param.pageNum }'">목록</button>
 					</td>
 				</tr>
 			</table>
 		</div>
 	</div>
 </body>
-<link href="${conPath }/css/festivalList.css" rel="stylesheet">
-<link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.css" rel="stylesheet">
-<link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.js"></script>
-<script src="http://netdna.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.js"></script>
-<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.8/summernote.js"></script>
-	<script>
-	$(document).ready(function() {
-		$('#summernote').summernote({
-			height : 300,
-			minHeight : null,
-			maxHeight : null,
-			lang : 'ko-KR',
-			onImageUpload : function(files, editor, welEditable) {
-				sendFile(files[0], editor, welEditable);
-			}
-		});
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/ckeditor.js"></script>
+<script src="https://cdn.ckeditor.com/ckeditor5/34.0.0/classic/translations/ko.js"></script>
+<script>
+	ClassicEditor.create(document.querySelector('#editor'), {
+		language : "ko"
 	});
 </script>
 </html>
