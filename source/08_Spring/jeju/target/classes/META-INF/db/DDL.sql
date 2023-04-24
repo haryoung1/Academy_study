@@ -36,7 +36,7 @@ CREATE TABLE Member (
     mDeAddr VARCHAR2(200),
     mPost VARCHAR2(50),
     mBirth DATE NOT NULL,
-    mPhoto VARCHAR2(255),
+    mPhoto VARCHAR2(255) NOT NULL,
     mRdate DATE DEFAULT SYSDATE NOT NULL
 ); -- 멤버 테이블
 

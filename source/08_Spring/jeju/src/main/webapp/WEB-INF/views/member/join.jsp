@@ -9,74 +9,67 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <link href="${conPath }/css/member/join.css" rel=stylesheet>
 <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-<style>
-</style>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="${conPath }/js/address.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script>
-	$(document).ready(function() {
-		$('.idconfirm').click(function() {
-			$.ajax({
-				url : '${conPath}/member.do',
-				datatype : 'html',
-				data : "method=idConfirm&mid=" + $('#mid').val(),
-				success : function(data, status) {
-					$('#idConfirmMsg').html(data);
-				}
-			});
-		});
+	$(function() {
 		$('#mid').keyup(function() {
 			var mid = $(this).val();
-			var patternMid = /^[a-zA-Z0-9_]+$/; // macth함수 사용
 			if (mid.length < 2) {
-				$('#idConfirmMsg').text('아이디는 2글자 이상');
-			} else if (!mid.match(patternMid)) {
-				$('#idConfirmMsg').text('아아디는 영문자와 숫자 _만 들어갈 수 있음');
+				$('#midConfirmResult').html('<p style=color:red;>아이디는 2글자 이상 입니다');
 			} else {
 				$.ajax({
-					url : '${conPath}/member.do',
-					datatype : 'html',
-					data : "method=idConfirm&mid=" + $('#mid').val(),
-					success : function(data, status) {
-						$('#idConfirmMsg').html(data);
-					}
-				});
-			}
-		});
+				url : '${conPath}/member.do',
+				type : 'get',
+				data : "method=idConfirm&mid=" + $('#mid').val(),
+				dataType : 'html',
+				success : function(data) {
+					$('#midConfirmResult').html(data);
+				},
+			});
+		}
+	}); // key up event
 		$('#mpw, #mpwChk').keyup(function() {
 			var mpw = $('#mpw').val();
 			var mpwChk = $('#mpwChk').val();
 			if (mpw == mpwChk) {
-				$('#pwChkResult').html('<p style=color:blue;>비밀번호가 일치 합니다');
+				$('#pwChkResult').html('비밀번호가 일치 합니다');
 			} else {
-				$('#pwChkResult').html('<p style=color:blue;>비밀번호가 일치 하지 않습니다');
+				$('#pwChkResult').html('<p style=color:red;>비밀번호가 일치 하지 않습니다');
 			}
 		}); // key up event (비번 일치 확인용)
 		
-		$('.mailconfirm').click(function() {
-			$.ajax({
-				url : '${conPath}/member.do',
-				datatype : 'html',
-				data : "method=memailConfirm&memail=" + $('#memail').val(),
-				success : function(data, status) {
-					$('#memailConfirmMsg').html(data);
-				}
-			});
+		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
+		$('input[name="memail"]').keyup(function() {
+			let memail = $(this).val();
+			if (!memail.match(patternMemail)) {
+				$('#memailConfirmResult').html('<p style=color:red;>메일 형식을 지켜 주세요');
+			} else {
+				$.ajax({
+					url : '${conPath}/member.do',
+					type : 'get',
+					data : "method=memailConfirm&memail=" + $('#memail').val(),
+					dataType : 'html',
+					success : function(data) {
+						$('#memailConfirmResult').html(data);
+					},
+				});
+			}
 		});
 		
+		// "사용 가능한 ID 입니다" (midConfirmResult), "비밀번호 일치(#mpwChkResult)" 가 출력되었을 경우만 submit
 		$('form').submit(function() {
-			var idConfirmResult = $('#idConfirmMsg').text().trim();
-			var mmail = $('input[name="mmail"]');
-			var patternMmail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/; // macth함수 사용
-			if (idConfirmResult != '사용가능한 ID입니다') {
-				alert('사용가능한 ID인지 중복확인후 가입가능');
-				$('input[name="mid"]').focus();
-				return false;
-			} else if (!mmail.val().match(patternMmail)) {
-				alert('메일 형식이 맞지 않습니다');
-				mmail.focus();
+			var midConfirmResult = $('#midConfirmResult').text().trim();
+			var pwChkResult = $('#pwChkResult').text().trim();
+			var memailConfirmResult = $('#memailConfirmResult').text().trim();
+			if (midConfirmResult != '사용가능한 ID입니다') {
+				alert('사용 가능한 id인지 확인하세요')
+				return false; // submit 제한
+			} else if (pwChkResult != '비밀번호가 일치 합니다') {
+				alert('비밀번호를 확인하세요');
+				$('input[name="mpw"]').focus();
 				return false;
 			}
 		});
@@ -88,16 +81,16 @@
 	<jsp:include page="../main/header.jsp" />
 	<br>
 	<div id="content">
-		<form action="${conPath }/member.do" method="post"
-			enctype="multipart/form-data">
+		<form action="${conPath }/member.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="method" value="join">
 			<table>
 				<tr>
 					<td>아이디</td>
 					<td>
 						<input type="text" name="mid" id="mid" required="required">
-						<input type="hidden" class="idconfirm" value="중복확인"> <br>
-						<span id="idConfirmMsg"></span>
+						<!-- <input type="button" class="idconfirm" value="중복확인"> <br> -->
+						<!-- <span id="idConfirmMsg"></span> -->
+						<div id="midConfirmResult">&nbsp; &nbsp; &nbsp;</div>
 					</td>
 				</tr>
 				<tr>
@@ -110,6 +103,7 @@
 					<td>비밀번호확인</td>
 					<td>
 						<input type="password" name="pwChk" required="required" id="mpwChk">
+						<!-- <span id="pwChkResult"></span> -->
 						<div id="pwChkResult">&nbsp; &nbsp; &nbsp;</div>
 					</td>
 				</tr>
@@ -128,22 +122,22 @@
 				<tr>
 					<td>메일</td>
 					<td>
-						<input type="email" name="memail" id="memail" required="required" placeholder="you@example.com">
-						<input type="hidden" class="mailconfirm" value="중복확인"> <br>
-						<span id="mailConfirmMsg"></span>
+						<input type="text" name="memail" id="memail" required="required" placeholder="you@example.com">
+						<div id="memailConfirmResult">&nbsp; &nbsp; &nbsp;</div>
+						<!-- <span id="memailConfirmResult"></span> -->
 					</td>
 				</tr>
 				<tr>
 					<td>우편번호</td>
 					<td>
-						<input type="text" id="sample4_postcode" name="mpost" class="text_box" placeholder="우편번호"> 
+						<input type="text" id="sample4_postcode" name="mpost" class="text_box" required="required" placeholder="우편번호"> 
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</td>
 				</tr>
 				<tr>
 					<td>주소</td>
 					<td>
-						<input type="text" id="sample4_roadAddress" name="maddr" placeholder="도로명주소"> 
+						<input type="text" id="sample4_roadAddress" name="maddr" required="required" placeholder="도로명주소"> 
 						<input type="hidden" id="sample4_jibunAddress" placeholder="지번주소"> 
 						<span id="guide"></span>
 					</td>
@@ -174,9 +168,7 @@
 			</table>
 		</form>
 	</div>
-	<jsp:include page="../main/footer.jsp" />
-</body>
-<script>
+	<script>
 	$(function() {
 		$("#datepicker").datepicker(
 				{
@@ -196,4 +188,6 @@
 				});
 	});
 </script>
+	<jsp:include page="../main/footer.jsp" />
+</body>
 </html>

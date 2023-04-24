@@ -26,16 +26,13 @@ public class MemberController {
 		model.addAttribute("idConfirmResult", memberService.idConfirm(mid));
 		return "member/idConfirm";
 	}
-	
+
 	@RequestMapping(params = "method=memailConfirm", method = RequestMethod.GET)
 	public String mailConfirm(String memail, Model model) {
-		model.addAttribute("mailConfirmResult ", memberService.emailConfirm(memail));
+		model.addAttribute("memailConfirmResult ", memberService.emailConfirm(memail));
 		return "member/memailConfirm";
 	}
-	
-	
-	
-	
+
 	// 회원가입 View
 	@RequestMapping(params = "method=join", method = RequestMethod.GET)
 	public String join() {
@@ -73,13 +70,13 @@ public class MemberController {
 		return "redirect:main.do";
 	}
 
-	@RequestMapping(params = "method=modify", method = RequestMethod.GET) // 정보수정 뷰
-	public String modify() {
+	@RequestMapping(value = "method=modify", method = RequestMethod.GET) // 로그인 후 정보수정으로 갈때
+	public String modify1() {
 		return "member/modify";
 	}
 
-	@RequestMapping(value = "modify", method = RequestMethod.GET) // 로그인 후 정보수정으로 갈때
-	public String modify1() {
+	@RequestMapping(params = "method=modify", method = RequestMethod.GET) // 정보수정 뷰
+	public String modify() {
 		return "member/modify";
 	}
 
