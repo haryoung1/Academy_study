@@ -11,6 +11,29 @@
 <link href="${conPath }/css/festivalList.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #F7DC6F;
+}
+
+tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+tr:hover {
+  background-color: #D5DBDB;
+}
+
 #right {
 	text-align: right;
 	margin: 20px;
@@ -141,9 +164,9 @@
 		</c:if>
 		</div>
 		<div id="right">
-		<%-- <c:if test="${not empty admin }"> --%>
+		<c:if test="${not empty admin }"> --%>
 				<button class="btn" onclick="location='${conPath}/festival/write.do'">글등록</button>
-		<%-- </c:if> --%>
+		</c:if>
 		</div>
 	</div>
 	<jsp:include page="../main/footer.jsp" />

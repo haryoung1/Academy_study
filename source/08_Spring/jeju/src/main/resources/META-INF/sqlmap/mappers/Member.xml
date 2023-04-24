@@ -16,92 +16,44 @@
 		<result property="mphoto" column="mphoto" />
 		<result property="mrdate" column="mrdate" />
 	</resultMap>
-	
+
 	<!-- ID 중복체크 -->
 	<select id="idConfirm" parameterType="String" resultType="int">
 		SELECT COUNT(*) FROM MEMBER WHERE MID = #{mid, jdbcType=VARCHAR}
 	</select>
-	
+
 	<!-- 회원가입 -->
 	<insert id="joinMember" parameterType="Member">
-	insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto, mrDate)
-    VALUES (#{mid}, #{mpw}, #{mname}, #{mtel}, #{memail} #{maddr}, #{mdeaddr}, #{mpost}, #{mbirth}, #{mphoto}, SYSDATE)
+	insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto)
+    values(#{mid}, #{mpw}, #{mname}, #{mtel}, #{memail}, #{maddr}, #{mdeaddr}, #{mpost}, #{mbirth}, #{mphoto})
 	</insert>
-	
-	<!--  
-	로그인
+
+	<!-- 로그인 -->
 	<select id="loginCheck" parameterType="Member" resultType="Member">
-		SELECT * FROM MEMBER WHERE mID = #{mid} AND mPW = #{mpw}
-	</select> -->
-	
-	<!-- 상세 -->
+		SELECT * FROM MEMBER WHERE mID=#{mid} AND mPW=#{mpw}
+	</select>
+
+	<!-- 상세보기 -->
 	<select id="getDetailMember" parameterType="String" resultType="Member">
-  		SELECT * FROM MEMBER WHERE MID = #{mid}
-  	</select>
-  	
-  	<!-- 정보수정 -->
-  	<update id="modifyMember" parameterType="Member">
-  		UPDATE MEMBER SET 
+		SELECT * FROM MEMBER WHERE MID = #{mid}
+	</select>
+
+	<!-- 정보수정 -->
+	<update id="modifyMember" parameterType="Member"> 
+	UPDATE MEMBER SET 
         mPW = #{mpw},
         mNAME = #{mname},
-        mEMAIL = #{memail},
+        mEMAIL = '#{memail},
         mADDR = #{maddr},
-        mdeaddr = #{mdeaddr},
-        mPOST = '#{mpost},
+        mDEADDR = #{mdeaddr},
+        mPOST = #{mpost},
         mBIRTH = #{mbirth},
         mPHOTO = #{mphoto}
     WHERE mID = #{mid}
-  	</update>
-    
-  	<!-- 회원탈퇴 --> 
-  	<delete id="DeleteMember" parameterType="Member">
-  		DELETE FROM MEMBER WHERE mID = #{mid}
-  	</delete>
-  	
-  	<!--
-  	내가 작성한 글
-  	<select id="getReview" parameterType="String" resultType="Member">
-		SELECT * FROM Review WHERE mID = #{mid}
-	</select>
-  	
-  	내가 작성한 댓글 관광지
-  	<select id="getSoptComment" parameterType="String" resultType="Member">
-		SELECT * FROM spotComment WHERE mID = #{mid}
-	</select>
-  	
-  	내가 작성한 댓글 식당
-  	<select id="getResComment" parameterType="String" resultType="Member">
-		SELECT * FROM restaurantComment WHERE mID = #{mid}
-	</select>
-  	
-  	내가 작성한 댓글 호텔
-  	<select id="getHotelComment" parameterType="String" resultType="Member">
-		SELECT * FROM hotelComment WHERE mID = #{mid}
-	</select>
-  	
-  	북마크 한 리스트 관광지
-  	<select id="bookmarkSpot" parameterType="String" resultType="Member">
-		SELECT * 
-    FROM SPOT, BOOKMARK
-    WHERE SPOT.SNAME = BOOKMARK.SNAME
-    AND BOOKMARK.MID = #{mid}
-	</select>
+	</update>
 	
-  	북마크 한 리스트 식당
-  	<select id="bookmarkRes" parameterType="String" resultType="Member">
-		SELECT *
-    FROM RESTAURANT, BOOKMARK
-    WHERE RESTAURANT.RNAME = BOOKMARK.RNAME
-    AND BOOKMARK.MID = #{mid}
-	</select>
-	
-  	북마크 한 리스트 호텔
-  	<select id="bookmarkHotel" parameterType="String" resultType="Member">
-		SELECT *
-    FROM HOTEL, BOOKMARK
-    WHERE HOTEL.HNAME = BOOKMARK.HNAME
-    AND BOOKMARK.MID = #{mid}
-	</select> 
-	
-	-->
+	<!-- 회원탈퇴 -->
+	<delete id="deleteMember" parameterType="String"> 
+		DELETE FROM MEMBER WHERE mID = #{mid}
+	</delete>
 </mapper>

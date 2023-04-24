@@ -1,68 +1,67 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 <c:set var="conPath" value="${pageContext.request.contextPath }" />
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/member/login.css" rel="stylesheet">
-<link
-	href="https://fonts.googleapis.com/css2?family=Domine:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&family=Libre+Baskerville&family=Nanum+Gothic&family=Satisfy&family=The+Nautigal:wght@400;700&display=swap"
-	rel="stylesheet">
+<link href="${conPath }/css/member/login.css" rel=stylesheet>
+<style>
+#content {
+	width: 800px;
+	height: 350px;
+	margin: 50px auto;
+}
+</style>
 </head>
 <body>
 	<c:if test="${joinResult eq 1 }">
 		<script>
-			alert('회원가입에 성공하였습니다.');
+			alert('회원가입 감사합니다');
 		</script>
 	</c:if>
-	<c:if test="${joinResult eq 0 }">
+	<c:if test="${not empty loginResult}">
 		<script>
-			alert('회원가입에 실패했습니다.');
-			history.back();
+			alert('${loginResult}');
+		</script>
+	</c:if>
+	<c:if test="${not empty member }">
+		<script>
+			location.href = '${conPath}/main/main.do';
 		</script>
 	</c:if>
 	<jsp:include page="../main/header.jsp" />
-	<section>
-		<div id="main">
-			<form action="${conPath }/member.do?method=login" method="post">
-				<div class="login-form">
-					<table>
-
-						<tr>
-							<td rowspan="8" class="firsttd"></td>
-						</tr>
-						<tr>
-							<td colspan="2" class="secondtd">LOGIN</td>
-						</tr>
-						<tr>
-							<td><input type="text" name="mid" placeholder="아이디"
-								value="${mid }" /></td>
-						</tr>
-						<tr>
-							<td><input type="password" name="mpw" placeholder="비밀번호" /></td>
-						</tr>
-						<tr>
-							<td><input type="submit" value="로그인" /></td>
-						</tr>
-						<tr>
-							<td colspan="2" class="thirdtd"><a href="#">아이디/비번찾기</a> | <a
-								href="${conPath }/member.do?method=joinAgreePage">회원가입</a></td>
-						</tr>
-
-						<tr>
-							<td></td>
-						</tr>
-						<tr>
-							<td></td>
-						</tr>
-					</table>
-				</div>
-			</form>
-		</div>
-	</section>
+	<div id="content">
+		<form action="${conPath }/member.do" method="post">
+			<input type="hidden" name="method" value="login"> 
+			<input type="hidden" name="after" value="${empty param.after ? 'main.do':param.after}">
+			<table>
+				<caption>로그인</caption>
+				<tr>
+					<th>아이디</th>
+					<td>
+						<input type="text" name="mid" required="required" value="${mid }">
+					</td>
+				</tr>
+				<tr>
+					<th>비밀번호</th>
+					<td>
+						<input type="password" name="mpw" required="required" value="${mpw }">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2">
+					<input type="submit" value="로그인">
+					<input type="button" value="회원가입" class="submit-btn" onclick="location='${conPath}/member.do?method=join'">
+					
+					</td>
+				</tr>
+			</table>
+		</form>
+	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

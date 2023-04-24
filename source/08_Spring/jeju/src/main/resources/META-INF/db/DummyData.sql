@@ -44,18 +44,19 @@ INSERT INTO Business (bid, bpw, bname, bemail) VALUES ('theOne', '123', '호텔�
 INSERT INTO Business (bid, bpw, bname, bemail) VALUES ('hotel', '123', '호텔', 'hotel@naver.com'); 
 
 -- MEMBER -- 
-insert into member (mId, mPw, mName, mEmail, mAddr, mPost, mBirth)
-    values('aaa', '1', '홍길동', 'hong@hong.com', '서울시 중랑구', '12345', '1995-12-12');
-insert into member (mId, mPw, mName, mEmail, mAddr, mPost, mBirth)
-    values('bbb', '1', '김길동', 'kim@kim.com', '서울시 서대문구', '12345', '1997-04-28');
-INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO)
-    VALUES ('kim', '123', '김민지', 'kim@naver.com', '강원도 춘천시', '12345', '2004-05-07','NOIMG.JPG');
-INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO)
-    VALUES ('pham', '123', '팜하니', 'hani@naver.com', '서울시 강서구', '45678', '2004-10-06','NOIMG.JPG');
-INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO)
-    VALUES ('zico', '123', '지아코', 'zico@naver.com', '서울시 강북구', '54524', '1992-09-14','NOIMG.JPG');
-INSERT INTO MEMBER (mID, mPW, mNAME, mEMAIL, mADDR, mPOST, MBIRTH, MPHOTO)
-    VALUES ('kang', '123', '강성빈', 'kang@naver.com', '서울시 강서구', '12345', '1994-08-25','NOIMG.JPG');
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth)
+    values('aaa', '1', '홍길동','010-1234-1234',  'hong@hong.com', '서울시 중랑구', 'xx아파트', '12345', '1995-12-12');
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth)
+    values('ccc', '1', '김길동', '010-4321-4321', 'kim@kim.com', '서울시 서대문구', '이젠빌라', '12345', '1997-04-28');
+    
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto)
+    VALUES ('kim2', '123', '김민지', '010-1234-4321', 'kim@naver.com', '강원도 춘천시', '춘천아파트',' 12345', '2004-05-07','민지.png');
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto, mrDate)
+    VALUES ('pham', '123', '팜하니',  '010-4321-1234', 'hani@naver.com', '서울시 강서구', '염창아파트', '45678', '2004-10-06','하니.png', SYSDATE);
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto, mrDate)
+    VALUES ('zico', '123', '지아코', '010-6666-666', 'zico@naver.com', '서울시 강북구', '강북아파트', '54524', '1992-09-14','gico.png', SYSDATE);
+insert into member (mId, mPw, mName, mTel, mEmail, mAddr, mDeAddr, mPost, mBirth, mphoto, mrDate)
+    VALUES ('kang', '123', '강성빈',  '010-5555-4343', 'kang@naver.com', '서울시 강서구', '미주아파트', '12345', '1994-08-25','kang.png', SYSDATE);
 
 -- SPOT --
 insert into spot (sName, aId, locationNo, sAddr, sTel, sLink, sInfo, sMainImg, sSubImg_1, sLatitude, sLongitude, sPrice) 
@@ -65,21 +66,21 @@ insert into spot (sName, aId, locationNo, sAddr, sTel, sLink, sInfo, sMainImg, s
     
 insert into spot (sName, aId, locationNo, sAddr, sTel, sLink, sInfo, sMainImg, sSubImg_1, sLatitude, sLongitude, sPrice) 
     values('성산일출봉(UNESCO 세계자연유산)', 'admin', 2, '제주특별자치도 서귀포시 성산읍 일출로 284-12', '064-783-0959', 
-    'http://www.jeju.go.kr/dorip/seongsan.htm', '매일 07:00 - 20:00 (18:50분매표마감) 3~9월 / 매월 첫째 월요일 휴관 
-    (단, 등하산교차로, 우뭇개 전망대, 우뭇개 해안은 무료개방) 매일 07:30 - 19:00 (17:50분매표마감) 10~2월 / 매월 첫째 월요일 휴관', 
+    'http://www.jeju.go.kr/dorip/seongsan.htm', '매일 07:00 - 20:00 (18:50분매표마감) 3~9월 / 매월 첫째 월요일 휴관 (단, 등하산교차로, 우뭇개 전망대, 우뭇개 해안은 무료개방) 매일 07:30 - 19:00 (17:50분매표마감) 10~2월 / 매월 첫째 월요일 휴관', 
     '성산일출봉m.jpg', '성산일출봉s.jpg', 33.45917466716145, 126.94059127727817, 
     '유료,개인 (성인 5,000원 / 청소년, 군인 2,500원 / 어린이 2,500원), 단체 (성인 4,000원 / 청소년, 군인 2,000원 / 어린이 2,000원)');
     
 insert into spot (sName, aId, locationNo, sAddr, sTel, sInfo, sMainImg, sSubImg_1, sLatitude, sLongitude, sPrice) 
     values('협재해수욕장', 'admin', 1, '제주특별자치도 제주시 한림읍 한림로 329-10', '064-728-3981', 
     '협재 종합상황실: 064-728-3981(해수욕장 개장기간 동안 운영)', '협재해수욕장m.jpg', 
-    '협재해수욕장s.jpg', 33.39906165536689, 126.1241478664344, '무료');
+    '협재해수욕장s.jpg', 33.39396920901713, 126.23921468065957, '무료');
 
 -- RESTAURANT --
 INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo, RADDR, RTEL, RLINK, RINFO, RMENU, RMAINIMG, RSUBIMG_1, RSUBIMG_2, RSUBIMG_3, RLATITUDE, RLONGITUDE, RPRICE)
     VALUES ('제주김만복', 'su', 1, 3, '제주특별자치도 제주시 오라로 41', '064-759-8582', 'LINK', 
     '매일매일 신선한 재료로 정성스레 만드는 만복이네 김밥입니다!', '만복김밥', 
             'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.497066158681676, 126.50894864880289, '세트가 단돈 만원!');
+            
 INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo,RADDR, RTEL, RLINK, RINFO, RMENU, RMAINIMG, RSUBIMG_1, RSUBIMG_2, RSUBIMG_3, RLATITUDE, RLONGITUDE, RPRICE)
     VALUES ('올래국수', 'guk', 1, 4, '제주특별자치도 제주시 귀아랑길 24 (연동)', '064-742-7355', 'LINK', 
     '너 올래 안올래? 올래국수!', '해물국수',
@@ -94,25 +95,25 @@ INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo, RADDR, RTEL, R
     VALUES ('명진전복', 'jin', 1, 2, '제주특별자치도 제주시 구좌읍 해맞이해안로 1282', '064-782-9944', 
     'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020047', 
     '명진전복은 전복돌솥밥, 전복구이, 전복죽 등을 판매하는 인기 맛집 입니다!', '전복구이',
-            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.53248445339446, 126.85020647896245, '12,000원');     
+            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.53246865592159, 126.8501903577186, '12,000원');     
 
 INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo, RADDR, RTEL, RLINK, RINFO, RMENU, RMAINIMG, RSUBIMG_1, RSUBIMG_2, RSUBIMG_3, RLATITUDE, RLONGITUDE, RPRICE)
     VALUES ('가시아방', 'bang', 5, 4, '제주특별자치도 서귀포시 성산읍 섭지코지로 10', '064-783-0987', 
     'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000018307', 
     '국수가 먹고싶을땐? 가시아방', '고기국수, 비빔국수',
-            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.53248445339446, 126.85020647896245, '8,000원');
+            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.43858028658235, 126.9180594306653, '8,000원');
 
 INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo, RADDR, RTEL, RLINK, RINFO, RMENU, RMAINIMG, RSUBIMG_1, RSUBIMG_2, RSUBIMG_3, RLATITUDE, RLONGITUDE, RPRICE)
     VALUES ('돈사돈', 'don', 1, 1, '제주특별자치도 제주시 우평로 19', '064-746-8989', 
     'https://www.visitjeju.net/kr/detail/view?contentsid=CNTS_000000000020104', 
     '진정한 흑돼지 달인', '흑돼지 오겹살',
-            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.53248445339446, 126.85020647896245, '30,000원');
+            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.478845919157024, 126.46402562151444, '30,000원');
             
 INSERT INTO restaurant (RNAME, BID, LOCATIONNO, RestauranTtypeNo, RADDR, RTEL, RLINK, RINFO, RMENU, RMAINIMG, RSUBIMG_1, RSUBIMG_2, RSUBIMG_3, RLATITUDE, RLONGITUDE, RPRICE)
     VALUES ('봄날카페', 'bom', 1, 5, '제주특별자치도 제주시 애월읍 애월로1길 25', '064-799-4999', 
     'link', 
     '드라마 맨도롱 또똣의 주인공이 일하던 카페', '아메리카노',
-            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.53248445339446, 126.85020647896245, '3,000원');
+            'main.img', 'sub1.img', 'sub2.img', 'sub3.img',  33.46242809443207, 126.30958428618032 , '3,000원');
 
 
 
@@ -181,12 +182,26 @@ insert into restaurantComment (rCommentNo, rName, bID, RContent, RGroup, RStep, 
     values (rCommentNo_seq.nextval, '올래국수', 'su', '헉 고객님 칭찬 베리 감사합니다!', 3, 1, 1);
 
 -- hotelComment --
+-- 원 댓글
 INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
     VALUES (hCommentNo_seq.NEXTVAL, '호텔더원', 'aaa', NULL, '깨끗하고 좋아요', hCommentNo_seq.CURRVAL, 0, 0, SYSDATE);
+INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
+    VALUES (hCommentNo_seq.NEXTVAL, '호텔더원', 'bbb', NULL, '경치가 너무 좋네요', hCommentNo_seq.CURRVAL, 0, 0, SYSDATE);
 INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
     VALUES (hCommentNo_seq.NEXTVAL, '위드시티호텔', 'bbb', NULL, '공항에서 가까워서 편했어요', hCommentNo_seq.CURRVAL, 0, 0, SYSDATE);
 INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
     VALUES (hCommentNo_seq.NEXTVAL, '그라벨호텔', 'kim', NULL, '시내랑 가까워서 움직이기 좋아요', hCommentNo_seq.CURRVAL, 0, 0, SYSDATE);
+
+-- 답 댓글
+INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
+    VALUES (hCommentNo_seq.NEXTVAL, '호텔더원', NULL, 'theOne', '항상 좋은 모습으로 보답하겠습니다', 1, 1, 1, SYSDATE);
+INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
+    VALUES (hCommentNo_seq.NEXTVAL, '호텔더원', NULL, 'theOne', '보답하겠습니다', 4, 1, 1, SYSDATE);
+
+-- 댓글의 댓글
+INSERT INTO HOTELCOMMENT (HCOMMENTNO, HNAME, MID, BID, HCONTENT, HGROUP, HSTEP, HINDENT, HCRDATE)
+    VALUES (hCommentNo_seq.NEXTVAL, '호텔더원', 'aaa', NULL, '감사합니다', 1, 2, 2, SYSDATE);
+
     
 -- FESTIVAL --
 INSERT INTO FESTIVAL (FESTIVALNO, aID, FTITLE, FCONTENT)

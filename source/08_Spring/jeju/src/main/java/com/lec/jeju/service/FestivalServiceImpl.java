@@ -18,7 +18,7 @@ public class FestivalServiceImpl implements FestivalService {
 
 	@Override
 	public List<FestivalBoard> FestivalList(String pageNum) {
-		Paging paging = new Paging(festivalDao.totCntFestival(), pageNum, 5, 5);
+		Paging paging = new Paging(festivalDao.totCntFestival(), pageNum, 5, 10);
 		FestivalBoard festivalBoard = new FestivalBoard();
 		festivalBoard.setStartRow(paging.getStartRow());
 		festivalBoard.setEndRow(paging.getEndRow());

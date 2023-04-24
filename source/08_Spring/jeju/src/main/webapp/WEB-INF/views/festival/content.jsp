@@ -13,6 +13,28 @@
 #wrap {
 	height: 800px;
 }
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th, td {
+  text-align: center;
+  padding: 8px;
+  border: 1px solid black;
+}
+
+th {
+  background-color: #F7DC6F;
+}
+
+tr:nth-child(even) {
+  background-color: #F2F2F2;
+}
+
+tr:hover {
+  background-color: #D5DBDB;
+}
 
 .btn {
 	-webkit-appearance: none;
