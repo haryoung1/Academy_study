@@ -8,10 +8,10 @@
 </head>
 <body>
 	<c:if test="${memailConfirmResult eq 1}">
-		<b style="color: red">중복된 메일주소 입니다. 사용불가</b>
+		<b style="color: red">중복된 메일주소 입니다.</b>
 	</c:if>
 	<c:if test="${memailConfirmResult eq 0 }">
-		사용가능한 메일주소 입니다.
+		사용 가능한 이메일 입니다.
 	</c:if>
 </body>
 </html>

@@ -36,7 +36,7 @@ CREATE TABLE Member (
     mDeAddr VARCHAR2(200),
     mPost VARCHAR2(50),
     mBirth DATE NOT NULL,
-    mPhoto VARCHAR2(255) NOT NULL,
+    mPhoto VARCHAR2(255),
     mRdate DATE DEFAULT SYSDATE NOT NULL
 ); -- 멤버 테이블
 
@@ -186,8 +186,8 @@ CREATE TABLE hotelComment (
     bId VARCHAR2(50) REFERENCES BUSINESS(bId) ON DELETE CASCADE,
     hContent CLOB NOT NULL,
     hGroup NUMBER(5) NOT NULL,
-    hStep NUMBER(5) NOT NULL,
-    hIndent NUMBER(5) NOT NULL,
+    hStep NUMBER(5) NOT NULL,       -- 출력순서
+    hIndent NUMBER(5) NOT NULL,     -- 들여쓰기
     hCrdate TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 ); -- 숙소댓글 테이블
 
@@ -220,7 +220,6 @@ SELECT * FROM restaurant;
 SELECT * FROM restaurantComment;
 SELECT * FROM Festival;
 SELECT * FROM MEMBER;
-update member set mphoto = '1682386837464park.png' where mid = 'zico';
 SELECT * FROM BOOKMARK;
 SELECT * FROM RestauranTtype;
 SELECT * FROM restaurant;

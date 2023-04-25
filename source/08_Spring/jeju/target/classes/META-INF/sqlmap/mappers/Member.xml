@@ -21,9 +21,11 @@
 		SELECT COUNT(*) FROM MEMBER WHERE MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
+	<!-- 이메일 중복체크 -->
 	<select id="emailConfirm" parameterType="String" resultType="int">
-		SELECT COUNT(*) FROM MEMBER WHERE mEMAIL = #{memail, jdbcType=VARCHAR}
+	    SELECT COUNT(*) FROM MEMBER WHERE MEMAIL = #{memail, jdbcType=VARCHAR}
 	</select>
+
 	
 	<!-- 회원가입 -->
 	<insert id="joinMember" parameterType="Member">

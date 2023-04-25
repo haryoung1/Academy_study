@@ -19,53 +19,58 @@ color: blue;
 <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
 <script src="${conPath }/js/address.js"></script>
-
 <script>
-	$(function() {
-		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
-		$('input[name="memail"]').keyup(function() {
-			let memail = $(this).val();
-			if (memail == '${member.memail}') { // 기존 이메일과 동일할 경우 중복검사 실행
-				checkDuplicateEmail(memail);
-			} else if ((!memail)) {
-				$('#memailConfirmResult').html(' &nbsp; ');
-			} else if (patternMemail.test(memail)) {
-				checkDuplicateEmail(memail);
-			} else if (!patternMemail.test(memail)) {
-				$('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
-			}
-		});
+    $(function() {
+        var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
+        $('input[name="memail"]').on('blur', function() {
+            let memail = $(this).val();
+            if (memail == '${member.memail}') { // 기존 이메일과 동일할 경우 중복검사 실행
+                checkDuplicateEmail(memail);
+            } else if ((!memail)) {
+                $('#memailConfirmResult').html(' &nbsp; ');
+            } else if (patternMemail.test(memail)) {
+                checkDuplicateEmail(memail);
+            } else if (!patternMemail.test(memail)) {
+                $('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
+            }
+        });
+        function checkDuplicateEmail(memail) {
+            $.ajax({
+                url : '${conPath}/member.do',
+                type : 'get',
+                data : "method=memailConfirm&memail=" + memail,
+                dataType : 'html',
+                success : function(data) {
+                    var memailConfirmResult = $(data).text().trim();
+                    $('#memailConfirmResult').html(memailConfirmResult);
+                },
+            });
+        }
+        $('form').submit(function() {
+        	  var oldMpw = $('input[name="oldMpw"]').val();
+        	  var memailConfirmResult = $('#memailConfirmResult').text().trim();
+        	  
+        	  // 중복 확인 결과가 나타나지 않은 경우
+        	  if (!memailConfirmResult) {
+        	    alert('이메일 중복 여부를 확인하세요.');
+        	    return false;
+        	  }
+        	  
+        	  // 현재 비밀번호가 일치하지 않는 경우
+        	  if (oldMpw !== '${member.mpw}') {
+        	    alert('현재 비밀번호가 틀렸습니다.');
+        	    $('input[name="oldMpw"]').focus();
+        	    return false;
+        	  }
 
-		function checkDuplicateEmail(memail) {
-		    $.ajax({
-		        url : '${conPath}/member.do',
-		        type : 'get',
-		        data : "method=memailConfirm&memail=" + memail,
-		        dataType : 'html',
-		        success : function(data) {
-		            var memailConfirmResult = $(data).text().trim();
-		            $('#memailConfirmResult').html(memailConfirmResult);
-		        },
-		    });
-		}
-
-		$('form').submit(
-				function() {
-					var oldMpw = $('input[name="oldMpw"]').val();
-					var memailConfirmResult = $('#memailConfirmResult').text()
-							.trim();
-					if (oldMpw != '${member.mpw}') {
-						alert('현재 비밀번호가 틀렸습니다.');
-						$('input[name="oldMpw"]').focus();
-						return false;
-					} else if ((memailConfirmResult == '메일 형식을 지켜 주세요')
-							|| (memailConfirmResult == '사용 불가한 중복된 메일')) {
-						alert('메일을 확인하세요');
-						$('input[name="memail"]').focus();
-						return false;
-					}
-				});
-	});
+        	  // 이메일이 중복된 경우
+        	  if (memailConfirmResult !== '사용 가능한 이메일 입니다.') {
+        	    alert('이미 등록된 이메일입니다.');
+        	    $('input[name="memail"]').focus();
+        	    return false;
+        	  }
+        	});
+    });
 </script>
 </head>
 <body>
@@ -79,7 +84,6 @@ color: blue;
 		<form action="${conPath }/member.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="method" value="modify">
 			<table>
-			<caption>Information</caption>
 				<tr>
 					<td>아이디</td>
 					<td>
@@ -160,8 +164,6 @@ color: blue;
 						<input type="submit" value="수정"> 
 						<input type="button" value="취소" onclick="location.href='${conPath}/main.do'">
 						<input type="button" value="회원탈퇴" onclick="location.href='${pageContext.request.contextPath}/member/delete.do'">
-
-
 					</td>
 				</tr>
 			</table>

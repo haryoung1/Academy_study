@@ -1,5 +1,6 @@
 package com.lec.jeju.controller;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -8,8 +9,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.lec.jeju.service.MemberService;
 import com.lec.jeju.vo.Member;
@@ -29,8 +30,14 @@ public class MemberController {
 
 	@RequestMapping(params = "method=memailConfirm", method = RequestMethod.GET)
 	public String mailConfirm(String memail, Model model) {
-		model.addAttribute("memailConfirmResult ", memberService.emailConfirm(memail));
+		model.addAttribute("memailConfirmResult", memberService.emailConfirm(memail));
 		return "member/memailConfirm";
+	}
+  
+	// 회원가입 약관
+	@RequestMapping(params = "method=joinAgreePage", method = RequestMethod.GET)
+	public String joinAgreePage() {
+		return "member/joinAgreePage";
 	}
 
 	// 회원가입 View
@@ -103,21 +110,23 @@ public class MemberController {
 
 	// 회원탈퇴 처리
 	@RequestMapping(params = "method=delete", method = RequestMethod.POST)
-	public String deleteMember(HttpSession session, String mpw, Model model) {
+	public String deleteMember(HttpSession session, String mpw, Model model, RedirectAttributes redirectAttributes) {
 		Member member = (Member) session.getAttribute("member");
 		String msg = null;
 		if (member.getMpw().equals(mpw)) {
 			int result = memberService.deleteMember(member.getMid());
 			if (result > 0) {
 				session.invalidate();
+				redirectAttributes.addFlashAttribute("msg", "회원탈퇴가 완료되었습니다.");
 				return "redirect:main.do";
 			} else {
 				msg = "회원탈퇴 처리가 실패 했습니다.";
 			}
 		} else {
-			msg = "현재 비밀번호가 일치하지 않습니다";
+			msg = "비밀번호가 일치하지 않습니다";
 		}
 		model.addAttribute("msg", msg);
-		return "redirect:javascript:history.back()";
+		return "member/delete";
 	}
+
 }

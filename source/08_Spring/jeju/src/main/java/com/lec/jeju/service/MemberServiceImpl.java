@@ -31,7 +31,7 @@ public class MemberServiceImpl implements MemberService {
 	@Autowired
 	private JavaMailSender mailSender;
 
-	String backupPath = "D:/webPro/source/08_Spring/jeju/src/main/webapp/memberPhoto/";
+	String backupPath = "D:/TeamProject/Source/jeju-2ndTeamProject/src/main/webapp/memberPhoto/";
 
 	@Override
 	public int idConfirm(String mid) {

@@ -8,32 +8,9 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${conPath }/css/festivalList.css" rel="stylesheet">
+<link href="${conPath }/css/festival/festivalList.css" rel="stylesheet">
 <script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 <style>
-table {
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  text-align: center;
-  padding: 8px;
-  border: 1px solid black;
-}
-
-th {
-  background-color: #F7DC6F;
-}
-
-tr:nth-child(even) {
-  background-color: #F2F2F2;
-}
-
-tr:hover {
-  background-color: #D5DBDB;
-}
-
 #right {
 	text-align: right;
 	margin: 20px;
@@ -82,11 +59,16 @@ tr:hover {
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
+	<br>
+	<br>
+	<br>
+	<br>
+	
 	<c:set var="SUCCESS" value="1" />
 	<c:set var="FAIL" value="0" />
-	<c:if test="${modifyResult eq SUCCESS}">
+	<c:if test="${writeResult eq SUCCESS}">
 		<script>
-			alert('정보수정 성공');
+			alert('글쓰기 성공');
 		</script>
 	</c:if>
 	<c:if test="${writeResult eq FAIL}">
@@ -112,7 +94,6 @@ tr:hover {
 		</script>
 	</c:if>
 	<div id="wrap">
-		<br>
 		<h2 style="color: black;">축제정보</h2>
 		<hr>
 		<br> <br>
@@ -131,7 +112,7 @@ tr:hover {
 			</c:if>
 			<c:if test="${totCnt != 0 }">
 				<c:forEach items="${FestivalList}" var="festival">
-					<tr onclick="trClicked(${festival.festivalno})">
+				<tr onclick="trClicked(${festival.festivalno})">
 						<td>${festival.festivalno }</td>
 						<td>${festival.ftitle }</td>
 						<td>${festival.aid }</td>
@@ -163,8 +144,8 @@ tr:hover {
 		</c:if>
 		</div>
 		<div id="right">
-		<c:if test="${not empty admin }"> --%>
-				<button class="btn" onclick="location='${conPath}/festival/write.do'">글등록</button>
+		<c:if test="${not empty admin }">
+			<button class="btn" onclick="location='${conPath}/festival/write.do'">글등록</button>
 		</c:if>
 		</div>
 	</div>
