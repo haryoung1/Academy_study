@@ -17,6 +17,13 @@
 	</script>
 </head>
 <body>
+	<c:set var="SUCCESS" value="1" />
+	<c:set var="FAIL" value="0" />
+	<c:if test="${modifyResult eq SUCCESS}">
+		<script>
+			alert('정보수정 성공');
+		</script>
+	</c:if>
 	<jsp:include page="header.jsp"/>
 	<div class="swiper mySwiper">
 	    <div class="swiper-wrapper">

@@ -84,12 +84,11 @@ tr:hover {
 	<jsp:include page="../main/header.jsp" />
 	<c:set var="SUCCESS" value="1" />
 	<c:set var="FAIL" value="0" />
-	<c:if test="${writeResult eq SUCCESS}">
+	<c:if test="${modifyResult eq SUCCESS}">
 		<script>
-			alert('글쓰기 성공');
+			alert('정보수정 성공');
 		</script>
 	</c:if>
-	-
 	<c:if test="${writeResult eq FAIL}">
 		<script>
 			alert('글쓰기 실패');

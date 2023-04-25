@@ -116,13 +116,44 @@ public class MemberServiceImpl implements MemberService {
 	}
 
 	@Override
-	public int modifyMember(Member member, HttpSession httpSession) {
+	public int modifyMember(Member member, HttpSession httpSession, MultipartHttpServletRequest mRequest) {
+		String uploadPath = mRequest.getRealPath("memberPhoto/");
+		Iterator<String> params = mRequest.getFileNames();
+		String mphoto = "";
+		// 기존 멤버 정보를 세션에서 가져옴
+		Member sessionMember = (Member) httpSession.getAttribute("member");
+		// 새 비밀번호를 가져옴
+		String newPassword = member.getMpw();
+		// 새 비밀번호가 null 이거나 빈 문자열일 경우, 기존 비밀번호로 설정
+		if (newPassword == null || newPassword.isEmpty()) {
+			member.setMpw(sessionMember.getMpw());
+		}
+		while (params.hasNext()) {
+			String paramName = params.next();
+			MultipartFile mFile = mRequest.getFile(paramName);
+			String originalFileName = mFile.getOriginalFilename();
+			String saveFileName = System.currentTimeMillis() + originalFileName;
+			try {
+				mFile.transferTo(new File(uploadPath + saveFileName));
+				System.out.println("서버파일 : " + uploadPath + saveFileName);
+				System.out.println("백업파일 : " + backupPath + saveFileName);
+				boolean result = fileCopy(uploadPath + saveFileName, backupPath + saveFileName);
+				System.out.println(result ? "백업성공" : "백업실패");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+			mphoto = "memberPhoto/" + saveFileName;
+		}
+		// 새로운 프로필 사진 경로를 member 객체에 저장
+		member.setMphoto(mphoto);
+		// 세션에 새 멤버 정보 저장
 		httpSession.setAttribute("member", member);
+		// 데이터베이스에 업데이트 요청
 		return memberDao.modifyMember(member);
 	}
 
 	@Override
-	public int deleteMember(HttpSession httpSession, String mid) {
+	public int deleteMember(String mid) {
 		int result = memberDao.deleteMember(mid);
 		return result;
 	}

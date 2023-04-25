@@ -10,42 +10,54 @@
 <title>Insert title here</title>
 <link href="${conPath }/css/member/modify.css" rel="stylesheet">
 <style>
+p 	{
+margin: 15px;
+color: blue;
+}
 </style>
-<script src="${conPath }/js/address.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+<script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
 <script src="http://dmaps.daum.net/map_js_init/postcode.v2.js"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
+<script src="${conPath }/js/address.js"></script>
+
 <script>
 	$(function() {
-		// macth함수 사용
 		var patternMemail = /^[a-zA-Z0-9_\.]+@[a-zA-Z0-9_]+(\.\w+){1,2}$/;
 		$('input[name="memail"]').keyup(function() {
 			let memail = $(this).val();
-			if ((!memail) || (memail == '${member.memail}')) {
+			if (memail == '${member.memail}') { // 기존 이메일과 동일할 경우 중복검사 실행
+				checkDuplicateEmail(memail);
+			} else if ((!memail)) {
 				$('#memailConfirmResult').html(' &nbsp; ');
 			} else if (patternMemail.test(memail)) {
-				$.ajax({
-					url : '${conPath}/member.do',
-					type : 'get',
-					data : "method=memailConfirm&memail=" + $('#memail').val(),
-					dataType : 'html',
-					success : function(data) {
-						$('#memailConfirmResult').html(data);
-					},
-				});
+				checkDuplicateEmail(memail);
 			} else if (!patternMemail.test(memail)) {
 				$('#memailConfirmResult').html('<b>메일 형식을 지켜 주세요</b>');
 			}
 		});
+
+		function checkDuplicateEmail(memail) {
+		    $.ajax({
+		        url : '${conPath}/member.do',
+		        type : 'get',
+		        data : "method=memailConfirm&memail=" + memail,
+		        dataType : 'html',
+		        success : function(data) {
+		            var memailConfirmResult = $(data).text().trim();
+		            $('#memailConfirmResult').html(memailConfirmResult);
+		        },
+		    });
+		}
+
 		$('form').submit(
 				function() {
-					// 현비밀번호확인과 사용불가한 중복된 메일일 경우 submit 제한
 					var oldMpw = $('input[name="oldMpw"]').val();
 					var memailConfirmResult = $('#memailConfirmResult').text()
 							.trim();
 					if (oldMpw != '${member.mpw}') {
-						alert('현비밀번호를 확인하세요');
+						alert('현재 비밀번호가 틀렸습니다.');
 						$('input[name="oldMpw"]').focus();
-						return false; // submit 제한
+						return false;
 					} else if ((memailConfirmResult == '메일 형식을 지켜 주세요')
 							|| (memailConfirmResult == '사용 불가한 중복된 메일')) {
 						alert('메일을 확인하세요');
@@ -67,16 +79,18 @@
 		<form action="${conPath }/member.do" method="post" enctype="multipart/form-data">
 			<input type="hidden" name="method" value="modify">
 			<table>
+			<caption>Information</caption>
 				<tr>
 					<td>아이디</td>
 					<td>
 						<input type="text" name="mid" value="${member.mid }" readonly="readonly" size="3">
 					</td>
-					<td rowspan="4">
-						<img src="${conPath }/memberPhoto/${member.mphoto}" alt="${member.mname }사진">
+					<td rowspan="6">
+					<p>[프로필사진]</p>
+						<img src="${conPath }/${member.mphoto}" alt="${member.mname }사진">
 					</td>
 				</tr>
-				
+
 				<tr>
 					<td>현 비밀번호</td>
 					<td>
@@ -88,7 +102,7 @@
 					<td>
 						<input type="password" name="mpw" size="3">
 					</td>
-					</tr>
+				</tr>
 				<tr>
 					<td>이름</td>
 					<td>
@@ -103,15 +117,15 @@
 				</tr>
 				<tr>
 					<td>메일</td>
-					<td colspan="2">
-						<input type="email" name="memail" value="${member.memail }">
+					<td colspan="1">
+						<input type="email" name="memail" size="3" value="${member.memail }">
 						<div id="memailConfirmResult">&nbsp;</div>
 					</td>
-					</tr>
+				</tr>
 				<tr>
 					<td>우편번호</td>
 					<td>
-						<input type="text" id="sample4_postcode" name="mpost" class="text_box" size="3" value="${member.mpost }">
+						<input type="text" id="sample4_postcode" name="mpost" class="text_box" size="3" value="${member.mpost }"> 
 						<input type="button" onclick="sample4_execDaumPostcode()" value="우편번호 찾기">
 					</td>
 				</tr>
@@ -142,10 +156,12 @@
 					</td>
 				</tr>
 				<tr>
-					<td colspan="2" style="text-align: center">
-						<input type="submit" value="수정">
-						<input type="button" value="취소" onclick="history.back()">
-						<input type="button" value="회원탈퇴" onclick="history.back()">
+					<td colspan="2" style="text-align: center;">
+						<input type="submit" value="수정"> 
+						<input type="button" value="취소" onclick="location.href='${conPath}/main.do'">
+						<input type="button" value="회원탈퇴" onclick="location.href='${pageContext.request.contextPath}/member/delete.do'">
+
+
 					</td>
 				</tr>
 			</table>

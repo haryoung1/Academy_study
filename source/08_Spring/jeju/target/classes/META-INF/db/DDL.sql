@@ -220,6 +220,7 @@ SELECT * FROM restaurant;
 SELECT * FROM restaurantComment;
 SELECT * FROM Festival;
 SELECT * FROM MEMBER;
+update member set mphoto = '1682386837464park.png' where mid = 'zico';
 SELECT * FROM BOOKMARK;
 SELECT * FROM RestauranTtype;
 SELECT * FROM restaurant;

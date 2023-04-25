@@ -50,10 +50,8 @@
         mADDR = #{maddr},
         mDEADDR = #{mdeaddr},
         mPOST = #{mpost},
-        mBIRTH = #{mbirth, jdbcType=TIMESTAMP}
-        <if test="mphoto != null">
-            mPHOTO = #{mphoto}
-        </if>
+        mBIRTH = #{mbirth, jdbcType=TIMESTAMP},
+		mPHOTO = #{mphoto}
     WHERE mID = #{mid, jdbcType=VARCHAR}
 	</update>
 	

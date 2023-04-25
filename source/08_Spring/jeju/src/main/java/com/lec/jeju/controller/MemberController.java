@@ -39,6 +39,7 @@ public class MemberController {
 		return "member/join";
 	}
 
+	// 회원가입 처리
 	@RequestMapping(params = "method=join", method = RequestMethod.POST)
 	public String join(@ModelAttribute("mDto") Member member, Model model, HttpSession httpSession,
 			MultipartHttpServletRequest mRequest) {
@@ -46,12 +47,14 @@ public class MemberController {
 		return "member/login";
 	}
 
-	@RequestMapping(params = "method=login", method = RequestMethod.GET) // 로그인 뷰
+	// 로그인 뷰
+	@RequestMapping(params = "method=login", method = RequestMethod.GET)
 	public String login() {
 		return "member/login";
 	}
 
-	@RequestMapping(params = "method=login", method = RequestMethod.POST) // 로그인 처리
+	// 로그인 처리
+	@RequestMapping(params = "method=login", method = RequestMethod.POST)
 	public String login(String mid, String mpw, String after, HttpSession httpSession, Model model) {
 		String loginResult = memberService.loginCheck(mid, mpw, httpSession);
 		if (loginResult.equals("로그인 성공")) {
@@ -64,25 +67,57 @@ public class MemberController {
 		}
 	}
 
-	@RequestMapping(params = "method=logout", method = RequestMethod.GET) // 로그아웃
+	// 로그아웃
+	@RequestMapping(params = "method=logout", method = RequestMethod.GET)
 	public String logout(HttpSession httpSession) {
 		httpSession.invalidate();
 		return "redirect:main.do";
 	}
 
-	@RequestMapping(value = "method=modify", method = RequestMethod.GET) // 로그인 후 정보수정으로 갈때
+	// 로그인 후 정보수정으로 갈때
+	@RequestMapping(value = "method=modify", method = RequestMethod.GET)
 	public String modify1() {
 		return "member/modify";
 	}
 
-	@RequestMapping(params = "method=modify", method = RequestMethod.GET) // 정보수정 뷰
+	// 정보수정 뷰
+	@RequestMapping(params = "method=modify", method = RequestMethod.GET)
 	public String modify() {
 		return "member/modify";
 	}
 
-	@RequestMapping(params = "method=modify", method = RequestMethod.POST) // 정보수정 처리
-	public String modify(@ModelAttribute("mDto") Member member, HttpSession httpSession, Model model) {
-		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession));
+	// 정보수정 처리
+	@RequestMapping(params = "method=modify", method = RequestMethod.POST)
+	public String modify(@ModelAttribute("mDto") Member member, HttpSession httpSession, Model model,
+			MultipartHttpServletRequest mRequest) {
+		model.addAttribute("modifyResult", memberService.modifyMember(member, httpSession, mRequest));
 		return "forward:main.do";
+	}
+
+	// 회원탈퇴
+
+	@RequestMapping(value = "delete", method = RequestMethod.GET)
+	public String delete() {
+		return "member/delete";
+	}
+
+	// 회원탈퇴 처리
+	@RequestMapping(params = "method=delete", method = RequestMethod.POST)
+	public String deleteMember(HttpSession session, String mpw, Model model) {
+		Member member = (Member) session.getAttribute("member");
+		String msg = null;
+		if (member.getMpw().equals(mpw)) {
+			int result = memberService.deleteMember(member.getMid());
+			if (result > 0) {
+				session.invalidate();
+				return "redirect:main.do";
+			} else {
+				msg = "회원탈퇴 처리가 실패 했습니다.";
+			}
+		} else {
+			msg = "현재 비밀번호가 일치하지 않습니다";
+		}
+		model.addAttribute("msg", msg);
+		return "redirect:javascript:history.back()";
 	}
 }
