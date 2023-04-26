@@ -19,7 +19,11 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<h3>${member.mname }님이 즐겨찾기한 호텔 LIST</h3>
-	<p>${hotelVo.hname }얘가 호텔이름</p>
+	<c:forEach var="hotel" items="${hotelList}">
+		<p>${hotel.hname}</p>
+		<p>${hotel.address}</p>
+		<!-- 호텔 정보를 출력하는 코드 추가 -->
+	</c:forEach>
 
 
 

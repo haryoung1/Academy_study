@@ -7,16 +7,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
-<link href="${conPath }/css/emp.css" rel="stylesheet">
-<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
-<script>
-	$(document).ready(function() {
-
-	});
-</script>
+<title>즐겨찾기 목록</title>
+<link href="${conPath }/css/bookmark/markall.css" rel="stylesheet">
 </head>
 <body>
-	
+	<jsp:include page="../main/header.jsp" />
+	<br>
+	<div class="bookmark-list">
+		<table>
+			<thead>
+				<tr>
+					<th>즐겨찾기한 숙소</th>
+					<th>즐겨찾기한 식당</th>
+					<th>즐겨찾기한 관광지</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td><a href="${conPath}/bookmark/hotelList.do">0개</a></td>
+					<td><a href="${conPath}/bookmark/resList.do">1개</a></td>
+					<td><a href="${conPath}/bookmark/spotList.do">2개</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

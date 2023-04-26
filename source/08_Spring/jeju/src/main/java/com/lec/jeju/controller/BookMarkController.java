@@ -17,6 +17,11 @@ public class BookMarkController {
 	@Autowired
 	private BookMarkService bookmarkService;
 
+	@RequestMapping(value = "MyAll", method = { RequestMethod.GET, RequestMethod.POST })
+	public String all() {
+		return "bookmark/bookMarkAll";
+	}
+
 	@RequestMapping(value = "hotelList", method = { RequestMethod.GET, RequestMethod.POST })
 	public String hotelList(String mid, Model model) {
 		List<BookMark> hotelList = bookmarkService.getBookmarkHotelList(mid);

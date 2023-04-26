@@ -11,9 +11,8 @@ public interface BookMarkDao {
 
 	// 북마크한 리스트중 호텔만 출력
 	List<BookMark> bookmarkHotel(String mid);
-
+	
 	// 북마크한 리스트중 식당만 출력
-
 	List<BookMark> bookmarkRes(String mid);
 
 	// 북마크한 리스트중 관광지만 출력
@@ -41,5 +40,14 @@ public interface BookMarkDao {
 	// 관광지 북마크 삭제
 
 	int deleteSpotMark(String mid, String sname);
+	
+	// 북마크 관광지 갯수
+	int SpotCount(String mid);
+	
+	// 북마크 호텔 갯수
+	int HotelCount(String mid);
+		
+	// 북마크 식당갯수
+	int ResCount(String mid);
 
 }
