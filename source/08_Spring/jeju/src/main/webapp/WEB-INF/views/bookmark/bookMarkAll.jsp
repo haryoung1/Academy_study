@@ -9,29 +9,38 @@
 <meta charset="UTF-8">
 <title>즐겨찾기 목록</title>
 <link href="${conPath }/css/bookmark/markall.css" rel="stylesheet">
+<style>
+div.bookmark-list {
+	max-width: 600px;
+	margin: 0 auto;
+}
+</style>
 </head>
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<br>
 	<br>
+	<br>
+	<br>
+	<br>
 	<div class="bookmark-list">
-		<table>
-			<thead>
-				<tr>
-					<th>즐겨찾기한 숙소</th>
-					<th>즐겨찾기한 식당</th>
-					<th>즐겨찾기한 관광지</th>
-				</tr>
-			</thead>
-			<tbody>
-				<tr>
-					<td><a href="${conPath}/bookmark/hotelList.do">${hotelCount}개</a></td>
-					<td><a href="${conPath}/bookmark/resList.do">${resCount }개</a></td>
-					<td><a href="${conPath}/bookmark/spotList.do">${spotCount }개</a></td>
-				</tr>
-			</tbody>
-		</table>
+		<div class="bookmark-box" onclick="location.href='${conPath}/bookmark/hotelList.do'">
+			<h2>
+				즐겨찾기한 호텔 > &nbsp;${hotelCount }개
+			</h2>
+		</div>
+		<div class="bookmark-box" onclick="location.href='${conPath}/bookmark/.do'">
+			<h2>
+				즐겨찾기한  식당 > &nbsp;${resCount }개
+			</h2>
+		</div>
+		<div class="bookmark-box" onclick="location.href='${conPath}/bookmark/.do'">
+			<h2>
+				즐겨찾기한  관광지 > ${spotCount }개
+			</h2>
+		</div>
 	</div>
+	<br>
 	<jsp:include page="../main/footer.jsp" />
 </body>
 </html>

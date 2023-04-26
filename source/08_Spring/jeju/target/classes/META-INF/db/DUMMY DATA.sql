@@ -154,11 +154,11 @@ VALUES (scheduleNo_seq.NEXTVAL, 'kim', '드라이브여행', TO_TIMESTAMP('2023-
     
 -- BOOKMARK --
 INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME) 
-    VALUES (bookmarkNo_seq.NEXTVAL, 'mid', '호텔', NULL, NULL);
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', '호텔', NULL, NULL);
 INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
-    VALUES (bookmarkNo_seq.NEXTVAL, 'mid', null, '올래국수', null);
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', null, '올래국수', null);
 INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
-    VALUES (bookmarkNo_seq.NEXTVAL, 'mid', null, NULL, '한라산국립공원');
+    VALUES (bookmarkNo_seq.NEXTVAL, 'kim', null, NULL, '한라산국립공원');
 
     
 -- SPOTCOMMENT --

@@ -64,9 +64,13 @@ public class MemberController {
 	public String login(String mid, String mpw, String after, HttpSession httpSession, Model model) {
 		String loginResult = memberService.loginCheck(mid, mpw, httpSession);
 		if (loginResult.equals("로그인 성공")) {
-			return "redirect:" + after;
+			if (after != null) { // after가 null이 아닌 경우만 redirect
+				return "redirect:" + after;
+			} else { // after가 null인 경우에는 로그인 성공 페이지로 이동
+				return "redirect:/main.do";
+			}
 		} else {
-			model.addAttribute("loginResult", loginResult); // redirect 사용불가
+			model.addAttribute("loginResult", loginResult);
 			model.addAttribute("mid", mid);
 			model.addAttribute("mpw", mpw);
 			return "member/login";

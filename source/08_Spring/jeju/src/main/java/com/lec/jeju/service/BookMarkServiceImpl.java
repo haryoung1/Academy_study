@@ -61,24 +61,17 @@ public class BookMarkServiceImpl implements BookMarkService {
 	}
 
 	@Override
-	public Integer SpotCount(String mid, HttpSession session) {
-		Integer spotCount = bookMarkDao.SpotCount(mid);
-		session.setAttribute("spotCount", spotCount); // 세션에 데이터 저장
-		return spotCount;
+	public Integer getHotelCount(String mid) {
+		return bookMarkDao.HotelCount(mid);
 	}
 
 	@Override
-	public Integer HotelCount(String mid, HttpSession session) {
-		Integer hotelCount = bookMarkDao.HotelCount(mid);
-		session.setAttribute("hotelCount", hotelCount); // 세션에 데이터 저장
-		return hotelCount;
+	public Integer getSpotCount(String mid) {
+		return bookMarkDao.SpotCount(mid);
 	}
 
 	@Override
-	public Integer ResCount(String mid, HttpSession session) {
-		Integer ResCount = bookMarkDao.ResCount(mid);
-		session.setAttribute("ResCount", ResCount); // 세션에 데이터 저장
-		return ResCount;
+	public Integer getResCount(String mid) {
+		return bookMarkDao.ResCount(mid);
 	}
-
 }

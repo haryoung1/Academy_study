@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.lec.jeju.service.BookMarkService;
 import com.lec.jeju.vo.BookMark;
+import com.lec.jeju.vo.Member;
 
 @Controller
 @RequestMapping("bookmark")
@@ -21,19 +22,20 @@ public class BookMarkController {
 
 	@RequestMapping(value = "MyAll", method = RequestMethod.GET)
 	public String all(Model model, HttpSession session) {
-		String mid = (String) session.getAttribute("mid");
-		if (mid == null || mid.equals("")) {
+		Member member = (Member) session.getAttribute("member");
+		if (member == null) {
 			System.out.println("로그인 안되어있음");
 			return "redirect:/main.do";
 		} else {
-			int hotelCount = bookMarkService.HotelCount(mid, session);
-			int ResCount = bookMarkService.ResCount(mid, session);
-			int spotCount = bookMarkService.SpotCount(mid, session);
-			session.setAttribute("hotelCount", hotelCount);
-			session.setAttribute("resCount", ResCount);
-			session.setAttribute("spotCount", spotCount);
+			String mid = member.getMid();
+			int hotelCount = bookMarkService.getHotelCount(mid);
+			int resCount = bookMarkService.getResCount(mid);
+			int spotCount = bookMarkService.getSpotCount(mid);
+			session.setAttribute("hotelCount2", hotelCount);
+			session.setAttribute("resCount2", resCount);
+			session.setAttribute("spotCount2", spotCount);
 			model.addAttribute("hotelCount", hotelCount);
-			model.addAttribute("ResCount", ResCount);
+			model.addAttribute("resCount", resCount);
 			model.addAttribute("spotCount", spotCount);
 		}
 		return "bookmark/bookMarkAll";

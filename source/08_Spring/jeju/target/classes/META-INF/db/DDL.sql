@@ -173,10 +173,11 @@ CREATE SEQUENCE bookmarkNo_seq MAXVALUE 99999 NOCACHE NOCYCLE;
 CREATE TABLE Bookmark (
     bookmark_no NUMBER(5) PRIMARY KEY,
     mId VARCHAR2(50) REFERENCES Member(mId) ON DELETE CASCADE,
-    hName VARCHAR2(50) REFERENCES hotel(hName),
-    rName VARCHAR2(50) REFERENCES restaurant(rName),
-    sName VARCHAR2(50) REFERENCES spot(sName)
+    hName VARCHAR2(50) REFERENCES hotel(hName) UNIQUE,
+    rName VARCHAR2(50) REFERENCES restaurant(rName) UNIQUE,
+    sName VARCHAR2(50) REFERENCES spot(sName) UNIQUE
 ); -- 즐겨찾기 테이블
+ALTER TABLE Bookmark ADD CONSTRAINT bookmark UNIQUE (mId, hName, rName, sName);
 
 CREATE SEQUENCE hCommentNo_seq MAXVALUE 99999 NOCACHE NOCYCLE;
 CREATE TABLE hotelComment (
