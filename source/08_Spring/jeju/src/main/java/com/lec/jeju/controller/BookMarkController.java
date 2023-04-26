@@ -12,13 +12,14 @@ import com.lec.jeju.service.BookMarkService;
 import com.lec.jeju.vo.BookMark;
 
 @Controller
+@RequestMapping("bookmark")
 public class BookMarkController {
 	@Autowired
 	private BookMarkService bookmarkService;
 
 	@RequestMapping(value = "hotelList", method = { RequestMethod.GET, RequestMethod.POST })
 	public String hotelList(String mid, Model model) {
-		List<BookMark> hotelList = bookmarkService.selectBookmarkHotel(mid);
+		List<BookMark> hotelList = bookmarkService.getBookmarkHotelList(mid);
 		model.addAttribute("hotelList", hotelList);
 		return "bookmark/hotelList";
 	}

@@ -49,6 +49,7 @@
 	<div id="wrap">
 		<div id="content_form">
 			<form action="${conPath }/festival/write.do" method="post">
+			<input type="hidden" name="aid" value="${admin.aid }">
 				<table>
 					<tr>
 						<td>제목</td>

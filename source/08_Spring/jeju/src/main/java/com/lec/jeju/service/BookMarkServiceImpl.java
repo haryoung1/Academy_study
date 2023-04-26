@@ -11,50 +11,51 @@ import com.lec.jeju.vo.BookMark;
 @Service
 public class BookMarkServiceImpl implements BookMarkService {
 	@Autowired
-	private BookMarkDao bookmarkDao;
+	private BookMarkDao bookMarkDao;
 
 	@Override
-	public int insertHotelMark(BookMark bookmark) {
-		return bookmarkDao.insertHotelMark(bookmark);
+	public List<BookMark> getBookmarkHotelList(String mid) {
+		return bookMarkDao.bookmarkHotel(mid);
 	}
 
 	@Override
-	public int insertResMark(BookMark bookmark) {
-		return bookmarkDao.insertResMark(bookmark);
+	public List<BookMark> getBookmarkResList(String mid) {
+		return bookMarkDao.bookmarkRes(mid);
 	}
 
 	@Override
-	public int insertSpotMark(BookMark bookmark) {
-		return bookmarkDao.insertSpotMark(bookmark);
+	public List<BookMark> getBookmarkSpotList(String mid) {
+		return bookMarkDao.bookmarkSpot(mid);
 	}
 
 	@Override
-	public int deleteHotelMark(String mid, String hname) {
-		return bookmarkDao.deleteHotelMark(mid, hname);
+	public int addHotelBookmark(BookMark bookmark) {
+		return bookMarkDao.addHotel(bookmark);
 	}
 
 	@Override
-	public int deleteResMark(String mid, String rname) {
-		return bookmarkDao.deleteResMark(mid, rname);
+	public int addResBookmark(BookMark bookmark) {
+		return bookMarkDao.addRes(bookmark);
 	}
 
 	@Override
-	public int deleteSpotMark(String mid, String sname) {
-		return bookmarkDao.deleteSpotMark(mid, sname);
+	public int addSpotBookmark(BookMark bookmark) {
+		return bookMarkDao.addSpot(bookmark);
 	}
 
 	@Override
-	public List<BookMark> selectBookmarkHotel(String mid) {
-		return bookmarkDao.selectBookmarkHotel(mid);
+	public int deleteHotelBookmark(String mid, String hname) {
+		return bookMarkDao.deleteHotelMark(mid, hname);
 	}
 
 	@Override
-	public List<BookMark> selectBookmarkRes(String mid) {
-		return bookmarkDao.selectBookmarkRes(mid);
+	public int deleteResBookmark(String mid, String rname) {
+		return bookMarkDao.deleteResMark(mid, rname);
 	}
 
 	@Override
-	public List<BookMark> selectBookmarkSpot(String mid) {
-		return bookmarkDao.selectBookmarkSpot(mid);
+	public int deleteSpotBookmark(String mid, String sname) {
+		return bookMarkDao.deleteSpotMark(mid, sname);
 	}
+
 }
