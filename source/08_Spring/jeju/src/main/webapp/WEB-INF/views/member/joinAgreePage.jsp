@@ -13,6 +13,11 @@
 	href="https://fonts.googleapis.com/css2?family=Domine:wght@500&family=IBM+Plex+Sans+KR:wght@300;400&family=Libre+Baskerville&family=Nanum+Gothic&family=Satisfy&family=The+Nautigal:wght@400;700&display=swap"
 	rel="stylesheet">
 <style>
+input[type="radio"] {
+	width: 15px;
+	height: 15px;
+	border: 1px;
+}
 </style>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script>

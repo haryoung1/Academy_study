@@ -42,12 +42,12 @@ public interface BookMarkDao {
 	int deleteSpotMark(String mid, String sname);
 	
 	// 북마크 관광지 갯수
-	int SpotCount(String mid);
+	Integer SpotCount(String mid);
 	
 	// 북마크 호텔 갯수
-	int HotelCount(String mid);
+	Integer HotelCount(String mid);
 		
 	// 북마크 식당갯수
-	int ResCount(String mid);
+	Integer ResCount(String mid);
 
 }

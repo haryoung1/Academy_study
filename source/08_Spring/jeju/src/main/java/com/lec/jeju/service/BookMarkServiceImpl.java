@@ -2,6 +2,8 @@ package com.lec.jeju.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -56,6 +58,27 @@ public class BookMarkServiceImpl implements BookMarkService {
 	@Override
 	public int deleteSpotBookmark(String mid, String sname) {
 		return bookMarkDao.deleteSpotMark(mid, sname);
+	}
+
+	@Override
+	public Integer SpotCount(String mid, HttpSession session) {
+		Integer spotCount = bookMarkDao.SpotCount(mid);
+		session.setAttribute("spotCount", spotCount); // 세션에 데이터 저장
+		return spotCount;
+	}
+
+	@Override
+	public Integer HotelCount(String mid, HttpSession session) {
+		Integer hotelCount = bookMarkDao.HotelCount(mid);
+		session.setAttribute("hotelCount", hotelCount); // 세션에 데이터 저장
+		return hotelCount;
+	}
+
+	@Override
+	public Integer ResCount(String mid, HttpSession session) {
+		Integer ResCount = bookMarkDao.ResCount(mid);
+		session.setAttribute("ResCount", ResCount); // 세션에 데이터 저장
+		return ResCount;
 	}
 
 }

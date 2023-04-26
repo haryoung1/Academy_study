@@ -2,6 +2,8 @@ package com.lec.jeju.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpSession;
+
 import com.lec.jeju.vo.BookMark;
 
 public interface BookMarkService {
@@ -22,4 +24,11 @@ public interface BookMarkService {
 	int deleteResBookmark(String mid, String rname);
 
 	int deleteSpotBookmark(String mid, String sname);
+	
+	Integer SpotCount(String mid, HttpSession session);
+	
+	Integer HotelCount(String mid, HttpSession session);
+	
+	Integer ResCount(String mid, HttpSession session);
 }
+

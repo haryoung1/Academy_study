@@ -19,13 +19,7 @@
    		AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
-	<!-- 북마크한 관광지 갯수 -->
-	<select id="SpotCount" parameterType="String" resultMap="BookmarkResult">
-		SELECT COUNT(*) 
-    	FROM SPOT, BOOKMARK
-    	WHERE SPOT.SNAME = BOOKMARK.SNAME
-    	AND BOOKMARK.MID = #{mid}
-	</select>
+	
 	
 	<!-- 북마크한 식당 목록 출력 -->
 	<select id="bookmarkRes" parameterType="String" resultMap="BookmarkResult">
@@ -35,13 +29,7 @@
     	AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
-	<!-- 북마크한 식당 갯수 -->
-	<select id="ResCount" parameterType="String" resultMap="BookmarkResult">
-		SELECT *
-    	FROM RESTAURANT, BOOKMARK
-    	WHERE RESTAURANT.RNAME = BOOKMARK.RNAME
-    	AND BOOKMARK.MID = #{mid}
-	</select>
+	
 	
 	<!-- 북마크한 호텔 목록 출력 -->
 	<select id="bookmarkHotel" parameterType="String" resultMap="BookmarkResult">
@@ -51,17 +39,7 @@
     	AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
 	</select>
 	
-	<!-- 북마크한 호텔 갯수 -->
-	<select id="HotelCount" parameterType="String" resultMap="BookmarkResult">
-		SELECT COUNT(*)
-    	FROM HOTEL, BOOKMARK
-    	WHERE HOTEL.HNAME = BOOKMARK.HNAME
-    	AND BOOKMARK.MID = #{mid}
-	</select>
-	
-	
-	
-	
+
 	<!-- 호텔 북마크 -->
 	<insert id="addHotel">
 		INSERT INTO BOOKMARK (BOOKMARK_NO, MID, HNAME, RNAME, SNAME)
@@ -98,8 +76,28 @@
 		DELETE FROM BOOKMARK
     	WHERE MID = #{mid} AND SNAME = #{sname}
 	</delete>
+	
+	<!-- 북마크한 호텔 갯수 -->
+	<select id="HotelCount" parameterType="String" resultMap="BookmarkResult">
+		SELECT COUNT(*)
+    	FROM HOTEL, BOOKMARK
+    	WHERE HOTEL.HNAME = BOOKMARK.HNAME
+    	AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 북마크한 식당 갯수 -->
+	<select id="ResCount" parameterType="String" resultMap="BookmarkResult">
+		SELECT COUNT(*)
+    	FROM RESTAURANT, BOOKMARK
+    	WHERE RESTAURANT.RNAME = BOOKMARK.RNAME
+    	AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
+	</select>
+	
+	<!-- 북마크한 관광지 갯수 -->
+	<select id="SpotCount" parameterType="String" resultMap="BookmarkResult">
+		SELECT COUNT(*)
+    	FROM SPOT, BOOKMARK
+    	WHERE SPOT.SNAME = BOOKMARK.SNAME
+    	AND BOOKMARK.MID = #{mid, jdbcType=VARCHAR}
+	</select>
 </mapper>
-
-
-
-

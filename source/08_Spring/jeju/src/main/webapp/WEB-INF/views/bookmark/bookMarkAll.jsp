@@ -13,6 +13,7 @@
 <body>
 	<jsp:include page="../main/header.jsp" />
 	<br>
+	<br>
 	<div class="bookmark-list">
 		<table>
 			<thead>
@@ -24,9 +25,9 @@
 			</thead>
 			<tbody>
 				<tr>
-					<td><a href="${conPath}/bookmark/hotelList.do">0개</a></td>
-					<td><a href="${conPath}/bookmark/resList.do">1개</a></td>
-					<td><a href="${conPath}/bookmark/spotList.do">2개</a></td>
+					<td><a href="${conPath}/bookmark/hotelList.do">${hotelCount}개</a></td>
+					<td><a href="${conPath}/bookmark/resList.do">${resCount }개</a></td>
+					<td><a href="${conPath}/bookmark/spotList.do">${spotCount }개</a></td>
 				</tr>
 			</tbody>
 		</table>

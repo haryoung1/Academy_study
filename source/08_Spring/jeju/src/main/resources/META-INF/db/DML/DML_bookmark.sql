@@ -29,13 +29,13 @@ DELETE FROM BOOKMARK
 SELECT * 
     FROM SPOT, BOOKMARK
     WHERE SPOT.SNAME = BOOKMARK.SNAME
-    AND BOOKMARK.MID = 'test';
+    AND BOOKMARK.MID = 'pham';
 -- 갯수출력 - SpotCount
 SELECT COUNT(*) 
     FROM SPOT, BOOKMARK
     WHERE SPOT.SNAME = BOOKMARK.SNAME
     AND BOOKMARK.MID = 'pham';
-   
+    
 -- (8) 북마크한 리스트 중 식당만 보기 - bookmarkRes
 SELECT *
     FROM RESTAURANT, BOOKMARK
