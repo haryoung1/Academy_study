@@ -101,7 +101,7 @@
 					</td>
 				</tr>
 				<tr>
-					<td>비밀번호확인</td>
+					<td>비밀번호 확인</td>
 					<td>
 						<input type="password" name="pwChk" required="required" id="mpwChk">
 						<div id="pwChkResult">&nbsp; &nbsp; &nbsp;</div>
