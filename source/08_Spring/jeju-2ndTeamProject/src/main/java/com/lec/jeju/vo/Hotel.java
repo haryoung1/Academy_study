@@ -21,8 +21,8 @@ public class Hotel {
     private String hsubimg_1;
     private String hsubimg_2;
     private String hsubimg_3;
-    private Double hlatitude;
-    private Double hlongitude;
+    private double hlatitude;
+    private double hlongitude;
     private Integer hprice;
     private String requeststatus;
     
@@ -35,4 +35,5 @@ public class Hotel {
 	private Location location;
 	private Hreservation hreservation;
 	private HotelComment hotelComment;
+	
 }

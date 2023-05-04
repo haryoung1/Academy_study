@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="conPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
@@ -8,7 +9,7 @@
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
 	<!-- CSS only -->
-	<link href="${conPath }/css/style.css" rel=stylesheet>
+	<%-- <link href="${conPath }/css/style.css" rel=stylesheet> --%>
 	<style>
 		.wrap{
 			width: 80%;
@@ -113,6 +114,7 @@
 		    height: 220px;
 			float: left;
 			margin-right: 30px;
+			max-width: 300px;
 		}
 		.wrap .item_list li .item_section h2{
 			margin-top: 20px;
@@ -131,6 +133,9 @@
 		    line-height: 22px;
 		    text-overflow: ellipsis;
 		    margin-bottom: 20px;
+		    overflow: hidden;
+		    white-space: nowrap;
+		    width: auto;
 		} 
 		.paging{
 			text-align: center;
@@ -146,7 +151,31 @@
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
+			$('.list').click(function(){
+				var schitem = $(this).attr('id');
+				var schword = $('input[name="schword"]').val();
+				location.href='${conPath}/hotel/list.do?pageNum=${paging.currentPage }&schitem='+schitem+"&schword="+schword;
+			});
 			
+			
+				var member = '${member}'
+				var mid = '${member.mid}'
+				var hname = $('input[name=hname]').val();
+				var checkBookmarkHotel = '${checkBookmarkHotel}'
+				
+			$('.lineBookmark').click(function(){
+				if(!member){
+					alert('로그인 후 이용 가능한 서비스입니다.');
+					location.href='${conPath}/member/login.do?after=hotel/list.do';
+				}else if(checkBookmarkHotel == 1){
+					return false;
+				}else{
+					location.href='${conPath}/bookmark/addBookmarkHotelList.do?hname='+hname+'&mid='+mid+'&pageNum='+'${param.pageNum }';
+				}
+			});
+			$('.fullBookmark').click(function(){
+				location.href='${conPath}/bookmark/deleteBookmarkHotel.do?hname='+hname+'&mid='+mid+'&pageNum='+'${param.pageNum }';
+			});
 		});
 	</script>
 	
@@ -155,34 +184,34 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
 		<div class="title">
-			<a class="title_link" href="#1">관광</a>
+			<a class="title_link" href="${conPath }/spot/list.do">관광${locationno }</a>
 			<a class="title_link" href="#2">맛집</a>
 			<a class="title_link" href="${conPath }/hotel/list.do">숙박</a>
 		</div>
 		<div class="search">
 			<form action="${conPath }/hotel/list.do">
-				<input type="text" name="schWord" value="${param.schWord }">
+				<input type="text" name="schword" value="${param.schword }">
 				<input type="submit" value="검색" >
 			</form>
 		</div>
 		<div class="spot_tag">
 			<ul>
-				<div onclick="location.href='${conPath}/hotel/list.do?pageNum=${paging.currentPage }&schItem=${param.schItem }'">
+				<div onclick="location.href='${conPath}/hotel/list.do?pageNum=${paging.currentPage }'">
 					<p>전체</p>
 				</div>
-				<div onclick="location.href='${conPath}/hotel/list2.do?pageNum=${paging.currentPage }&locationno=11&12&15'">
+				<div class="list" id="11,12,15">
 					<p>한경&한림&추자도</p>
 				</div>
-				<div onclick="location.href='${conPath}/hotel/list2.do?pageNum=${paging.currentPage }&locationno=1&3&13'">
+				<div class="list" id="1,3,13">
 					<p>애월&제주시&조천</p>
 				</div>
-				<div onclick="location.href='${conPath}/hotel/list2.do?pageNum=${paging.currentPage }&locationno=4&5&14'">
+				<div class="list" id="4,5,14">
 					<p>구좌&우도&성산</p>
 				</div>
-				<div onclick="location.href='${conPath}/hotel/list2.do?pageNum=${paging.currentPage }&locationno=6&7&2'">
+				<div class="list" id="2,6,7">
 					<p>표선&남원&서귀포시</p>
 				</div>
-				<div onclick="location.href='${conPath}/hotel/list2.do?pageNum=${paging.currentPage }&locationno=8&9&10'">
+				<div class="list" id="8,9,10">
 					<p>중문&안덕&대정</p>
 				</div>
 			</ul>
@@ -193,37 +222,59 @@
 			<ul class="item_list">
 			<c:forEach var="list" items="${list }">
 				<li>
-					<dl class="item_section" onclick="location.href='${conPath}/hotel/detail.do?hname=${list.hname }&pageNum=${paging.currentPage}&lname=${list.location.lname}'">
-						<img alt="" src="${conPath }/hotelImgFileUpload/${list.hmainimg}">
-						<h2>${list.hname }</h2>
-						<p class="name">${list.location.lname}</p>
-						<p class="info">${list.hinfo }</p>
-						<span>즐겨찾기 수</span>
+					<dl class="item_section">
+						<div onclick="location.href='${conPath}/hotel/detail.do?hname=${list.hname }&pageNum=${paging.currentPage}&lname=${list.location.lname}&mid=${member.mid }&CpageNum=1&bid=${bid }'">
+							<c:set var="img" value="${list.hmainimg}"/>
+							<c:if test = "${fn:contains(img, 'http')}">
+								<img alt="" src="${list.hmainimg }">							
+							</c:if>
+							<img alt="" src="${conPath }/hotelImgFileUpload/${list.hmainimg}">
+							<h2>${list.hname }</h2>
+							<p class="name">${list.location.lname}</p>
+							<p class="info">${list.hinfo }</p>
+						</div>
+						<%-- <div class="bookmark">
+							<input type="hidden" name="hname" value="${list.hname }">
+							<p class="bookmark">
+							<c:if test="${empty member }">
+								<div class="lineBookmark">
+									☆ ${bookmark }
+								</div>
+							</c:if>
+							<c:if test="${checkBookmarkHotel == 0 }">
+								<div class="lineBookmark">
+									☆ ${bookmark }
+								</div>
+							</c:if>
+							<c:if test="${checkBookmarkHotel == 1 }">
+								<div class="fullBookmark">
+									★ ${bookmark }
+								</div>
+							</c:if>
+						</p>
+						</div> --%>
 					</dl>	
 				</li>
 			</c:forEach>
 			</ul>
 		</div>
-		<c:if test="${not empty buisness }">
-			<button></button>
-		</c:if>
 		<div class="paging">
 			<c:if test="${paging.startPage > paging.blockSize }">
 			[ <a
 					href="${conPath }/hotel/list.do?pageNum=${paging.startPage-1}">이전</a> ]
-		</c:if>
-			<c:forEach var="i" begin="${paging.startPage }"
-				end="${paging.endPage }">
-				<c:if test="${i eq paging.currentPage}">
-				[ <b>${i }</b> ]
 			</c:if>
-				<c:if test="${i != paging.currentPage }">
-				[ <a href="${conPath }/hotel/list.do?pageNum=${i}">${i }</a> ]
+				<c:forEach var="i" begin="${paging.startPage }"
+					end="${paging.endPage }">
+					<c:if test="${i eq paging.currentPage}">
+					[ <b>${i }</b> ]
+				</c:if>
+					<c:if test="${i != paging.currentPage }">
+					[ <a href="${conPath }/hotel/list.do?pageNum=${i}">${i }</a> ]
+				</c:if>
+				</c:forEach>
+				<c:if test="${paging.endPage < paging.pageCnt }">
+				[ <a href="${conPath }/hotel/list.do?pageNum=${paging.endPage+1}">다음</a> ]
 			</c:if>
-			</c:forEach>
-			<c:if test="${paging.endPage < paging.pageCnt }">
-			[ <a href="${conPath }/hotel/list.do?pageNum=${paging.endPage+1}">다음</a> ]
-		</c:if>
 		</div>
 	<jsp:include page="../main/footer.jsp"/>
 </body>

@@ -20,6 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartHttpServletRequest;
 
 import com.lec.jeju.dao.BusinessDao;
+import com.lec.jeju.util.Paging;
 import com.lec.jeju.vo.Business;
 import com.lec.jeju.vo.Hotel;
 import com.lec.jeju.vo.HotelComment;
@@ -31,7 +32,7 @@ public class BusinessServiceImpl implements BusinessService {
 	private BusinessDao businessDao;
 	String backupPath = "C:/webPro1/source/las/jeju-2ndTeamProject/src/main/webapp/businessPhoto/";
 	
-	String backupPath1 = "D:/las/jeju-2ndTeamProject/src/main/webapp/hotelImgFileUpload/";
+	String backupPath1 = "C:/webPro1/source/las/jeju-2ndTeamProject/src/main/webapp/hotelImgFileUpload/";
 	
 	@Autowired
 	private JavaMailSender mailSender;
@@ -226,7 +227,7 @@ public class BusinessServiceImpl implements BusinessService {
 	    String hname = mRequest.getParameter("hname");
 	    hotel.setHname(hname);
 	    String uploadPath = mRequest.getRealPath("hotelImgFileUpload/");
-	    String backupPath1 = "D:/las/jeju-2ndTeamProject/src/main/webapp/hotelImgFileUpload/";
+	    String backupPath1 = "C:/webPro1/source/las/jeju-2ndTeamProject/src/main/webapp/hotelImgFileUpload/";
 	    String[] himg = new String[4];
 	    int i = 0;
 
@@ -259,12 +260,16 @@ public class BusinessServiceImpl implements BusinessService {
 	    hotel.setHsubimg_1(himg[1]);
 	    hotel.setHsubimg_2(himg[2]);
 	    hotel.setHsubimg_3(himg[3]);
-
+	    
 	    boolean result = businessDao.registerHotel(hotel, mRequest);
 	    if (result) {
 	        isSuccess = true;
 	    }
 	    return isSuccess;
+	}
+	@Override
+	public int registerHoteldummy(Hotel hotel) {
+		return businessDao.registerHoteldummy(hotel);
 	}
 	
 	@Override
@@ -273,18 +278,61 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public List<Hotel> myHotelPosts(String bid) {
-	    return businessDao.myHotelPosts(bid);
+	public List<Hotel> myHotelPosts(String bid, int startRow, int endRow) {
+	    return businessDao.myHotelPosts(bid, startRow, endRow);
 	}
-
+	
 	@Override
 	public String hotelApprovalStatus(String hname) {
 	    return businessDao.hotelApprovalStatus(hname);
 	}
 
 	@Override
-	public void registerRestaurant(Restaurant restaurant) {
-		businessDao.registerRestaurant(restaurant);
+	public boolean registerRestaurant(Restaurant restaurant, MultipartHttpServletRequest mRequest) {
+	    boolean isSuccess = false;
+
+	    String rname = mRequest.getParameter("rname");
+	    restaurant.setRname(rname);
+	    String uploadPath = mRequest.getRealPath("resImgFileUpload/");
+	    String backupPath2 = "C:/webPro1/source/las/jeju-2ndTeamProject/src/main/webapp/resImgFileUpload/";
+	    String[] rimg = new String[4];
+	    int i = 0;
+
+	    Iterator<String> params = mRequest.getFileNames();
+	    while (params.hasNext()) {
+	        String param = params.next();
+	        MultipartFile mFile = mRequest.getFile(param);
+	        String originalFileName = mFile.getOriginalFilename(); // 업로드한 파일이름
+	        rimg[i] = originalFileName;
+
+	        if (rimg[i] != null && !rimg[i].equals("")) {
+	            if (new File(uploadPath + rimg[i]).exists()) {
+	                rimg[i] = System.currentTimeMillis() + rimg[i];
+	            }
+
+	            try {
+	                mFile.transferTo(new File(uploadPath + rimg[i]));
+	                System.out.println("서버에 저장된 파일 : " + uploadPath + rimg[i]);
+	                System.out.println("복사될 파일 : " + backupPath2 + rimg[i]);
+	                isSuccess = filecopy(uploadPath + rimg[i], backupPath2 + rimg[i]);
+	            } catch (IOException e) {
+	                System.out.println(e.getMessage());
+	            }
+	        } else {
+	            System.out.println(i + "번째 첨부 안 함 : " + (rimg[i].equals("") ? "빈스트링" : "빈스트링 아님"));
+	        }
+	        i++;
+	    }
+	    restaurant.setRmainimg(rimg[0]);
+	    restaurant.setRsubimg_1(rimg[1]);
+	    restaurant.setRsubimg_2(rimg[2]);
+	    restaurant.setRsubimg_3(rimg[3]);
+	    
+	    boolean result = businessDao.registerRestaurant(restaurant, mRequest);
+	    if (result) {
+	        isSuccess = true;
+	    }
+	    return isSuccess;
 	}
 
 	@Override
@@ -293,8 +341,8 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public List<Restaurant> myRestaurantPosts(String bid) {
-	    return businessDao.myRestaurantPosts(bid);
+	public List<Restaurant> myRestaurantPosts(String bid, int startRow, int endRow) {
+	    return businessDao.myRestaurantPosts(bid, startRow, endRow);
 	}
 
 	@Override
@@ -303,13 +351,81 @@ public class BusinessServiceImpl implements BusinessService {
 	}
 
 	@Override
-	public List<HotelComment> myHotelComments(String bid) {
-	    return businessDao.myHotelComments(bid);
+	public List<HotelComment> hCommentList(HotelComment hotelComment, String pageNum) {
+		Paging paging = new Paging(businessDao.totCntHcomment(hotelComment), pageNum, 5, 5);
+		hotelComment.setStartrow(paging.getStartRow());
+		hotelComment.setEndrow(paging.getEndRow());
+		return businessDao.hCommentList(hotelComment);
+	}// 숙소 댓글 목록
+
+	@Override
+	public int totCntHcomment(String hname, HotelComment hotelComment) {
+		return businessDao.totCntHcomment(hotelComment);
+	}// 숙소 댓글 개수
+
+	@Override
+	public int registerHcomment(HotelComment hotelComment) {
+		return businessDao.registerHcomment(hotelComment);
+	}// 숙소 댓글 쓰기
+
+	@Override
+	public int replyHotelComment(HotelComment hotelComment) {
+		businessDao.preReplyHcomment(hotelComment);
+		return businessDao.replyHotelComment(hotelComment);
+	}// 숙소 답 댓글 쓰기
+
+	@Override
+	public int modifyHotelComment(HotelComment hotelComment) {
+		return businessDao.modifyHotelComment(hotelComment);
+	}// 숙소 댓글 수정
+
+	@Override
+	public int deleteHotelComment(int hcommentno) {
+		return businessDao.deleteHotelComment(hcommentno);
+	}// 숙소 댓글 삭제
+	/**
+	@Override
+	public List<RestaurantComment> rCommentList(RestaurantComment restaurantComment, String pageNum) {
+		Paging paging = new Paging(businessDao.totCntRcomment(restaurantComment), pageNum, 5, 5);
+		restaurantComment.setStartrow(paging.getStartRow());
+		restaurantComment.setEndrow(paging.getEndRow());
+		return businessDao.rCommentList(restaurantComment);
+	}// 식당 댓글 목록
+	
+	@Override
+	public int totCntRcomment(String rname, RestaurantComment restaurantComment) {
+		return businessDao.totCntRcomment(RestaurantComment);
+	}// 식당 댓글 개수
+
+	@Override
+	public int registerRcomment(RestaurantComment restaurantComment) {
+		return businessDao.registerRcomment(restaurantComment);
+	}// 식당 댓글 쓰기
+
+	@Override
+	public int replyRestaurantComment(RestaurantComment restaurantComment) {
+		businessDao.preReplyRcomment(restaurantComment);
+		return businessDao.replyRestaurantComment(restaurantComment);
+	}// 식당 답 댓글 쓰기
+
+	@Override
+	public int modifyRestaurantComment(RestaurantComment restaurantComment) {
+		return businessDao.modifyRestaurantComment(restaurantComment);
+	}// 식당 댓글 수정
+
+	@Override
+	public int deleteRestaurantComment(int rcommentno) {
+		return businessDao.deleteRestaurantComment(rcommentno);
+	}// 식당 댓글 삭제
+	**/
+
+	@Override
+	public int hotelTotalCount(String bid) {
+	    return businessDao.hotelTotalCount(bid);
 	}
 	
-	//@Override
-	//public List<RestaurntComment> selectMyRestaurntComments(String bid) {
-	//    return businessDao.selectMyRestaurntComments(bid);
-	//}
-
+	@Override
+	public int restaurantTotalCount(String bid) {
+	    return businessDao.restaurantTotalCount(bid);
+	}
 }

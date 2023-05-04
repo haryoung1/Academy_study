@@ -115,7 +115,7 @@ CREATE TABLE hotel (
 ); -- 숙소 테이블
 
 CREATE TABLE Hreservation (
-    mID VARCHAR2(50) PRIMARY KEY,
+    mID VARCHAR2(50),
     hNAME VARCHAR2(50) REFERENCES HOTEL(hNAME),
     inDate DATE NOT NULL,  
     outDate DATE NOT NULL
@@ -136,8 +136,8 @@ CREATE TABLE restaurant (
   rSubImg_1 VARCHAR2(255),
   rSubImg_2 VARCHAR2(255),
   rSubImg_3 VARCHAR2(255),
-  rLatitude NUMBER(10, 6) NOT NULL, -- 위도
-  rLongitude NUMBER(10, 6) NOT NULL, -- 경도
+  rLatitude NUMBER(10, 6), -- 위도
+  rLongitude NUMBER(10, 6), -- 경도
   rPrice VARCHAR2(2000),
   requestStatus VARCHAR(1) DEFAULT 'P'
 ); -- 맛집 테이블
@@ -178,9 +178,9 @@ CREATE SEQUENCE bookmarkNo_seq MAXVALUE 99999 NOCACHE NOCYCLE;
 CREATE TABLE Bookmark (
     bookmark_no NUMBER(5) PRIMARY KEY,
     mId VARCHAR2(50) REFERENCES Member(mId) ON DELETE CASCADE,
-    hName VARCHAR2(50) REFERENCES hotel(hName) UNIQUE,
-    rName VARCHAR2(50) REFERENCES restaurant(rName) UNIQUE,
-    sName VARCHAR2(50) REFERENCES spot(sName) UNIQUE,
+    hName VARCHAR2(50) REFERENCES hotel(hName),
+    rName VARCHAR2(50) REFERENCES restaurant(rName),
+    sName VARCHAR2(50) REFERENCES spot(sName),
     hMainImg VARCHAR2(255),
     RMainImg VARCHAR2(255),
     SMainImg VARCHAR2(255),
@@ -261,3 +261,9 @@ SELECT * FROM Business;
 SELECT * FROM Admin;
 SELECT * FROM LOCATION;
 COMMIT;
+--select * from v$resource_limit where resource_name = 'processes';
+--alter system set processes=300 scope=spfile;
+--shutdown immediate; --셧다운
+--startup; --재시작
+
+

@@ -48,8 +48,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void approveHotel(String hname, String approval, String requeststatus) {
-	    adminDao.approveHotel(hname, approval, requeststatus);
+	public void approveHotel(String hname, String approval, String requeststatus, double hlatitude, double hlongitude) {
+	    adminDao.approveHotel(hname, approval, requeststatus, hlatitude, hlongitude);
 	}
 
 	@Override
@@ -63,8 +63,8 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void approveRestaurant(String rname, String approval, String requeststatus) {
-		adminDao.approveRestaurant(rname, approval, requeststatus);
+	public void approveRestaurant(String rname, String approval, String requeststatus, double rlatitude, double rlongitude) {
+		adminDao.approveRestaurant(rname, approval, requeststatus, rlatitude, rlongitude);
 	}
 
 	@Override

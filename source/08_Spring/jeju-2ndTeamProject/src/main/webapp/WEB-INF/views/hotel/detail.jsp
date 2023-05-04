@@ -2,13 +2,13 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <c:set var="conPath" value="${pageContext.request.contextPath }"/>
 <!DOCTYPE html>
 <html>
 <head>
 	<meta charset="UTF-8">
 	<title>Insert title here</title>
-	<link href="${conPath }/css/style.css" rel=stylesheet>
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
 	<style>
 		a{
@@ -20,18 +20,20 @@
 			width: 80%;
 			margin: 0 auto;
 		}
+		h2 {
+		    float: left;
+		}
 		.wrap .title{
 			text-align: center;
 			margin: 20px 0;
-			display: flex;
-			justify-content: space-between;
 		}
 		.wrap .lname{
 			color: brown;
 			padding-left: 10px;
 		}
-		.wrap .bookmark{
-			line-height: 60px;
+
+		.lineBookmark:hover, .fullBookmark:hover{
+			cursor: pointer;
 		}
 		.swiper {
 			width: 100%;
@@ -79,11 +81,33 @@
 		    border-radius: 10px;
 		    font-weight: 600;
 		}
+		.reserv:hover {
+			cursor: pointer;
+			color: white;
+		}
 	</style>
 	<script src="https://code.jquery.com/jquery-3.6.4.js"></script>
 	<script>
 		$(document).ready(function(){
+			var bid = '${bid}'
+			var member = '${member}'
+			var mid = '${member.mid}'
+			var hname = '${hotelVo.hname}';
+			var checkBookmarkHotel = '${checkBookmarkHotel}'
 			
+			$('.lineBookmark').click(function(){
+				if(!member){
+					alert('로그인 후 이용 가능한 서비스입니다.');
+					location.href='${conPath}/member/login.do?after=detali.do';
+				}else if(checkBookmarkHotel == 1 || bid){
+					return false;
+				}else{
+					location.href='${conPath}/bookmark/addBookmarkHotel.do?hname='+hname+'&mid='+mid+'&pageNum='+'${param.pageNum }'+'&lname='+'${param.lname }';
+				}
+			});
+			$('.fullBookmark').click(function(){
+				location.href='${conPath}/bookmark/deleteBookmarkHotel.do?hname='+hname+'&mid='+mid+'&pageNum='+'${param.pageNum }'+'&lname='+'${param.lname }';
+			});
 		});
 	</script>
 </head>
@@ -91,15 +115,45 @@
 	<jsp:include page="../main/header.jsp"/>
 	<div class="wrap">
 		<div class="title">
-			<h2><img alt="숙소아이콘" src="${conPath }/icon/숙소.png" style="width: 50px;">
-			${hotelVo.hname }</h2>
-			<p class="bookmark">즐겨찾기수</p>
+			<h2>
+				<img alt="숙소아이콘" src="${conPath }/icon/숙소.png" style="width: 50px;">
+				${hotelVo.hname }
+			</h2>
+			<c:if test="${empty bid }">
+			<p class="bookmark">
+				<c:if test="${empty member }">
+					<div class="lineBookmark" align="right">
+						<img width="50px;" alt="빈 별" src="${conPath }/img/linestar.png"> ${bookmark }
+					</div>
+				</c:if>
+				<c:if test="${checkBookmarkHotel == 0 }">
+					<div class="lineBookmark" align="right">
+						<img width="50px;" alt="빈 별" src="${conPath }/img/linestar.png"> ${bookmark }
+					</div>
+				</c:if>
+				<c:if test="${checkBookmarkHotel == 1 }">
+					<div class="fullBookmark" align="right">
+						<img width="50px;" alt="별" src="${conPath }/img/fullstar.png">${bookmark }
+					</div>
+				</c:if>
+			</p>
+			</c:if>
+			<c:if test="${not empty bid }">
+				<div align="right">
+						<img width="50px;" alt="별" src="${conPath }/img/fullstar.png">${bookmark }
+					</div>
+			</c:if>
 		</div>
 		<div class="lname">
 			${param.lname }
 		</div>
 		<div class="swiper mySwiper">
 	    <div class="swiper-wrapper">
+	    	<c:set var="img" value="${list.hmainimg}"/>
+			<c:if test = "${fn:contains(img, 'http')}">
+				<img alt="" src="${list.hmainimg }">
+		      <div class="swiper-slide" style="background-image: url('${list.hmainimg }');"></div>
+			</c:if>
 	      <div class="swiper-slide" style="background-image: url('${conPath}/hotelImgFileUpload/${hotelVo.hmainimg }');"></div>
 	      <c:if test="${not empty hotelVo.hsubimg_1}">
 		      <div class="swiper-slide" style="background-image: url('${conPath}/hotelImgFileUpload/${hotelVo.hsubimg_1 }');"></div>
@@ -145,12 +199,19 @@
 				<div class="content_title">
 					가격
 				</div>
-				<p>1박 : ${hotelVo.hprice}원
-					<button class="reserv" onclick="location.href='reserv.do?hname=${hotelVo.hname}&mid=${member.mid }'">예약하기</button>
+				<p>1박 : 
+					<fmt:formatNumber value="${hotelVo.hprice}" pattern="###,###"/>
+					원
+					<c:if test="${not empty member }">
+						<button class="reserv" onclick="location.href='reserv.do?hname=${hotelVo.hname}&mid=${member.mid }&pageNum=${param.pageNum }&lname=${param.lname }'">
+							예약하기
+						</button>
+					</c:if>
 				</p>
 				
 			</div>
 		</div>
+	<jsp:include page="../hotel/hotelComment.jsp"/>
 	<jsp:include page="../main/footer.jsp"/>
 </body>
 </html>
@@ -160,10 +221,6 @@
     var swiper = new Swiper(".mySwiper", {
       slidesPerView: 1,
       loop: true,
-      autoplay: {
-          delay: 3500,
-          disableOnInteraction: false,
-        },
       pagination: {
         el: ".swiper-pagination",
         clickable: true,

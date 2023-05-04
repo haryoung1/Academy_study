@@ -16,7 +16,10 @@
 	
 	<!-- 업체 등록 승인, 거절 -->
     <update id="approveHotel" parameterType="Hotel">
-        UPDATE Hotel SET requestStatus='A' WHERE hName=#{hname}
+        UPDATE Hotel SET requestStatus='A', 
+        				 HLATITUDE=#{hlatitude, jdbcType=DOUBLE},
+                 		 HLONGITUDE=#{hlongitude, jdbcType=DOUBLE}
+        WHERE hName=#{hname}
     </update>
     
     <update id="rejectHotel" parameterType="Hotel">
@@ -24,7 +27,10 @@
     </update>
 
     <update id="approveRestaurant" parameterType="Restaurant">
-        UPDATE Restaurant SET requestStatus='A' WHERE rName=#{rname}
+        UPDATE Restaurant SET requestStatus='A', 
+        					  RLATITUDE=#{rlatitude, jdbcType=DOUBLE},
+                 		      RLONGITUDE=#{rlongitude, jdbcType=DOUBLE}
+        WHERE rName=#{rname}
     </update>
     
     <update id="rejectRestaurant" parameterType="Restaurant">
