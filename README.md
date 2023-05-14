@@ -10,4 +10,4 @@
 
 [개인프로젝트 바로가기](https://github.com/haryoung1/dentalproject)
 
-[팀 프로젝트 바로가기] (https://github.com/jooooung/jeju-2ndTeamProject)
+[팀 프로젝트 바로가기](https://github.com/jooooung/jeju-2ndTeamProject)
